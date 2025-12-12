@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on CloudyMount</title>
+    <link>https://cloudymount789.github.io/blog/</link>
+    <description>Recent content in Blogs on CloudyMount created by </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 11 Dec 2025 17:02:23 +0800</lastBuildDate><atom:link href="https://cloudymount789.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sicp Notes</title>
+      <link>https://cloudymount789.github.io/blog/first/</link>
+      <pubDate>Thu, 11 Dec 2025 17:02:23 +0800</pubDate>
+      
+      <guid>https://cloudymount789.github.io/blog/first/</guid>
+      <description>&lt;p&gt;摘要&lt;/p&gt;
+&lt;p&gt;本文为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）期中前课程核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。&lt;/p&gt;
+&lt;h1 id=&#34;sicp-review&#34;&gt;SICP Review&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;易错提醒&#34;&gt;易错提醒&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;记得初始化参数！&lt;/li&gt;
+&lt;li&gt;记得每个函数接受多少个输入！&lt;/li&gt;
+&lt;li&gt;记得return！&lt;/li&gt;
+&lt;li&gt;lambda函数要在被()调用的时候才会执行！&lt;/li&gt;
+&lt;li&gt;被next拿出来的会在可变序列中消失！pop也是！可变序列在一处被修改后，所有对它的引用都会随之改变！！！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;易忘函数&#34;&gt;易忘函数&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;all(iterable)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：如果 &lt;code&gt;iterable&lt;/code&gt; 中所有元素为 &lt;code&gt;True&lt;/code&gt;，返回 &lt;code&gt;True&lt;/code&gt;，否则返回 &lt;code&gt;False&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：会短路，即遇到第一个 &lt;code&gt;False&lt;/code&gt; 时立即返回 &lt;code&gt;False&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;code&gt;any(iterable)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：如果 &lt;code&gt;iterable&lt;/code&gt; 中至少有一个元素为 &lt;code&gt;True&lt;/code&gt;，返回 &lt;code&gt;True&lt;/code&gt;，否则返回 &lt;code&gt;False&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：会短路，即遇到第一个 &lt;code&gt;True&lt;/code&gt; 时立即返回 &lt;code&gt;True&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;code&gt;enumerate(iterable, start=0)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：返回一个枚举对象，包含可迭代对象的索引和值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;code&gt;start&lt;/code&gt; 参数指定索引的起始值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;code&gt;filter(function, iterable)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：根据 &lt;code&gt;function&lt;/code&gt; 函数过滤 &lt;code&gt;iterable&lt;/code&gt; 中的元素，只有 &lt;code&gt;function&lt;/code&gt; 返回 &lt;code&gt;True&lt;/code&gt; 的元素会被保留。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：返回一个迭代器，需要转换为列表等容器查看结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;code&gt;pow(x, y, z=None)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：返回 &lt;code&gt;x&lt;/code&gt; 的 &lt;code&gt;y&lt;/code&gt; 次幂。如果提供了 &lt;code&gt;z&lt;/code&gt;，则返回 &lt;code&gt;(x ** y) % z&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：该函数在处理大数时效率较高。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;code&gt;zip(*iterables)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：将多个可迭代对象按元素配对，返回一个包含元组的迭代器。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：如果输入可迭代对象长度不一致，按&lt;strong&gt;最短长度&lt;/strong&gt;配对。需要转换为列表等容器查看结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;错题&#34;&gt;错题：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;f1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; print(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;f2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt;: print(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(f1, f2, f2())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;, Function, &lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;and&lt;/span&gt; print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;world&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;hello
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;and只对左边求值，右边被短路，返回左边的值为None，而REPL遇到None不输出内容&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#3 神秘斐波那契数列&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mystery&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;yield&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;yield&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    iter1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mystery()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    iter2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mystery()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    next(iter2)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;yield from&lt;/span&gt; map(&lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; pair: pair[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; pair[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], zip(iter1, iter2))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;series1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mystery()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;series2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; filter(&lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; n: n &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, series1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;[next(series1) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; _ &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;[next(series1) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; _ &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;[next(series2) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; _ &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;next(series1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;13&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;21&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;抽象的猜出一个函数的作用！
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    存在递归调用的生成器一般是无限的！
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    注意赋值语句在赋值的时候是不求值的！被使用的时候才会求值&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;functions--control&#34;&gt;Functions &amp;amp; Control&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;expression--value&#34;&gt;Expression &amp;amp; Value&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An expression describes a computation and evaluates to a value&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;include : function call notation, operators and operands&lt;/li&gt;
+&lt;li&gt;order : evaluate operater subexpression &amp;gt; operand ~ &amp;gt; apply&lt;/li&gt;
+&lt;li&gt;types : primitive(numbers, strings, names), arithmetic, call&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Programs manipulate values&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;types: 4&lt;/li&gt;
+&lt;li&gt;Expressions evaluate to values in one or more steps&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;name--assignment&#34;&gt;Name &amp;amp; Assignment&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Values can be assigned to names to make referring to them easier.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A name can only be bound to a single value.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;One way to introduce a new name in a program is with an assignment statement.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Statements affect the program, &lt;strong&gt;but do not evaluate to values&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;function-definition&#34;&gt;Function Definition&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;function : abstraction&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Execution rule for def Statements&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a function with signature &lt;!-- raw HTML omitted --&gt;(&lt;!-- raw HTML omitted --&gt;)&lt;/li&gt;
+&lt;li&gt;Set the body of that function to be everything indented after the first line&lt;/li&gt;
+&lt;li&gt;Bind &lt;!-- raw HTML omitted --&gt; to that function in the current frame&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;function-call-eval--apply&#34;&gt;Function Call (Eval &amp;amp; Apply)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Procedure for calling/applying user-defined functions (for now)&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a new environment frame&lt;/li&gt;
+&lt;li&gt;Bind the function&amp;rsquo;s parameters to its arguments in that frame&lt;/li&gt;
+&lt;li&gt;Execute the body of the function in the new environment&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;pure--non-pure-functions-print-vs-return-none&#34;&gt;Pure / Non-Pure Functions (Print vs Return, None)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;The special value None represents nothing in Python&lt;/li&gt;
+&lt;li&gt;A function that does not explicitly return a value will return None&lt;/li&gt;
+&lt;li&gt;Careful: None is not displayed by the interpreter as the value of an expression&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Pure Functions
+just return values&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Non-Pure Functions
+have side effects&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;conditional-control-if-statement&#34;&gt;Conditional Control (If-Statement)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Execution Rule for Conditional Statements:&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Each header is considered in order&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Evaluate the header’s conditional expression if the header is not an else&lt;/li&gt;
+&lt;li&gt;If the expression evaluates to true or the header is an else, execute the suite and skip the remaining headers&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;要特别注意!有的语句前不该用elif/ else, 会导致被短路，只是检查条件的话，可以只用一个if就好了&lt;/p&gt;
+&lt;h3 id=&#34;boolean-expressions--short-circuiting&#34;&gt;Boolean Expressions &amp;amp; Short Circuiting&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;boolean contexts:
+False values in Python: False, None, 0, ‘’ (more to come)&lt;br&gt;
+True values: everything else
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;special operators
+&lt;!-- raw HTML omitted --&gt; and &lt;!-- raw HTML omitted --&gt; and &lt;!-- raw HTML omitted --&gt; and &amp;hellip;
+Evaluate to the first false value.
+If none are false, evaluates to the last expression
+&lt;!-- raw HTML omitted --&gt; or &lt;!-- raw HTML omitted --&gt; or &lt;!-- raw HTML omitted --&gt; or &amp;hellip;
+Evaluate to first true value.
+If none are true, evaluates to the last expression
+not &lt;!-- raw HTML omitted --&gt;
+Evaluates to True if &lt;!-- raw HTML omitted --&gt; if a false value and False if &lt;!-- raw HTML omitted --&gt; is a true value&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回的是操作数的值！不是True or False！&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;notice: &lt;em&gt;&lt;strong&gt;Short-Circuiting&lt;/strong&gt;&lt;/em&gt; —— avoid side-effect and error&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;iterative-control-while-statement&#34;&gt;Iterative Control (While-Statement)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Execution Rule for While Statements:&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Evaluate the header’s expression&lt;/li&gt;
+&lt;li&gt;If it is a true value, execute the  (whole) suite, then return to step 1&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;斐波那契数列&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fib&lt;/span&gt;(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;Compute the nth Fibonacci number, for N &amp;gt;= 1&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pred, curr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# 0th and 1st Fibonacci numbers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    k &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;              &lt;span style=&#34;color:#75715e&#34;&gt;# curr is the kth Fibonacci number&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; k &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; n:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        pred, curr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; curr, pred &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; curr
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        k &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; curr
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;error-messages&#34;&gt;Error Messages&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloudymount789.github.io/blog/first/####-built-in-exceptation&#34;&gt;见后&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;environment-diagrams&#34;&gt;Environment Diagrams&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A visual tool to keep track of bindings &amp;amp; state of a computer program&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;A frame keeps track of variable-to-value bindings.&lt;/li&gt;
+&lt;li&gt;Every call expression has a corresponding frame.&lt;/li&gt;
+&lt;li&gt;Global, a.k.a(又名). the global frame, is the starting frame.
+It doesn&amp;rsquo;t correspond to a specific call expression.&lt;/li&gt;
+&lt;li&gt;Parent frames
+The parent of a function is the frame in which it was defined.
+If you can&amp;rsquo;t find a variable in the current frame, you check it&amp;rsquo;s parent, and so on. If you can&amp;rsquo;t find the variable, &lt;strong&gt;NameError&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;assignment-statements&#34;&gt;Assignment Statements&lt;/h3&gt;
+&lt;p&gt;bind variable to value&lt;/p&gt;
+&lt;h3 id=&#34;def-statements&#34;&gt;Def Statements&lt;/h3&gt;
+&lt;p&gt;Create a function value: in current frame
+&lt;img src=&#34;image-1.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;func &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;formal parameters&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;) [parent&lt;span style=&#34;color:#f92672&#34;&gt;=&amp;lt;&lt;/span&gt;label&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;] &lt;span style=&#34;color:#75715e&#34;&gt;#Its parent is the current frame.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bind &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; to the function value &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; the current frame
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;call-expressions&#34;&gt;Call Expressions&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;image.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Add a local frame, titled with the &lt;!-- raw HTML omitted --&gt; of the function being applied.&lt;/li&gt;
+&lt;li&gt;Copy the parent of the function (not always the current frame) to the local frame: [parent=&lt;!-- raw HTML omitted --&gt;]&lt;/li&gt;
+&lt;li&gt;Bind the &lt;!-- raw HTML omitted --&gt; to the arguments in the local frame.&lt;/li&gt;
+&lt;li&gt;Execute the body of the function in the environment that starts with the local frame&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;variable-lookup&#34;&gt;Variable Lookup&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Variable Lookup:&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Lookup name in the current frame&lt;/li&gt;
+&lt;li&gt;Lookup name in parent frame, its parent frame, etc..&lt;/li&gt;
+&lt;li&gt;Stop at the global frame&lt;/li&gt;
+&lt;li&gt;If not found, an error is thrown&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;注意： 函数的parent frame 取决于def的环境，而不是调用的环境&lt;/li&gt;
+&lt;li&gt;只能寻找并使用，若要修改则需要用nonlocal or global 声明&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;区别函数传参：若使用而未改变传入参数，则若外部参数发生变化，内部参数也会随之发生变化；若改变了该参数，相当于在内部框架对参数进行重新赋值，不会改变外部参数的值，称为闭包，并且此后外部参数再发生变化不会影响内部参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;求值（Evaluation）：是对表达式的求解和计算过程。
+应用（Apply）：是指 函数调用，即将一个函数和它的参数结合在一起并执行。
+当你调用一个函数时，首先会 求值 参数，接着 应用 函数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;lambda-expressions&#34;&gt;Lambda Expressions&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;evaluate to functions !&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Only the def statement gives the function an intrinsic name&lt;/p&gt;
+&lt;h4 id=&#34;notice-lambda-for-loop&#34;&gt;notice: lambda for loop&lt;/h4&gt;
+&lt;p&gt;如果你在循环中使用 lambda 函数时，要注意变量绑定的问题。通常，这种情况会导致 lambda 函数在创建时捕获的变量值是循环结束后的最终值。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;示例&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fs &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt;: i &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print([f() &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; fs])  &lt;span style=&#34;color:#75715e&#34;&gt;# [4, 4, 4, 4, 4]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;原因：&lt;/p&gt;
+&lt;p&gt;lambda 捕获的是外部的 i 变量，而不是 i 在每次迭代中的值。所以，在迭代完成后，i 的值是 4，因此所有的 lambda 函数最终都返回 4。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;解决方案&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fs &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [(&lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; i: &lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt;: i)(i) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print([f() &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; fs])  &lt;span style=&#34;color:#75715e&#34;&gt;# [0, 1, 2, 3, 4]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过为每个 lambda 函数创建一个局部作用域，确保每个 lambda 捕获当前 i 的值。&lt;/p&gt;
+&lt;h3 id=&#34;recursion&#34;&gt;Recursion&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;image-2.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The same function fact is called multiple times, each time solving a simpler problem&lt;/li&gt;
+&lt;li&gt;All the frames share the &lt;strong&gt;same parent&lt;/strong&gt; - only difference is the argument&lt;/li&gt;
+&lt;li&gt;What n evaluates to depends upon the current environment（在每个frame中修改n的时候实现重新赋值，而不会因为其他frame而改变当前frame的n的值）&lt;/li&gt;
+&lt;li&gt;执行顺序是从最末情况到base case开始创建frame，返回值是从base case得到的值回到最末层&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;lists&#34;&gt;Lists&lt;/h3&gt;
+&lt;h4 id=&#34;box-and-poinger-notation&#34;&gt;Box and Poinger Notation&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;image-5.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;lists-in-lists-in-lists&#34;&gt;Lists in Lists in Lists&lt;/h4&gt;
+&lt;p&gt;point to another list&lt;/p&gt;
+&lt;h3 id=&#34;default-arguments&#34;&gt;Default Arguments&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;higher-order-functions&#34;&gt;Higher order functions&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;takes a function as an argument value, and/or
+returns a function as a return value(often defined locally)&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;use: &lt;strong&gt;Abstraction and Generalization!&lt;/strong&gt; Give each function exactly one job, but make it apply to many related situations(分步进行的计算)
+&lt;ol&gt;
+&lt;li&gt;Generalize over different form of computation&lt;/li&gt;
+&lt;li&gt;Helps remove repetitive segments of code&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;lambda-expressions-vs-def-statements&#34;&gt;Lambda Expressions vs. Def Statements&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloudymount789.github.io/blog/first/###lambda-expressions&#34;&gt;见这里&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;function-design--generalization&#34;&gt;Function Design &amp;amp; Generalization&lt;/h3&gt;
+&lt;p&gt;函数泛化，提高可读性、可维护性和扩展性，在不同情景保持复用性&lt;/p&gt;
+&lt;h3 id=&#34;functions-as-arguments&#34;&gt;Functions As Arguments&lt;/h3&gt;
+&lt;p&gt;eg. 常见的高阶函数：&lt;/p&gt;
+&lt;p&gt;map()：对一个可迭代对象的每个元素应用一个函数。&lt;/p&gt;
+&lt;p&gt;filter()：根据给定的条件过滤一个可迭代对象。&lt;/p&gt;
+&lt;p&gt;reduce()：累积地应用一个二元函数到一个可迭代对象上。&lt;/p&gt;
+&lt;h3 id=&#34;functions-that-return-functions&#34;&gt;Functions That Return Functions&lt;/h3&gt;
+&lt;p&gt;常常用于构建 闭包（closures），在其中返回的函数使用外部函数的环境变量来执行任务。&lt;/p&gt;
+&lt;h3 id=&#34;function-currying&#34;&gt;Function Currying&lt;/h3&gt;
+&lt;p&gt;函数柯里化（Currying）是将接受多个参数的函数转化为一系列接受单一参数的函数的技术。换句话说，柯里化的过程是将一个多参数的函数分解成多个单参数的函数序列。&lt;/p&gt;
+&lt;p&gt;函数柯里化使得你可以部分应用函数参数，即先提供部分参数，得到一个新的函数，等待剩余的参数。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;部分应用：通过柯里化，你可以将一个多参数的函数转化为一系列单一参数的函数，这有助于代码的简化和模块化。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;函数链：柯里化可以链式调用，允许更流畅的表达式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;self-reference&#34;&gt;Self Reference&lt;/h3&gt;
+&lt;p&gt;自我引用是指一个对象、函数或变量引用自己。在函数编程中，自我引用通常用于递归函数的实现，它允许函数在其内部调用自己来解决问题。&lt;/p&gt;
+&lt;p&gt;自我引用常常出现在递归中，其中函数调用自身来逐步解决子问题，直到达到一个基本情况。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;recursion-1&#34;&gt;Recursion&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;means: solving problems with a naturally repeating structure - they are defined in terms of themselves&lt;/li&gt;
+&lt;li&gt;It requires you to find patterns of smaller problems, and to define the smallest problem possible&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;function-abstraction&#34;&gt;Function Abstraction&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;核心：隐藏复杂性，提供简洁的接口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;definition-of-recursion&#34;&gt;Definition of Recursion&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;递归是一种通过函数调用自身来解决问题的方法。递归的核心在于问题能被分解成更简单的子问题，且每次递归都会接近基础情况（base case）。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基础情况：递归停止的条件，通常是最简单的情况，比如 n == 0 或 n == 1。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;递归情况：问题通过递归调用被分解成更小的子问题，最终汇总得到答案。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;structure-of-a-recursive-function&#34;&gt;Structure of a Recursive Function&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Divide - Conquer - Combine&lt;/strong&gt;&lt;/em&gt;
+递归函数通常遵循以下结构：&lt;/p&gt;
+&lt;p&gt;分解（Divide）：将问题分解成一个或多个子问题。(多种情况or多个步骤)&lt;/p&gt;
+&lt;p&gt;解决（Conquer）：解决更小的子问题，通常是递归地调用函数。&lt;/p&gt;
+&lt;p&gt;合并（Combine）：将子问题的解合并，得到问题的最终解。&lt;/p&gt;
+&lt;p&gt;递归结构的关键是将一个复杂的问题通过逐步减小问题的规模，最终解决最小的子问题。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;知道上个子问题的答案，可以怎样解决下一个问题？&lt;/li&gt;
+&lt;li&gt;base case是什么？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tree-recursion--recursion-tree&#34;&gt;Tree Recursion &amp;amp; Recursion Tree&lt;/h3&gt;
+&lt;p&gt;树状递归是指递归函数的调用图呈树状结构。每次递归调用都会产生多个子调用，类似树的分支。递归树的深度取决于递归的层数，广度取决于每一层的调用数&lt;/p&gt;
+&lt;h3 id=&#34;mutual-recursion&#34;&gt;Mutual Recursion&lt;/h3&gt;
+&lt;p&gt;互相递归是指两个或更多的函数互相调用对方来完成任务。这种递归结构通常在两个函数的行为依赖于彼此时出现。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;is_odd&lt;/span&gt;(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; is_even(n &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;is_even&lt;/span&gt;(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; is_odd(n &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;iteration-vs-recursion&#34;&gt;Iteration vs. Recursion&lt;/h3&gt;
+&lt;p&gt;递归可以更清晰地表示分解问题的过程，尤其是当问题的结构天然适合分解时。&lt;/p&gt;
+&lt;p&gt;迭代通常更高效，因为每次递归调用都要维护栈帧，而迭代只需要更新变量。&lt;/p&gt;
+&lt;h3 id=&#34;recursion-examples&#34;&gt;Recursion Examples:&lt;/h3&gt;
+&lt;p&gt;When learning to write recursive functions, put the base case/s first&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意考虑边界情况!&lt;/strong&gt;
+eg.&lt;strong&gt;Count Partitions&lt;/strong&gt;
+Goal: Count the number of ways to give out n ( &amp;gt; 0) pieces of chocolate if nobody can have more than m (&amp;gt; 0) pieces.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If n is negative, then we cannot get to a valid partition&lt;/li&gt;
+&lt;li&gt;If n is 0, then we have arrived at a valid partition&lt;/li&gt;
+&lt;li&gt;If the largest piece we can use is 0, then we cannot get to a valid partition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;sum-digits&#34;&gt;Sum-Digits&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;sum_digits&lt;/span&gt;(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; sum_digits(n &lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;cascade级联&#34;&gt;Cascade(级联)&lt;/h4&gt;
+&lt;p&gt;级联递归指的是将多个函数或操作按顺序组合，每个函数的输出作为下一个函数的输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#从高位开始输出每位数字&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;cascade&lt;/span&gt;(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(n)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        cascade(n &lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(n &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;在递归函数中，通常会在每一次递归调用时暂停当前函数的执行，直到递归结束并返回&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#从低位开始输出每位数字&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;cascade&lt;/span&gt;(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(n)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(n &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        cascade(n &lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;fibonacci&#34;&gt;Fibonacci&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fibonacci&lt;/span&gt;(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; fibonacci(n &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; fibonacci(n &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;count-partitions&#34;&gt;Count-Partitions&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;count_partitions&lt;/span&gt;(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    count &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, n &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        count &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; count_partitions(n &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; i)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; count
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;if-time---speeding-up-recursion&#34;&gt;If Time - Speeding Up Recursion&lt;/h3&gt;
+&lt;p&gt;store some values that had already calculated&lt;/p&gt;
+&lt;h3 id=&#34;summery&#34;&gt;SUMMERY&lt;/h3&gt;
+&lt;p&gt;Recursion has three main components&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Base case/s: The simplest form of the problem&lt;/li&gt;
+&lt;li&gt;Recursive call/s: Smaller version of the problem&lt;/li&gt;
+&lt;li&gt;Use the solution to the smaller version of the problem to arrive at the solution to the original problem&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;When working with recursion, use functional abstraction: assume the recursive call gives the correct result&lt;/li&gt;
+&lt;li&gt;Tree recursion makes multiple recursive calls and explores different choices&lt;/li&gt;
+&lt;li&gt;Use doctests and your own examples to help you figure out the simplest forms and how to make the problem smaller&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;sequence&#34;&gt;Sequence&lt;/h2&gt;
+&lt;h3 id=&#34;sequence-abstraction&#34;&gt;Sequence Abstraction&lt;/h3&gt;
+&lt;p&gt;All sequences have finite length.
+Each element in a sequence has a discrete integer index.&lt;/p&gt;
+&lt;h3 id=&#34;sequence-operation-expression&#34;&gt;Sequence Operation (Expression)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#### Get Item&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;get the ith element &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;seq&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;[i]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#### Slicing&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;##### Slicing Creates New Values&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;create a copy of the sequence &lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; i to j  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;seq&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;[i:j:skip]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#### Check Membership&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;check &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; the value of &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;expr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;seq&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;expr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;seq&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#### Concatenate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;combine two sequences into a single sequence  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;s1&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;s2&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;sequence-processing-statement&#34;&gt;Sequence Processing (Statement)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#### Iterating&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;For each element &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;seq&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) Bind it to &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;) Execute &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;body&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;unpacking&#34;&gt;Unpacking&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;image-3.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;range&#34;&gt;Range&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;range(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;start&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;end&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;skip&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;image-4.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;list&#34;&gt;List&lt;/h3&gt;
+&lt;h4 id=&#34;list-comprehensions&#34;&gt;List Comprehensions&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;expr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;seq&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;cond&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;string&#34;&gt;String&lt;/h3&gt;
+&lt;h4 id=&#34;string-literals-three-forms&#34;&gt;String Literals (Three Forms)&lt;/h4&gt;
+&lt;p&gt;Python 中有三种常见的字符串字面量表示形式：&lt;/p&gt;
+&lt;p&gt;单引号： &amp;lsquo;Hello&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;双引号： &amp;ldquo;Hello&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;三引号： &amp;lsquo;&amp;lsquo;&amp;lsquo;Hello&amp;rsquo;&amp;rsquo;&amp;rsquo; 或 &amp;ldquo;&amp;ldquo;&amp;ldquo;Hello&amp;rdquo;&amp;rdquo;&amp;rdquo;
+三引号用于表示多行字符串，或者在字符串中包含引号时可以避免转义。&lt;/p&gt;
+&lt;h3 id=&#34;sequence-aggregation-sum-max--min-all--any&#34;&gt;Sequence Aggregation (Sum, Max / Min, All / Any)&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;image-6.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;dictionary&#34;&gt;Dictionary&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;image-7.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;data-abstraction-and-tree&#34;&gt;Data abstraction and Tree&lt;/h2&gt;
+&lt;p&gt;Compound values combine other values together
+Data abstraction lets us manipulate compound values as units
+e.g.
+有理数由分子（numerator）和分母（denominator）组成，是分数的精确表示形式，以整数对形式存在。常规表达进行除法运算，可能会丢失精确表示。
+so:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 基础构造与选择器&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;rational&lt;/span&gt;(n, d): &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; [n, d]  &lt;span style=&#34;color:#75715e&#34;&gt;# 构造有理数（列表形式）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;numer&lt;/span&gt;(x): &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; x[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]  &lt;span style=&#34;color:#75715e&#34;&gt;# 获取分子&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;denom&lt;/span&gt;(x): &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; x[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]  &lt;span style=&#34;color:#75715e&#34;&gt;# 获取分母&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 运算实现&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mul_rational&lt;/span&gt;(x, y): &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; rational(numer(x)&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;numer(y), denom(x)&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;denom(y))  &lt;span style=&#34;color:#75715e&#34;&gt;# 乘法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;add_rational&lt;/span&gt;(x, y):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    nx, dx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numer(x), denom(x)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ny, dy &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; numer(y), denom(y)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; rational(nx&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;dy &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; ny&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;dx, dx&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;dy)  &lt;span style=&#34;color:#75715e&#34;&gt;# 加法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;print_rational&lt;/span&gt;(x): print(numer(x), &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;, denom(x))  &lt;span style=&#34;color:#75715e&#34;&gt;# 打印&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;rationals_are_equal&lt;/span&gt;(x, y): &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; numer(x)&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;denom(y) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; numer(y)&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;denom(x)  &lt;span style=&#34;color:#75715e&#34;&gt;# 相等判断&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 最简形式优化（引入最大公约数）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; math &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; gcd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;rational&lt;/span&gt;(n, d):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    g &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gcd(n, d)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; [n&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;g, d&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;g]  &lt;span style=&#34;color:#75715e&#34;&gt;# 返回最简分数形式的有理&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;abstraction-barrier-between-representation--use&#34;&gt;Abstraction Barrier (between Representation &amp;amp; Use)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;def: 将数据的表示和使用分开的一种设计思想。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过抽象屏障，可以使得数据的表示方式对外部用户隐藏，从而保护数据的结构，使其不容易受到外部代码的直接修改。
+把底层的数据结构和功能封装起来，使得使用者可以通过抽象接口来操作数据，而不需要理解内部的实现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;表示：指的是数据的内部结构，如何在计算机中存储这些数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用：指的是外部代码与数据进行交互的方式，用户与数据的交互不关心数据的具体实现，只关心如何操作数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;constructor--selectors&#34;&gt;Constructor &amp;amp; Selectors&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Constructor（构造函数）是用于创建数据对象的函数，它定义了如何通过一些基本组件来构造出复杂的数据结构。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Selectors（选择器）是用于从已构建的数据结构中提取信息的函数。它们允许用户访问数据结构中的元素或属性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;break:
+过度依赖数据的内部实现，或者在外部代码中直接修改、访问类和数据结构的私有部分或底层细节&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;abstract-data-type&#34;&gt;Abstract Data Type&lt;/h3&gt;
+&lt;p&gt;指数据结构和操作的组合
+e.g.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;列表（List）：一个抽象数据类型，可以进行元素添加、删除、查找等操作，具体实现可以是动态数组、链表等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;栈（Stack）：一种抽象数据类型，具有push()和pop()等操作，可以通过不同的实现方式（例如数组或链表）来实现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;closure&#34;&gt;Closure&lt;/h3&gt;
+&lt;p&gt;指函数不仅能够访问其自己的局部变量，还能够访问外部函数的局部变量。闭包使得函数能够“记住”它被创建时的环境，即使外部函数已经返回，内部函数仍然能够访问外部函数的变量。&lt;/p&gt;
+&lt;h3 id=&#34;tree-abstraction&#34;&gt;Tree Abstraction&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;递归描述（木质树视角）
+树由一个根（root）和一组分支（branches）组成。
+每个分支本身也是一棵树。
+零个分支的树称为叶子（leaf）。
+&lt;ul&gt;
+&lt;li&gt;Label：节点的值&lt;/li&gt;
+&lt;li&gt;Branches：子节点或子树，是一个列表，其中每个元素表示一个子节点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;相对描述（家族树视角）
+树中每个位置称为节点（node）。
+每个节点有一个标签值（label value）。
+节点间存在父子关系（parent/child）。
+常根据节点位置描述值的关系&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;树包含标签值和分支列表的结构，分支列表可为空（对应叶子）&lt;/p&gt;
+&lt;h3 id=&#34;tree-implementation&#34;&gt;Tree Implementation&lt;/h3&gt;
+&lt;h4 id=&#34;constructor-tree&#34;&gt;Constructor: tree&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tree&lt;/span&gt;(label, branches&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[]):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; branch &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; branches:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;assert&lt;/span&gt; is_tree(branch)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; [label] &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; list(branches)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;selectors-label-branches&#34;&gt;Selectors: label, branches&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;label&lt;/span&gt;(tree):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; tree[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;branches&lt;/span&gt;(tree):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; tree[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;:]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;convinence-functions-is_tree-is_leaf&#34;&gt;Convinence Functions: is_tree, is_leaf&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;is_tree&lt;/span&gt;(tree):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; type(tree) &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; list &lt;span style=&#34;color:#f92672&#34;&gt;or&lt;/span&gt; len(tree) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; branch &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; branches(tree):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; is_tree(branch):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;is_leaf&lt;/span&gt;(tree):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; branches(tree)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;tree-processing-using-recursion&#34;&gt;Tree Processing (using Recursion)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;count_leaves&lt;/span&gt;(t):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;统计树的叶子节点总数&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; is_leaf(t):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# 叶子节点返回1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# 递归计算每个分支的叶子数，求和聚合&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        branch_counts &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [count_leaves(b) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; b &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; branches(t)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; sum(branch_counts)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;increment_leaves&lt;/span&gt;(t):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;返回叶子节点标签递增1的新树&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; is_leaf(t):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; tree(label(t) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)  &lt;span style=&#34;color:#75715e&#34;&gt;# 叶子节点标签+1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# 递归处理每个分支，保留非叶子节点标签&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        bs &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [increment_leaves(b) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; b &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; branches(t)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; tree(label(t), bs)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;increment&lt;/span&gt;(t):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;返回所有节点标签递增1的新树&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# 根节点标签+1，递归处理所有分支&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; tree(label(t) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, [increment(b) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; b &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; branches(t)])
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;mutablility&#34;&gt;Mutablility&lt;/h2&gt;
+&lt;p&gt;指对象在创建后是否可以改变其内容或状态，它们影响了对象的行为、存储方式、以及如何处理对象的引用&lt;/p&gt;
+&lt;h3 id=&#34;objects&#34;&gt;Objects&lt;/h3&gt;
+&lt;p&gt;对象 是程序中所有数据的基本单位。每个对象都有两个主要属性：身份（Identity）和 值（Value）。对象的身份由它的内存地址决定，而值则是对象所包含的数据。对象的行为通过其类型（如列表、字典、整数等）决定&lt;/p&gt;
+&lt;h3 id=&#34;mutable-objects&#34;&gt;Mutable Objects&lt;/h3&gt;
+&lt;h4 id=&#34;lists-1&#34;&gt;Lists&lt;/h4&gt;
+&lt;p&gt;append()：向列表末尾添加元素。&lt;/p&gt;
+&lt;p&gt;pop()：移除并返回列表的最后一个元素，或指定索引的元素。&lt;/p&gt;
+&lt;p&gt;remove()：移除列表中第一个匹配的指定元素。&lt;/p&gt;
+&lt;p&gt;extend()：将一个可迭代对象中的元素添加到列表末尾。&lt;/p&gt;
+&lt;p&gt;Slice Assignment：通过切片语法修改列表中的部分元素。&lt;/p&gt;
+&lt;h3 id=&#34;dictionaries&#34;&gt;Dictionaries&lt;/h3&gt;
+&lt;p&gt;由键（key）和值（value）对组成的映射。字典允许通过键来查找对应的值，可以进行修改、删除或添加新的键值对。&lt;/p&gt;
+&lt;h3 id=&#34;mutate-with-functions&#34;&gt;Mutate with Functions&lt;/h3&gt;
+&lt;p&gt;由于 Python 中的可变对象是通过引用传递的，修改可变对象会影响原始对象&lt;/p&gt;
+&lt;h3 id=&#34;immutable-objects&#34;&gt;Immutable Objects&lt;/h3&gt;
+&lt;p&gt;Tuple, str, int, float
+可变仅指元组本身的元素绑定不可变，若元组包含可变元素（如列表），该可变元素的内容可被修改。&lt;/p&gt;
+&lt;h3 id=&#34;identity--equality&#34;&gt;Identity &amp;amp; Equality&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Identity 指的是对象在内存中的位置，通常由 id() 函数来查看。
+同一性（is运算符）：判断两个表达式是否指向同一个对象。&lt;/li&gt;
+&lt;li&gt;Equality 则是指对象的内容是否相等。对于可变对象，修改对象的内容不会改变对象的身份；而对于不可变对象，任何修改都需要创建一个新对象。
+同一对象必然值相等，但值相等的对象不一定是同一对象。
+相等性（==运算符）：判断两个表达式的值是否相等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;default-arguments-1&#34;&gt;Default Arguments&lt;/h3&gt;
+&lt;p&gt;函数的默认参数值是函数定义的一部分，仅在函数定义时创建一次，而非每次调用时重新生成。
+若默认参数是可变对象（如列表），多次调用函数会共享该对象，导致意外的状态累积。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;append_to_list&lt;/span&gt;(value, lst&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[]):  &lt;span style=&#34;color:#75715e&#34;&gt;# 注意：默认值是可变的&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    lst&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(value)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; lst
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(append_to_list(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;))  &lt;span style=&#34;color:#75715e&#34;&gt;# 输出 [1]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(append_to_list(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;))  &lt;span style=&#34;color:#75715e&#34;&gt;# 输出 [1, 2]，因为默认的列表是共享的&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;要避免这种情况，使用不可变的默认参数（例如 None）并在函数体内初始化：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;append_to_list&lt;/span&gt;(value, lst&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; lst &lt;span style=&#34;color:#f92672&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        lst &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    lst&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(value)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; lst
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(append_to_list(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;))  &lt;span style=&#34;color:#75715e&#34;&gt;# 输出 [1]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(append_to_list(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;))  &lt;span style=&#34;color:#75715e&#34;&gt;# 输出 [2]，避免了共享同一个列表的问题&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;mutable-functions-nonlocal&#34;&gt;Mutable Functions (Nonlocal)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;nonlocal 关键字用于修改外层函数作用域中的变量，而不是创建一个局部变量&lt;/li&gt;
+&lt;li&gt;tip:
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;如果外层函数的变量是可变的（例如列表、字典等），你可以修改它的内容，而无需使用 nonlocal。但如果你想直接对变量本身（例如赋值为一个新对象）进行修改，就需要使用 nonlocal。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果外层函数的变量是不可变的（例如整数、字符串、元组等），则即使使用 nonlocal 关键字，你也只能修改它的引用，而不能直接改变它的值（因为不可变对象的值一旦创建就无法修改）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;unboundlocalerror&#34;&gt;UnboundLocalError&lt;/h4&gt;
+&lt;p&gt;当你在函数内部引用一个变量，并且该变量在局部作用域中没有声明时，Python 会抛出 UnboundLocalError 错误。这通常发生在试图在函数中修改局部变量时，而没有明确声明该变量为 nonlocal 或 global。&lt;/p&gt;
+&lt;h4 id=&#34;mutate-mutable-values-wihout-nonlocal&#34;&gt;Mutate Mutable Values wihout Nonlocal&lt;/h4&gt;
+&lt;p&gt;如果一个变量是可变的且位于外部作用域，你可以在内部函数中修改它的内容，而不必使用 nonlocal&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#嵌套列表&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;t &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;t[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [t]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;t&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;extend(t)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;t &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;], [&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;t[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(t[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;])  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;iterable&#34;&gt;Iterable&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Iterable&lt;/strong&gt; 是任何能够逐个返回其成员的对象。它包括序列类型（如列表、字符串、元组）以及非序列类型（如字典）。&lt;/p&gt;
+&lt;h3 id=&#34;iterators-iter--next&#34;&gt;Iterators (iter &amp;amp; next)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;iter(iterable)&lt;/strong&gt;：此函数返回一个迭代器(iterator)，它可以逐个遍历&lt;strong&gt;可迭代对象&lt;/strong&gt;(iterable)的元素。可以把它理解为一本书的书签，从书的前面开始。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;next(iterator)&lt;/strong&gt;：此函数返回&lt;strong&gt;迭代器&lt;/strong&gt;的下一个元素，并将书签移动到下一页。迭代器会记住它的当前位置。如果当前位置已经是书的结尾，它会抛出一个错误。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;views-of-a-dictionary-keys--values&#34;&gt;Views of a Dictionary (keys &amp;amp; values)&lt;/h3&gt;
+&lt;p&gt;字典及其&lt;strong&gt;键&lt;/strong&gt;(keys)、&lt;strong&gt;值&lt;/strong&gt;(values)和&lt;strong&gt;项&lt;/strong&gt;(items)都是可迭代对象。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;d.keys()&lt;/code&gt;&lt;/strong&gt;：返回字典&lt;strong&gt;键&lt;/strong&gt;的可迭代视图。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;d.values()&lt;/code&gt;&lt;/strong&gt;：返回字典&lt;strong&gt;值&lt;/strong&gt;的可迭代视图。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;d.items()&lt;/code&gt;&lt;/strong&gt;：返回字典&lt;strong&gt;键值对&lt;/strong&gt;的可迭代视图。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;built-in-functions-for-iteration&#34;&gt;Built-in Functions for Iteration&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;map(func, iterable)&lt;/strong&gt;：对可迭代对象中的每个元素应用指定的函数。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;filter(func, iterable)&lt;/strong&gt;：过滤可迭代对象中的元素，保留通过&lt;strong&gt;函数&lt;/strong&gt;判断为&lt;strong&gt;真&lt;/strong&gt;的元素。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;zip(first_iter, second_iter)&lt;/strong&gt;：将两个或多个可迭代对象中的元素按顺序组成元组返回。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;reversed(sequence)&lt;/strong&gt;：返回一个反向迭代器，逐个遍历&lt;strong&gt;序列&lt;/strong&gt;中的元素。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;create-iterators&#34;&gt;Create Iterators&lt;/h3&gt;
+&lt;p&gt;这些函数允许我们创建迭代器：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;map&lt;/strong&gt;：将一个函数应用到每个元素。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;filter&lt;/strong&gt;：根据一个&lt;strong&gt;条件函数&lt;/strong&gt;筛选元素。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;zip&lt;/strong&gt;：将两个可迭代对象的元素按顺序组成元组。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;reversed&lt;/strong&gt;：创建一个反向遍历&lt;strong&gt;序列&lt;/strong&gt;的迭代器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;view-iterators&#34;&gt;View Iterators&lt;/h3&gt;
+&lt;p&gt;这些函数将&lt;strong&gt;可迭代对象&lt;/strong&gt;转换为不同的数据结构视图：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;list(iterable)&lt;/strong&gt;：将可迭代对象转换为列表。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tuple(iterable)&lt;/strong&gt;：将可迭代对象转换为元组。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;sorted(iterable)&lt;/strong&gt;：将可迭代对象排序后返回一个新的列表。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Example of iterators and map function&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;naturals&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;yield&lt;/span&gt; x
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        x &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; nats &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; naturals()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; next(nats)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; next(nats)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; nats1, nats2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; naturals(), naturals()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; [next(nats1) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; next(nats2) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; _ &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;]  &lt;span style=&#34;color:#75715e&#34;&gt;# Squares the first 5 natural numbers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;generators-and-generator-functions&#34;&gt;Generators and Generator Functions&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Generators&lt;/strong&gt;：生成器是通过调用生成器函数自动创建的迭代器。它使用&lt;code&gt;yield&lt;/code&gt;关键字逐个返回值，并保持函数的状态，以便后续调用&lt;code&gt;next()&lt;/code&gt;时继续执行。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Generator Functions&lt;/strong&gt;：生成器函数包含一个或多个&lt;code&gt;yield&lt;/code&gt;语句。与普通函数不同，生成器函数在每次&lt;code&gt;yield&lt;/code&gt;时返回一个值，而不是一次性返回。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;yield-value&#34;&gt;&lt;code&gt;yield&lt;/code&gt; value&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;yield&lt;/code&gt;关键字用于生成一个值，并挂起函数的执行，之后可以继续执行。&lt;/p&gt;
+&lt;h4 id=&#34;yield-from-iterator--iterable&#34;&gt;&lt;code&gt;yield from iterator / iterable&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;yield from&lt;/code&gt;语法用于将另一个迭代器或可迭代对象的所有值逐个返回。它简化了代码，在需要将值传递给另一个生成器或可迭代对象时非常有用。&lt;/p&gt;
+&lt;h4 id=&#34;generators-representing-infinite-sequences&#34;&gt;Generators Representing Infinite Sequences&lt;/h4&gt;
+&lt;p&gt;生成器可以表示无限序列。例如，上述的&lt;code&gt;naturals()&lt;/code&gt;函数生成一个从0开始的无限自然数序列。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;exception&#34;&gt;Exception&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Exception&lt;/strong&gt; 是程序在运行时遇到的错误，会打断程序的正常执行流程。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;中文名&lt;/th&gt;
+          &lt;th&gt;英文名&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;异常&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Exception&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;程序运行时检测到的错误，会中断当前代码的正常执行流程。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;抛出异常&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Raise an Exception&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;使用 &lt;code&gt;raise&lt;/code&gt; 语句主动触发异常。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;捕获异常&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Catch / Handle Exception&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;使用 &lt;code&gt;try...except&lt;/code&gt; 捕获并处理异常，防止程序崩溃。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;异常传播&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Exception Propagation&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;如果当前作用域未捕获异常，异常会沿着调用栈往上层传递，直到被捕获或导致程序终止。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;异常对象&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Exception Object&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;每个异常都是一个类的实例，包含错误类型、信息、堆栈信息等。&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;异常类层级结构&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Exception Hierarchy&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Python 中所有异常都是从 &lt;code&gt;BaseException&lt;/code&gt; 类继承而来的一棵树。&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;built-in-exceptions&#34;&gt;Built-in Exceptions&lt;/h4&gt;
+&lt;p&gt;Python提供了多个内建异常，每种异常用于不同类型的错误。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;异常名&lt;/th&gt;
+          &lt;th&gt;英文说明&lt;/th&gt;
+          &lt;th&gt;常见触发场景&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;SyntaxError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Syntax error&lt;/td&gt;
+          &lt;td&gt;语法错误（代码结构非法）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;IndentationError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Indentation error&lt;/td&gt;
+          &lt;td&gt;缩进错误&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;NameError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Undefined variable&lt;/td&gt;
+          &lt;td&gt;使用了未定义的变量&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;TypeError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Type mismatch&lt;/td&gt;
+          &lt;td&gt;类型不兼容（如把字符串加到整数上）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;ValueError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Invalid value&lt;/td&gt;
+          &lt;td&gt;值类型正确但取值非法（如 &lt;code&gt;int(&amp;quot;abc&amp;quot;)&lt;/code&gt;）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;IndexError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Index out of range&lt;/td&gt;
+          &lt;td&gt;列表索引越界&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;KeyError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Missing dictionary key&lt;/td&gt;
+          &lt;td&gt;字典中查找不存在的键&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;AttributeError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Missing attribute&lt;/td&gt;
+          &lt;td&gt;对象没有该属性或方法&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;ZeroDivisionError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Division by zero&lt;/td&gt;
+          &lt;td&gt;除以零错误&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;IOError&lt;/code&gt; / &lt;code&gt;OSError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Input/Output error&lt;/td&gt;
+          &lt;td&gt;文件或系统操作失败（如找不到文件）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;FileNotFoundError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;File not found&lt;/td&gt;
+          &lt;td&gt;打开不存在的文件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;ImportError&lt;/code&gt; / &lt;code&gt;ModuleNotFoundError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Import error&lt;/td&gt;
+          &lt;td&gt;模块导入失败&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;RuntimeError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Generic runtime error&lt;/td&gt;
+          &lt;td&gt;运行时检测到其他异常情况&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;RecursionError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Maximum recursion depth exceeded&lt;/td&gt;
+          &lt;td&gt;递归层数太深&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;AssertionError&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Assertion failed&lt;/td&gt;
+          &lt;td&gt;断言失败（&lt;code&gt;assert&lt;/code&gt;）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;StopIteration&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Iterator finished&lt;/td&gt;
+          &lt;td&gt;迭代器结束（由迭代协议内部抛出）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;StopAsyncIteration&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Async iterator finished&lt;/td&gt;
+          &lt;td&gt;异步迭代结束&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;exception-mechanism&#34;&gt;Exception Mechanism&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Detection (发现错误)&lt;/strong&gt;: 错误会在程序执行时被发现。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Raising (raise)&lt;/strong&gt;: 可以通过&lt;code&gt;raise&lt;/code&gt;关键字显式地抛出错误。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Propagation (异常传播)&lt;/strong&gt;: 如果当前作用域没有捕获异常，异常会沿着调用栈向上传播，直到被捕获或导致程序终止。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Catching (捕获)&lt;/strong&gt;: 错误可以使用&lt;code&gt;try&lt;/code&gt;/&lt;code&gt;except&lt;/code&gt;块进行捕获。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Else (无异常时执行)&lt;/strong&gt;: 如果&lt;code&gt;try&lt;/code&gt;块没有抛出异常，则执行&lt;code&gt;else&lt;/code&gt;块。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Finally (始终执行)&lt;/strong&gt;: 无论是否发生异常，&lt;code&gt;finally&lt;/code&gt;块总是会执行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;raise-syntax&#34;&gt;&lt;code&gt;raise&lt;/code&gt; Syntax&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;expression&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# &amp;lt;expression&amp;gt; 必须是一个异常对象&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;example&#34;&gt;Example&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;divide&lt;/span&gt;(a, b):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;assert&lt;/span&gt; b &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Divider cannot be zero&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;AssertionError&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; e:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Assertion failed:&amp;#34;&lt;/span&gt;, e)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ZeroDivisionError&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; e:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Caught division error:&amp;#34;&lt;/span&gt;, e)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Result is:&amp;#34;&lt;/span&gt;, result)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;finally&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Computation ended.&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;divide(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Output:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Assertion failed: Divider cannot be zero
+Computation ended.
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
