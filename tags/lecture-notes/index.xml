@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lecture Notes on CloudyMount&#39;s blog</title>
-    <link>http://localhost:1313/tags/lecture-notes/</link>
+    <link>https://cloudymount789.github.io/tags/lecture-notes/</link>
     <description>Recent content in Lecture Notes on CloudyMount&#39;s blog created by </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 01 Apr 2026 21:14:48 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/lecture-notes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Apr 2026 21:14:48 +0800</lastBuildDate><atom:link href="https://cloudymount789.github.io/tags/lecture-notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SICP系列笔记汇总</title>
-      <link>http://localhost:1313/blog/sicp_notes_series/</link>
+      <link>https://cloudymount789.github.io/blog/sicp_notes_series/</link>
       <pubDate>Wed, 01 Apr 2026 21:14:48 +0800</pubDate>
       
-      <guid>http://localhost:1313/blog/sicp_notes_series/</guid>
+      <guid>https://cloudymount789.github.io/blog/sicp_notes_series/</guid>
       <description>&lt;p&gt;本系列为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://sicp.pascal-lab.net/2025/&#34;&gt;课程主页&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;一些碎碎念&#34;&gt;一些碎碎念&lt;/h3&gt;
@@ -43,10 +43,10 @@
     
     <item>
       <title>SICP_interpreter_笔记</title>
-      <link>http://localhost:1313/blog/sicp_note_interpreter/</link>
+      <link>https://cloudymount789.github.io/blog/sicp_note_interpreter/</link>
       <pubDate>Sat, 03 Jan 2026 15:47:49 +0800</pubDate>
       
-      <guid>http://localhost:1313/blog/sicp_note_interpreter/</guid>
+      <guid>https://cloudymount789.github.io/blog/sicp_note_interpreter/</guid>
       <description>&lt;p&gt;摘要&lt;/p&gt;
 &lt;p&gt;本文为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）用python实现scheme解释器部分课程核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。&lt;/p&gt;
 &lt;h1 id=&#34;使用python实现scheme解释器-interpreters&#34;&gt;使用python实现scheme解释器 (Interpreters)&lt;/h1&gt;
@@ -187,7 +187,7 @@ scm&amp;gt; (cdr expr) ; Get the operands
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;define &lt;/span&gt;add-three (&lt;span style=&#34;color:#a6e22e&#34;&gt;make-adder&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;))
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;add-three&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;add-three&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/image-8.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://cloudymount789.github.io/images/image-8.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;主题概述-2&#34;&gt;主题概述&lt;/h3&gt;
 &lt;p&gt;求值阶段 (Eval) 是解释器的核心，它接收表达式的表示形式和一个&lt;strong&gt;环境 (Environment)&lt;/strong&gt; ，并返回求值结果（值）。Eval 和 Apply 是&lt;strong&gt;相互递归 (mutually-recursive)&lt;/strong&gt; 的 。&lt;/p&gt;
 &lt;h3 id=&#34;核心概念-1&#34;&gt;核心概念&lt;/h3&gt;
@@ -286,7 +286,7 @@ Frame有两个实例属性：
 &lt;/ol&gt;
 &lt;h4 id=&#34;3-evalapply-计数-counting-evalapply-calls&#34;&gt;3. Eval/Apply 计数 (Counting Eval/Apply Calls)&lt;/h4&gt;
 &lt;p&gt;Eval 和 Apply 是相互调用的：
-&lt;img src=&#34;http://localhost:1313/images/image-9.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://cloudymount789.github.io/images/image-9.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1. Eval（求值）&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Eval&lt;/code&gt; 的任务是接收一个表达式（代码）和当前环境，并返回它的值。&lt;/p&gt;
 &lt;ul&gt;
@@ -331,17 +331,17 @@ Frame有两个实例属性：
 &lt;li&gt;&lt;strong&gt;例题&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;img src=&#34;http://localhost:1313/images/image-10.png&#34; alt=&#34;alt text&#34;&gt;&lt;/li&gt;
-&lt;li&gt;&lt;img src=&#34;http://localhost:1313/images/image-11.png&#34; alt=&#34;alt text&#34;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://cloudymount789.github.io/images/image-10.png&#34; alt=&#34;alt text&#34;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://cloudymount789.github.io/images/image-11.png&#34; alt=&#34;alt text&#34;&gt;&lt;/li&gt;
 &lt;/ol&gt;</description>
     </item>
     
     <item>
       <title>SICP_SQL_笔记</title>
-      <link>http://localhost:1313/blog/sicp_note_sql/</link>
+      <link>https://cloudymount789.github.io/blog/sicp_note_sql/</link>
       <pubDate>Sat, 03 Jan 2026 12:48:01 +0800</pubDate>
       
-      <guid>http://localhost:1313/blog/sicp_note_sql/</guid>
+      <guid>https://cloudymount789.github.io/blog/sicp_note_sql/</guid>
       <description>&lt;p&gt;摘要&lt;/p&gt;
 &lt;p&gt;本文为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）SQL部分课程核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。&lt;/p&gt;
 &lt;h1 id=&#34;sql-数据库查询structured-query-language&#34;&gt;SQL 数据库查询(Structured Query Language)&lt;/h1&gt;
@@ -576,10 +576,10 @@ Frame有两个实例属性：
     
     <item>
       <title>SICP_scheme_笔记</title>
-      <link>http://localhost:1313/blog/sicp_note_scheme/</link>
+      <link>https://cloudymount789.github.io/blog/sicp_note_scheme/</link>
       <pubDate>Sat, 03 Jan 2026 12:47:38 +0800</pubDate>
       
-      <guid>http://localhost:1313/blog/sicp_note_scheme/</guid>
+      <guid>https://cloudymount789.github.io/blog/sicp_note_scheme/</guid>
       <description>&lt;p&gt;摘要&lt;/p&gt;
 &lt;p&gt;本文为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）scheme部分课程核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。&lt;/p&gt;
 &lt;h1 id=&#34;sicp-note---scheme&#34;&gt;SICP Note -&amp;gt; Scheme&lt;/h1&gt;
@@ -1030,10 +1030,10 @@ Frame有两个实例属性：
     
     <item>
       <title>SICP_python_期中后笔记</title>
-      <link>http://localhost:1313/blog/sicp_note_after_mid/</link>
+      <link>https://cloudymount789.github.io/blog/sicp_note_after_mid/</link>
       <pubDate>Sat, 03 Jan 2026 12:47:27 +0800</pubDate>
       
-      <guid>http://localhost:1313/blog/sicp_note_after_mid/</guid>
+      <guid>https://cloudymount789.github.io/blog/sicp_note_after_mid/</guid>
       <description>&lt;p&gt;摘要&lt;/p&gt;
 &lt;p&gt;本文为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）python部分期中后课程核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。&lt;/p&gt;
 &lt;h1 id=&#34;sicp_python_期中后笔记&#34;&gt;SICP_python_期中后笔记&lt;/h1&gt;
@@ -1875,10 +1875,10 @@ True
     
     <item>
       <title>SICP_python_期中前笔记</title>
-      <link>http://localhost:1313/blog/sicp_note_before_mid/</link>
+      <link>https://cloudymount789.github.io/blog/sicp_note_before_mid/</link>
       <pubDate>Thu, 11 Dec 2025 17:02:23 +0800</pubDate>
       
-      <guid>http://localhost:1313/blog/sicp_note_before_mid/</guid>
+      <guid>https://cloudymount789.github.io/blog/sicp_note_before_mid/</guid>
       <description>&lt;p&gt;摘要&lt;/p&gt;
 &lt;p&gt;本文为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）python部分期中前课程核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。&lt;/p&gt;
 &lt;h1 id=&#34;sicp_python_期中前笔记&#34;&gt;SICP_python_期中前笔记&lt;/h1&gt;
@@ -2090,7 +2090,7 @@ Evaluates to True if &lt;exp&gt; if a false value and False if &lt;exp&gt; is a 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        k &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; curr
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;error-messages&#34;&gt;Error Messages&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/sicp_note_before_mid/####-built-in-exceptation&#34;&gt;见后&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloudymount789.github.io/blog/sicp_note_before_mid/####-built-in-exceptation&#34;&gt;见后&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;environment-diagrams&#34;&gt;Environment Diagrams&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -2108,12 +2108,12 @@ If you can&amp;rsquo;t find a variable in the current frame, you check it&amp;rs
 &lt;p&gt;bind variable to value&lt;/p&gt;
 &lt;h3 id=&#34;def-statements&#34;&gt;Def Statements&lt;/h3&gt;
 &lt;p&gt;Create a function value: in current frame
-&lt;img src=&#34;http://localhost:1313/images/image-1.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://cloudymount789.github.io/images/image-1.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;func &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;formal parameters&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;) [parent&lt;span style=&#34;color:#f92672&#34;&gt;=&amp;lt;&lt;/span&gt;label&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;] &lt;span style=&#34;color:#75715e&#34;&gt;#Its parent is the current frame.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Bind &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; to the function value &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; the current frame
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;call-expressions&#34;&gt;Call Expressions&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/image.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cloudymount789.github.io/images/image.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Add a local frame, titled with the &lt;name&gt; of the function being applied.&lt;/li&gt;
 &lt;li&gt;Copy the parent of the function (not always the current frame) to the local frame: [parent=&lt;label&gt;]&lt;/li&gt;
@@ -2161,7 +2161,7 @@ If you can&amp;rsquo;t find a variable in the current frame, you check it&amp;rs
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print([f() &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; fs])  &lt;span style=&#34;color:#75715e&#34;&gt;# [0, 1, 2, 3, 4]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过为每个 lambda 函数创建一个局部作用域，确保每个 lambda 捕获当前 i 的值。&lt;/p&gt;
 &lt;h3 id=&#34;recursion&#34;&gt;Recursion&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/image-2.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cloudymount789.github.io/images/image-2.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The same function fact is called multiple times, each time solving a simpler problem&lt;/li&gt;
 &lt;li&gt;All the frames share the &lt;strong&gt;same parent&lt;/strong&gt; - only difference is the argument&lt;/li&gt;
@@ -2170,7 +2170,7 @@ If you can&amp;rsquo;t find a variable in the current frame, you check it&amp;rs
 &lt;/ul&gt;
 &lt;h3 id=&#34;lists&#34;&gt;Lists&lt;/h3&gt;
 &lt;h4 id=&#34;box-and-poinger-notation&#34;&gt;Box and Poinger Notation&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/image-5.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cloudymount789.github.io/images/image-5.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;lists-in-lists-in-lists&#34;&gt;Lists in Lists in Lists&lt;/h4&gt;
 &lt;p&gt;point to another list&lt;/p&gt;
 &lt;h3 id=&#34;default-arguments&#34;&gt;Default Arguments&lt;/h3&gt;
@@ -2188,7 +2188,7 @@ returns a function as a return value(often defined locally)&lt;/p&gt;&lt;/blockq
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;lambda-expressions-vs-def-statements&#34;&gt;Lambda Expressions vs. Def Statements&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/sicp_note_before_mid/###lambda-expressions&#34;&gt;见这里&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloudymount789.github.io/blog/sicp_note_before_mid/###lambda-expressions&#34;&gt;见这里&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;function-design--generalization&#34;&gt;Function Design &amp;amp; Generalization&lt;/h3&gt;
 &lt;p&gt;函数泛化，提高可读性、可维护性和扩展性，在不同情景保持复用性&lt;/p&gt;
 &lt;h3 id=&#34;functions-as-arguments&#34;&gt;Functions As Arguments&lt;/h3&gt;
@@ -2351,10 +2351,10 @@ Each element in a sequence has a discrete integer index.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) Bind it to &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;) Execute &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;body&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;unpacking&#34;&gt;Unpacking&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/image-3.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cloudymount789.github.io/images/image-3.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;range&#34;&gt;Range&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;range(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;start&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;end&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;skip&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/image-4.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://cloudymount789.github.io/images/image-4.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;list&#34;&gt;List&lt;/h3&gt;
 &lt;h4 id=&#34;list-comprehensions&#34;&gt;List Comprehensions&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;expr&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;name&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;seq&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;cond&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;]
@@ -2366,9 +2366,9 @@ Each element in a sequence has a discrete integer index.&lt;/p&gt;
 &lt;p&gt;三引号： &amp;lsquo;&amp;lsquo;&amp;lsquo;Hello&amp;rsquo;&amp;rsquo;&amp;rsquo; 或 &amp;ldquo;&amp;ldquo;&amp;ldquo;Hello&amp;rdquo;&amp;rdquo;&amp;rdquo;
 三引号用于表示多行字符串，或者在字符串中包含引号时可以避免转义。&lt;/p&gt;
 &lt;h3 id=&#34;sequence-aggregation-sum-max--min-all--any&#34;&gt;Sequence Aggregation (Sum, Max / Min, All / Any)&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/image-6.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cloudymount789.github.io/images/image-6.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;dictionary&#34;&gt;Dictionary&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/image-7.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cloudymount789.github.io/images/image-7.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;data-abstraction-and-tree&#34;&gt;Data abstraction and Tree&lt;/h2&gt;
 &lt;p&gt;Compound values combine other values together

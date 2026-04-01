@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Skills on CloudyMount&#39;s blog</title>
-    <link>http://localhost:1313/tags/skills/</link>
+    <link>https://cloudymount789.github.io/tags/skills/</link>
     <description>Recent content in Skills on CloudyMount&#39;s blog created by </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 27 Dec 2025 21:45:10 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/skills/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Dec 2025 21:45:10 +0800</lastBuildDate><atom:link href="https://cloudymount789.github.io/tags/skills/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>30min用Hugo创建个人博客网站</title>
-      <link>http://localhost:1313/blog/blog_site_with_hugo/</link>
+      <link>https://cloudymount789.github.io/blog/blog_site_with_hugo/</link>
       <pubDate>Sat, 27 Dec 2025 21:45:10 +0800</pubDate>
       
-      <guid>http://localhost:1313/blog/blog_site_with_hugo/</guid>
+      <guid>https://cloudymount789.github.io/blog/blog_site_with_hugo/</guid>
       <description>&lt;p&gt;本文是一篇从零开始的无比详细的Hugo 建站实战保姆级教程。通过对 Ladder 主题的配置，你将收获一个具备极简美学且功能大满贯的个人站： 它不仅支持 &lt;strong&gt;Giscus 异步评论、留言板、社交媒体账号跳转、多维标签云与自动归档&lt;/strong&gt;，还免费集成了一套完全自主掌控的&lt;strong&gt;Umami 私有化流量分析看板&lt;/strong&gt;，并能学会无需服务器将整个静态网站&lt;strong&gt;免费部署到github page上&lt;/strong&gt;的方法。github page配置失败，遭遇 Vercel 风控、Netlify 数据库连接及 IPv6 不兼容等一系列的硬核报错, 尝试Netlify + Supabase，作者建站的过程历经千辛万苦，主要都是在解决各式各样的报错，而现在将踩出来的坑为后人一一铺平。&lt;/p&gt;
 &lt;h1 id=&#34;hugo-搭建个人博客&#34;&gt;Hugo 搭建个人博客&lt;/h1&gt;
 &lt;p&gt;情况概述：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;大一上完成了基础的网站搭建，其实就是跟着教程一步一步做，再在遇到文中没有提到的问题的时候通过开源社区/阅读配置文件/问ai解决问题，由于当时并没有做出记录，现在很多东西也不记得了（），但是记得似乎是困难重重&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;看的&lt;a href=&#34;https://blog.csdn.net/weixin_35891787/article/details/145103961&#34;&gt;教程&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/blog_site_with_hugo/#hugo-%e4%bb%8b%e7%bb%8d&#34;&gt;文后&lt;/a&gt;附转载&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloudymount789.github.io/blog/blog_site_with_hugo/#hugo-%e4%bb%8b%e7%bb%8d&#34;&gt;文后&lt;/a&gt;附转载&lt;/p&gt;
 &lt;p&gt;请先跟着贴出的教程链接或者我在文后的转载完成初步的建站，然后再阅读我的配置教程进行进一步的配置。&lt;/p&gt;
 &lt;p&gt;在看后面的教程的时候，如果遇到问题，可以在我前面的配置文档里寻找答案，找不到的话可以ATFAI()/去技术社区搜索关键词/去B站搜教程/或者在下方评论区留言&lt;/p&gt;
 &lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
@@ -114,7 +114,7 @@
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;3-数据统计与分析-paramsanalytics&#34;&gt;3. 数据统计与分析 (&lt;code&gt;[params.analytics]&lt;/code&gt;)&lt;/h3&gt;
-&lt;p&gt;见&lt;a href=&#34;http://localhost:1313/blog/blog_site_with_hugo/#umami-%e5%85%8d%e8%b4%b9%e9%83%a8%e7%bd%b2&#34;&gt;ummami免费使用&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;https://cloudymount789.github.io/blog/blog_site_with_hugo/#umami-%e5%85%8d%e8%b4%b9%e9%83%a8%e7%bd%b2&#34;&gt;ummami免费使用&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;analytics&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;google&lt;/span&gt;]
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;SiteVerificationTag&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xxx&amp;#34;&lt;/span&gt;         &lt;span style=&#34;color:#75715e&#34;&gt;# Google 搜索控制台（Search Console）的验证代码&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -151,7 +151,7 @@
 &lt;/ol&gt;
 &lt;p&gt;由于我的手机号通不过vercel,最终的部署我选择了netlify,步骤供参考&lt;/p&gt;
 &lt;h5 id=&#34;1-创建数据库&#34;&gt;1. 创建数据库&lt;/h5&gt;
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/blog_site_with_hugo/#%e5%88%9b%e5%bb%ba%e6%95%b0%e6%8d%ae%e5%ba%93&#34;&gt;见后&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloudymount789.github.io/blog/blog_site_with_hugo/#%e5%88%9b%e5%bb%ba%e6%95%b0%e6%8d%ae%e5%ba%93&#34;&gt;见后&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Umami 自身不存储数据，它需要一个 PostgreSQL 数据库。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;访问 &lt;a href=&#34;https://supabase.com/&#34;&gt;Supabase 官网&lt;/a&gt;，使用 GitHub 登录。&lt;/li&gt;
@@ -357,7 +357,7 @@ date格式如&lt;code&gt;2025-03-31T20:00:00+08:00&lt;/code&gt;&lt;/li&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;至此，大获成功！！&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;部署过程中有什么疑问可以在评论区留言&lt;/p&gt;
 &lt;h2 id=&#34;初步建站教程&#34;&gt;初步建站教程&lt;/h2&gt;
-&lt;p&gt;回到&lt;a href=&#34;http://localhost:1313/blog/blog_site_with_hugo/#%e9%85%8d%e7%bd%ae&#34;&gt;文初&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;回到&lt;a href=&#34;https://cloudymount789.github.io/blog/blog_site_with_hugo/#%e9%85%8d%e7%bd%ae&#34;&gt;文初&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;以下为引用和转载的教程，未作修改&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;hugo-介绍&#34;&gt;hugo 介绍&lt;/h3&gt;
