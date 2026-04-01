@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on CloudyMount&#39;s blog</title>
+    <link>http://localhost:1313/tags/tools/</link>
+    <description>Recent content in Tools on CloudyMount&#39;s blog created by </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 27 Dec 2025 21:45:10 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>30min用Hugo创建个人博客网站</title>
+      <link>http://localhost:1313/blog/blog_site_with_hugo/</link>
+      <pubDate>Sat, 27 Dec 2025 21:45:10 +0800</pubDate>
+      
+      <guid>http://localhost:1313/blog/blog_site_with_hugo/</guid>
+      <description>&lt;p&gt;本文是一篇从零开始的无比详细的Hugo 建站实战保姆级教程。通过对 Ladder 主题的配置，你将收获一个具备极简美学且功能大满贯的个人站： 它不仅支持 &lt;strong&gt;Giscus 异步评论、留言板、社交媒体账号跳转、多维标签云与自动归档&lt;/strong&gt;，还免费集成了一套完全自主掌控的&lt;strong&gt;Umami 私有化流量分析看板&lt;/strong&gt;，并能学会无需服务器将整个静态网站&lt;strong&gt;免费部署到github page上&lt;/strong&gt;的方法。github page配置失败，遭遇 Vercel 风控、Netlify 数据库连接及 IPv6 不兼容等一系列的硬核报错, 尝试Netlify + Supabase，作者建站的过程历经千辛万苦，主要都是在解决各式各样的报错，而现在将踩出来的坑为后人一一铺平。&lt;/p&gt;
+&lt;h1 id=&#34;hugo-搭建个人博客&#34;&gt;Hugo 搭建个人博客&lt;/h1&gt;
+&lt;p&gt;情况概述：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;大一上完成了基础的网站搭建，其实就是跟着教程一步一步做，再在遇到文中没有提到的问题的时候通过开源社区/阅读配置文件/问ai解决问题，由于当时并没有做出记录，现在很多东西也不记得了（），但是记得似乎是困难重重&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;看的&lt;a href=&#34;https://blog.csdn.net/weixin_35891787/article/details/145103961&#34;&gt;教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/blog_site_with_hugo/#hugo-%e4%bb%8b%e7%bb%8d&#34;&gt;文后&lt;/a&gt;附转载&lt;/p&gt;
+&lt;p&gt;请先跟着贴出的教程链接或者我在文后的转载完成初步的建站，然后再阅读我的配置教程进行进一步的配置。&lt;/p&gt;
+&lt;p&gt;在看后面的教程的时候，如果遇到问题，可以在我前面的配置文档里寻找答案，找不到的话可以ATFAI()/去技术社区搜索关键词/去B站搜教程/或者在下方评论区留言&lt;/p&gt;
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+&lt;p&gt;研究怎么配置使用到的tools：&lt;a href=&#34;https://guangzhengli.com/blog/en/how-to-create-your-blog-for-free-by-hugo-ladder-in-30min&#34;&gt;配置说明&lt;/a&gt; + &lt;a href=&#34;https://gemini.google.com/app&#34;&gt;gemini&lt;/a&gt;(问每个配置有啥用)&lt;/p&gt;
+&lt;p&gt;修改&lt;code&gt;hugo.toml&lt;/code&gt; 文件&lt;/p&gt;
+&lt;p&gt;（官方文档中使用的是yml，我把它转成了toml）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;baseURL&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://hugo-ladder.pages.dev&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#网站发布后的网址&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;LADDER&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#浏览器标签页上显示的网站名称&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;theme&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hugo-theme-ladder&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;license&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MIT&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;licenselink&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://github.com/guangzhengli/hugo-theme-ladder/blob/master/LICENSE&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;description&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;A fast, clean Hugo theme&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#网站的简短描述,SEO（搜索引擎优化）的关键&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;homepage&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://hugo-ladder.pages.dev&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;defaultContentLanguage&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;googleAnalytics&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;G-xxx&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#Google 统计（GA4）的衡量 ID,有谷歌analyticas账号可以用这个抓取&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;pagination&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;pagerSize&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;#控制首页或列表页每页显示的文章数量，超过 10 篇将自动分页&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;补充：解决html报错&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;markup&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  [&lt;span style=&#34;color:#a6e22e&#34;&gt;markup&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;goldmark&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    [&lt;span style=&#34;color:#a6e22e&#34;&gt;markup&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;goldmark&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;renderer&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#a6e22e&#34;&gt;unsafe&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;1-基础资料与全局样式-params&#34;&gt;1. 基础资料与全局样式 (&lt;code&gt;[params]&lt;/code&gt;)&lt;/h3&gt;
+&lt;p&gt;这一部分控制网站侧边栏或页脚展示的个人名片信息。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;brand&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;HOME&amp;#34;&lt;/span&gt;                      &lt;span style=&#34;color:#75715e&#34;&gt;# 网站左上角的文字 Logo/品牌名称&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;avatarURL&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/images/avatar.png&amp;#34;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# 头像图片路径（存放在 static/images/ 目录下）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;author&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hugo Ladder&amp;#34;&lt;/span&gt;              &lt;span style=&#34;color:#75715e&#34;&gt;# 作者姓名&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;authorDescription&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;...&amp;#34;&lt;/span&gt;           &lt;span style=&#34;color:#75715e&#34;&gt;# 作者简短描述（通常显示在头像下方）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;info&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;...&amp;#34;&lt;/span&gt;                        &lt;span style=&#34;color:#75715e&#34;&gt;# 网站或个人的详细介绍信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;favicon&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/images/avatar.png&amp;#34;&lt;/span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;# 浏览器标签页的小图标&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;darkModeTheme&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data-dark-mode&amp;#34;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# 夜间模式的主题属性名称，该主题内有两个，一个是默认的 data-dark-mode 主题，另一个是 icy-dark-mode 深色主题&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  [&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;showDarkMode&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;               &lt;span style=&#34;color:#75715e&#34;&gt;# 是否在页面上显示“昼夜模式”切换按钮&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;enableImgZooming&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;           &lt;span style=&#34;color:#75715e&#34;&gt;# 是否开启文章内图片的点击放大功能&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;enableMultiLang&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;# 是否开启多语言支持功能&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;2-评论系统配置-paramscomments&#34;&gt;2. 评论系统配置 (&lt;code&gt;[params.comments]&lt;/code&gt;)&lt;/h3&gt;
+&lt;p&gt;主题支持多种评论插件，这里主要配置了 &lt;strong&gt;Giscus&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;Giscus 是将评论存储在 GitHub 仓库的 &lt;strong&gt;Discussions&lt;/strong&gt; 中。&lt;/p&gt;
+&lt;h4 id=&#34;1-外部准备工作&#34;&gt;1. 外部准备工作&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;准备仓库&lt;/strong&gt;：创建一个公开（Public）的 GitHub 仓库（或者使用你存放博客代码的仓库）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开启 Discussions&lt;/strong&gt;：进入该仓库的 &lt;code&gt;Settings&lt;/code&gt; -&amp;gt; 勾选 &lt;code&gt;Discussions&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安装 Giscus App&lt;/strong&gt;：访问 &lt;a href=&#34;https://giscus.app/zh-CN&#34;&gt;giscus.app&lt;/a&gt;，安装并授权它访问你的这个仓库。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;获取参数&lt;/strong&gt;：在 &lt;a href=&#34;https://giscus.app/zh-CN&#34;&gt;giscus.app&lt;/a&gt; 页面向下滚动，输入 &lt;code&gt;所有者/仓库名&lt;/code&gt;，页面会自动生成以下关键值：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;repo-id&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;category&lt;/code&gt; (建议选 Announcements)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;category-id&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;2-修改-hugotoml-配置&#34;&gt;2. 修改 &lt;code&gt;hugo.toml&lt;/code&gt; 配置&lt;/h4&gt;
+&lt;p&gt;将获取的值填入hugo.toml的以下对应位置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;comments&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;giscus&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;enable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;                       &lt;span style=&#34;color:#75715e&#34;&gt;# 是否启用 Giscus 评论（基于 GitHub Discussions）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;repo&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;username/repo&amp;#34;&lt;/span&gt;              &lt;span style=&#34;color:#75715e&#34;&gt;# 存放评论的 GitHub 仓库名&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;repo_id&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xxx&amp;#34;&lt;/span&gt;                     &lt;span style=&#34;color:#75715e&#34;&gt;# 仓库的唯一 ID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;category&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Announcements&amp;#34;&lt;/span&gt;          &lt;span style=&#34;color:#75715e&#34;&gt;# 评论存放的讨论区分类&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;category_id&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xxx&amp;#34;&lt;/span&gt;                 &lt;span style=&#34;color:#75715e&#34;&gt;# 讨论区分类的 ID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;mapping&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;pathname&amp;#34;&lt;/span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;# 评论与文章的对应关系（按页面路径匹配）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;position&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;top&amp;#34;&lt;/span&gt;                    &lt;span style=&#34;color:#75715e&#34;&gt;# 评论输入框相对于评论列表的位置（顶部）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lang&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;                         &lt;span style=&#34;color:#75715e&#34;&gt;# 评论区的界面语言&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;补充&#34;&gt;补充&lt;/h4&gt;
+&lt;p&gt;如果你坚持要用基于 Issues 的 &lt;strong&gt;Utterances&lt;/strong&gt;，配置方式类似：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 GitHub 仓库中开启 Issues 功能。&lt;/li&gt;
+&lt;li&gt;在 &lt;a href=&#34;https://utteranc.es/&#34;&gt;utteranc.es&lt;/a&gt; 获取 &lt;code&gt;repo&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在 &lt;code&gt;hugo.toml&lt;/code&gt; 中将 &lt;code&gt;params.comments.giscus.enable&lt;/code&gt; 设为 &lt;code&gt;false&lt;/code&gt;，将 &lt;code&gt;params.comments.utteranc.enable&lt;/code&gt; 设为 &lt;code&gt;true&lt;/code&gt; 并填入仓库名。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;comments&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;utteranc&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;enable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;                      &lt;span style=&#34;color:#75715e&#34;&gt;# 是否启用 Utterances 评论（目前设为关闭）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;repo&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;username/xxx&amp;#34;&lt;/span&gt;               &lt;span style=&#34;color:#75715e&#34;&gt;# 存放评论的 GitHub 仓库&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;issueTerm&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;pathname&amp;#34;&lt;/span&gt;              &lt;span style=&#34;color:#75715e&#34;&gt;# 评论映射方式&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;原理解释&#34;&gt;原理解释&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;关于映射方式，对于 Hugo 博客，&lt;strong&gt;建议保持 &lt;code&gt;pathname&lt;/code&gt;&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;它会把每一篇文章的路径（如 &lt;code&gt;/blog/first-post/&lt;/code&gt;）作为 ID。这样每篇文章下面都会有自己独立的评论区，互不干扰。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在 &lt;strong&gt;&amp;ldquo;Discussion 分类&amp;rdquo;&lt;/strong&gt; 这一栏，下拉选择 &lt;strong&gt;Announcements&lt;/strong&gt;（推荐）。
+选择后，下方的 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 代码会自动更新。
+将新生成的 &lt;code&gt;data-category-id&lt;/code&gt;（一串长字符）复制出来，填到 &lt;code&gt;hugo.toml&lt;/code&gt; 的 &lt;code&gt;category_id&lt;/code&gt; 中。&lt;/p&gt;
+&lt;p&gt;建议选这个是因为在 GitHub 上，只有仓库管理员能在这个分类发主帖。这样可以防止乱发无关的讨论，保证只有通过你的博客页面才能创建新的评论区。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;repo_id 和 category_id&lt;/strong&gt;：是 GitHub 内部的唯一标识符。即使你以后改了仓库名字，只要 ID 对，评论就不会丢。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;3-数据统计与分析-paramsanalytics&#34;&gt;3. 数据统计与分析 (&lt;code&gt;[params.analytics]&lt;/code&gt;)&lt;/h3&gt;
+&lt;p&gt;见&lt;a href=&#34;http://localhost:1313/blog/blog_site_with_hugo/#umami-%e5%85%8d%e8%b4%b9%e9%83%a8%e7%bd%b2&#34;&gt;ummami免费使用&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;analytics&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;google&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;SiteVerificationTag&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xxx&amp;#34;&lt;/span&gt;         &lt;span style=&#34;color:#75715e&#34;&gt;# Google 搜索控制台（Search Console）的验证代码&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;analytics&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;umami&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;enable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;                       &lt;span style=&#34;color:#75715e&#34;&gt;# 是否启用 Umami 网站统计分析&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;website_id&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xxx&amp;#34;&lt;/span&gt;                  &lt;span style=&#34;color:#75715e&#34;&gt;# Umami 提供的网站唯一识别 ID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://xxx&amp;#34;&lt;/span&gt;                 &lt;span style=&#34;color:#75715e&#34;&gt;# 部署好的 Umami 服务地址&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;获取-umami-访问地址&#34;&gt;获取 Umami 访问地址&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;等待大约 1-2 分钟，直到 Umami 的状态变为“运行中”。&lt;/li&gt;
+&lt;li&gt;点击进入 Umami 服务页面。&lt;/li&gt;
+&lt;li&gt;在 &lt;strong&gt;“域名” (Domain)&lt;/strong&gt; 栏目下，点击 &lt;strong&gt;“生成域名” (Generate Domain)&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;你可以输入一个你喜欢的二级域名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;访问该域名&lt;/strong&gt;，使用默认账号密码登录：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;用户名&lt;/strong&gt;：&lt;code&gt;admin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;密码&lt;/strong&gt;：&lt;code&gt;umami&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;登录后记得第一时间在设置里修改密码！&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;接入你的-hugo-博客&#34;&gt;接入你的 Hugo 博客&lt;/h4&gt;
+&lt;p&gt;这步和你之前看的教程一致：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 Umami 后台点击 &lt;strong&gt;“添加网站” (Add Website)&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;输入你的博客名称和域名，获取 &lt;code&gt;data-website-id&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;回到你的 Hugo 项目，打开 &lt;code&gt;hugo.toml&lt;/code&gt;，填入信息：
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;analytics&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;umami&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;enable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;website_id&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;你在 Zeabur 获取的 ID&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://你在 Zeabur 生成的域名.zeabur.app&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;由于我的手机号通不过vercel,最终的部署我选择了netlify,步骤供参考&lt;/p&gt;
+&lt;h5 id=&#34;1-创建数据库&#34;&gt;1. 创建数据库&lt;/h5&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/blog/blog_site_with_hugo/#%e5%88%9b%e5%bb%ba%e6%95%b0%e6%8d%ae%e5%ba%93&#34;&gt;见后&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Umami 自身不存储数据，它需要一个 PostgreSQL 数据库。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;访问 &lt;a href=&#34;https://supabase.com/&#34;&gt;Supabase 官网&lt;/a&gt;，使用 GitHub 登录。&lt;/li&gt;
+&lt;li&gt;点击 &lt;strong&gt;New Project&lt;/strong&gt;，填入项目名称和数据库密码（&lt;strong&gt;务必记下密码&lt;/strong&gt;）。&lt;/li&gt;
+&lt;li&gt;等待几分钟数据库创建完成。&lt;/li&gt;
+&lt;li&gt;进入左侧菜单的 &lt;strong&gt;Project Settings&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Database&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;找到 &lt;strong&gt;Connection string&lt;/strong&gt;，选择 &lt;strong&gt;URI&lt;/strong&gt; 模式。&lt;/li&gt;
+&lt;li&gt;复制那串以 &lt;code&gt;postgres://&lt;/code&gt; 开头的地址。
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：将其中的 &lt;code&gt;[YOUR-PASSWORD]&lt;/code&gt; 替换为你刚才设置的真实密码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意&lt;/strong&gt;：如果你的密码里含有特殊的标点符号（比如 !、@、: 等），直接放在 URL 里会破坏格式，导致 Netlify 部署时报错“Invalid URL”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;2-在-netlify-部署-umami&#34;&gt;2. 在 Netlify 部署 Umami&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Fork 项目&lt;/strong&gt;：在 GitHub 上访问 &lt;a href=&#34;https://github.com/umami-software/umami&#34;&gt;umami-software/umami&lt;/a&gt;，点击右上角的 &lt;strong&gt;Fork&lt;/strong&gt;，将其克隆到你的账号下。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;登录 Netlify&lt;/strong&gt;：访问 &lt;a href=&#34;https://app.netlify.com/&#34;&gt;Netlify&lt;/a&gt;，使用 GitHub 登录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;新建站点&lt;/strong&gt;：点击 &lt;strong&gt;Add new site&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Import an existing project&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;连接 GitHub&lt;/strong&gt;：选择 GitHub，找到并选中你刚才 Fork 的 &lt;code&gt;umami&lt;/code&gt; 仓库。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置构建参数&lt;/strong&gt;（非常重要）：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Build command&lt;/strong&gt;: &lt;code&gt;yarn build&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Publish directory&lt;/strong&gt;: &lt;code&gt;.next&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置环境变量 (Environment variables)&lt;/strong&gt;：点击 &lt;strong&gt;Add variable&lt;/strong&gt;，依次添加以下四项：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;DATABASE_URL&lt;/code&gt;&lt;/strong&gt;: 填入你在第一阶段获取并修改好的 Supabase 连接字符串。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;APP_SECRET&lt;/code&gt;&lt;/strong&gt;: 随便输入一串长随机字符串（用于加密，例如 &lt;code&gt;yunsanwu789_secret_key&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;DATABASE_TYPE&lt;/code&gt;&lt;/strong&gt;: 填入 &lt;code&gt;postgresql&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;SKIP_DB_CHECK&lt;/code&gt;&lt;/strong&gt;：填入 &lt;code&gt;true&lt;/code&gt; // 绕过检查，IPv4和IPv6协会不兼容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开始部署&lt;/strong&gt;：点击 &lt;strong&gt;Deploy site&lt;/strong&gt;。
+// 中间遇到了很多困难，比如我建站之后想登录老是报Unexpected end of JSON input，最后放弃了（）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;3初始化-umami&#34;&gt;3.初始化 Umami&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;部署完成后，Netlify 会给你一个 &lt;code&gt;xxx.netlify.app&lt;/code&gt; 的域名。点击访问。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;默认登录信息&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;用户名&lt;/strong&gt;: &lt;code&gt;admin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;密码&lt;/strong&gt;: &lt;code&gt;umami&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;修改密码&lt;/strong&gt;：登录后第一时间点击右上角头像 -&amp;gt; &lt;strong&gt;Settings&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Profile&lt;/strong&gt; 修改密码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;添加网站&lt;/strong&gt;：在 &lt;strong&gt;Settings&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Websites&lt;/strong&gt; 中点击 &lt;strong&gt;Add website&lt;/strong&gt;，填入你的 Hugo 博客信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;获取代码&lt;/strong&gt;：点击该网站条目旁的 &lt;strong&gt;Edit&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Tracking code&lt;/strong&gt;，复制那一串 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 代码。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;4回到-hugo-配置&#34;&gt;4.回到 Hugo 配置&lt;/h5&gt;
+&lt;p&gt;打开你的 &lt;code&gt;hugo.toml&lt;/code&gt;，将获取到的信息填入：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;analytics&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;umami&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;enable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;website_id&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;从 Umami 拿到的 UUID&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://你的名字.netlify.app&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 填入你的 Netlify 访问地址&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;4-留言板与社交链接配置&#34;&gt;4. 留言板与社交链接配置&lt;/h3&gt;
+&lt;p&gt;在 Ladder 主题中，留言板实际上是一个&lt;strong&gt;开启了评论功能的特殊页面&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;1-创建留言板页面&#34;&gt;1. 创建留言板页面&lt;/h4&gt;
+&lt;p&gt;在你的博客根目录下运行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new guestbook/_index.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;2-编辑页面内容&#34;&gt;2， 编辑页面内容&lt;/h4&gt;
+&lt;p&gt;打开 &lt;code&gt;content/guestbook/_index.md&lt;/code&gt;，确保其 Front Matter（开头）如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;title: &amp;#34;留言板&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;layout: &amp;#34;guestbook&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;注意：&lt;code&gt;layout: &amp;quot;guestbook&amp;quot;&lt;/code&gt; 会告诉主题这个页面不需要显示文章正文，而是直接加载评论插件。&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3-关联菜单与配置&#34;&gt;3. 关联菜单与配置&lt;/h4&gt;
+&lt;p&gt;确保你的 &lt;code&gt;hugo.toml&lt;/code&gt; 中有以下设置，以便用户能找到它：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;guestbook&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;留言板&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;description&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;欢迎在这里留下你的足迹。&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;languages&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;en&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]] &lt;span style=&#34;color:#75715e&#34;&gt;# 或者 [[menu.main]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;留言板&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/guestbook&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;社交媒体配置&#34;&gt;社交媒体配置&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  [[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;social&lt;/span&gt;]]                 &lt;span style=&#34;color:#75715e&#34;&gt;# 社交媒体配置（GitHub）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GitHub&amp;#34;&lt;/span&gt;                   &lt;span style=&#34;color:#75715e&#34;&gt;# 链接名称&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;pre&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;lt;svg ...&amp;gt;...&amp;lt;/svg&amp;gt;&amp;#39;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# 显示在名称前的图标代码（SVG 格式）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://github.com/...&amp;#34;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# 社交账号的跳转链接&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  [[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;social&lt;/span&gt;]]                 &lt;span style=&#34;color:#75715e&#34;&gt;# 其他链接（如数据仪表盘）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Dashboard&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;pre&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;lt;svg ...&amp;gt;...&amp;lt;/svg&amp;gt;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://xxx&amp;#34;&lt;/span&gt;               &lt;span style=&#34;color:#75715e&#34;&gt;# 对应页面的跳转链接&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;图标可以在 feathericons.com 这个网站上找到&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;5-语言与导航菜单-languagesen&#34;&gt;5. 语言与导航菜单 (&lt;code&gt;[languages.en]&lt;/code&gt;)&lt;/h3&gt;
+&lt;p&gt;如果开启了多语言，菜单需要在对应的语言块下进行配置。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;languages&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;en&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;languageName&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;EN&amp;#34;&lt;/span&gt;                  &lt;span style=&#34;color:#75715e&#34;&gt;# 该语言在切换菜单中显示的名称&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;languages&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;en&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]           &lt;span style=&#34;color:#75715e&#34;&gt;# 顶部导航栏：文章/博客&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Blog&amp;#34;&lt;/span&gt;                        &lt;span style=&#34;color:#75715e&#34;&gt;# 菜单显示的文字&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/blog&amp;#34;&lt;/span&gt;                       &lt;span style=&#34;color:#75715e&#34;&gt;# 点击后跳转的路径（对应 content/blog 目录）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;                          &lt;span style=&#34;color:#75715e&#34;&gt;# 排序权重，数字越小越靠前（左）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;languages&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;en&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]           &lt;span style=&#34;color:#75715e&#34;&gt;# 顶部导航栏：标签&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Tags&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/tags&amp;#34;&lt;/span&gt;                       &lt;span style=&#34;color:#75715e&#34;&gt;# 跳转到标签聚合页&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;languages&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;en&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]           &lt;span style=&#34;color:#75715e&#34;&gt;# 顶部导航栏：归档&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Archive&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/archives&amp;#34;&lt;/span&gt;                   &lt;span style=&#34;color:#75715e&#34;&gt;# 跳转到文章归档页&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;languages&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;en&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]           &lt;span style=&#34;color:#75715e&#34;&gt;# 顶部导航栏：留言板&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Guestbook&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/guestbook&amp;#34;&lt;/span&gt;                  &lt;span style=&#34;color:#75715e&#34;&gt;# 跳转到留言页面&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;6-分类法配置-taxonomies&#34;&gt;6. 分类法配置 (&lt;code&gt;[taxonomies]&lt;/code&gt;)&lt;/h3&gt;
+&lt;p&gt;定义 Hugo 如何对你的文章内容进行逻辑归类。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;taxonomies&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;series&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;series&amp;#34;&lt;/span&gt;                   &lt;span style=&#34;color:#75715e&#34;&gt;# 开启“系列文章”分类功能&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;tag&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tags&amp;#34;&lt;/span&gt;                         &lt;span style=&#34;color:#75715e&#34;&gt;# 开启“标签”分类功能&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;其他导航栏&#34;&gt;其他：导航栏&lt;/h3&gt;
+&lt;p&gt;目前该博客支持 4 个默认页面、博客列表、标签、历史记录和留言簿。
+可以通过修改 menu.main 来调整 name ；如果想在导航栏中添加新页面，请记住在根目录的 content 下添加相应的 markdown 文件。&lt;/p&gt;
+&lt;h3 id=&#34;其他写帖子&#34;&gt;其他：写帖子&lt;/h3&gt;
+&lt;p&gt;如果要创建新帖子，建议填写配置信息，具体如下：&lt;/p&gt;
+&lt;p&gt;命令如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new blog/&amp;lt;name&amp;gt;.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;title: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;date: {{ .Date }}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tags: []
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;series: [] # 文章将在内容下方显示相关帖子
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;featured: true # 是否在首页精选文章中 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;补充：series填写文章名即可，用双引号包含，不同文章用逗号分隔,tags同理
+date格式如&lt;code&gt;2025-03-31T20:00:00+08:00&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;其他seo&#34;&gt;其他：SEO&lt;/h3&gt;
+&lt;p&gt;前提是使用了geogle analytica来分析网站，配置这个可以使你的网站在geogle可以被搜索到。
+该主题已针对搜索引擎优化 SEO 进行了优化，包括完善的 meta 标签信息等。此外，默认支持 Google Search Console ，可以根据文档生成 google-site-verification 到 params. analytics.google.SiteVerificationTag 。&lt;/p&gt;
+&lt;h3 id=&#34;使用github-page免费部署站点&#34;&gt;使用Github Page免费部署站点&lt;/h3&gt;
+&lt;p&gt;在这一步配置的时候我遇到了很多问题，在技术论坛和教程，ai间反复辗转之后，最后摸索出了自己的方式&lt;/p&gt;
+&lt;p&gt;我会先贴出官方配置的教程，看不懂的也可以去搜b站的教学，然后在后面给出我自己的解决方案hhh，事实证明前者在我这里可以跑不通但是后者可以（感觉到自己解决问题的能力有所提升！）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在gitbub创建以&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;为名称的仓库&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在本地成功建站（终端运行&lt;code&gt;hugo server&lt;/code&gt;）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用 GitHub Pages 部署博客有两种方法，一种是直接推送到 GitHub Pages ，另一种是在 gh-pages 分支上生成静态页面代码。代码可在 &lt;a href=&#34;https://github.com/guangzhengli/hugo-ladder-exampleSite/tree/master/.github/workflows&#34;&gt;https://github.com/guangzhengli/hugo-ladder-exampleSite/tree/master/.github/workflows&lt;/a&gt; 获取。&lt;/p&gt;
+&lt;p&gt;如果您没有克隆已配置的仓库： &lt;a href=&#34;https://github.com/guangzhengli/hugo-ladder-exampleSite&#34;&gt;https://github.com/guangzhengli/hugo-ladder-exampleSite&lt;/a&gt; ，则需要创建一个新的文件夹 .github/workflows 并添加新的文件 gh-pages.yml 。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;generate github pages to gh-pages branch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;on&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;push&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;branches&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#ae81ff&#34;&gt;main&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;## Set a branch name to trigger deployment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;jobs&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;deploy&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;runs-on&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;ubuntu-20.04&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;steps&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/checkout@v2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;submodules&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# Fetch Hugo themes (true OR recursive)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;fetch-depth&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Fetch all history for .GitInfo and .Lastmod&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Setup Hugo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;peaceiris/actions-hugo@v2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;hugo-version&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;latest&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;extended&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Build&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;hugo --minify&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Deploy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;peaceiris/actions-gh-pages@v3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# If you&amp;#39;re changing the branch from main, &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# also change the `main` in `refs/heads/main` &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# below accordingly.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;if&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;github.ref == &amp;#39;refs/heads/main&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;github_token&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ secrets.GITHUB_TOKEN }}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;publish_dir&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;./public&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在项目根目录下输入以下命令。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git remote add origin https://github.com/username/username.github.io.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;feat: init blog site&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push origin main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;一旦我们确认推送成功，它会自动将代码构建到 GitHub Pages in Actions 所需的文件中，因此您可以访问此地址检查 workflow 是否成功运行。请务必将地址中的 username 替换为您的帐户名。 &lt;a href=&#34;https://github.com/username/username.github.io/actions&#34;&gt;https://github.com/username/username.github.io/actions&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如果 Actions 工作流成功，我们将创建一个名为 gh-pages 新分支。然后，前往仓库的设置中心，选择 Settings ”，然后选择 Pages ，再选择 Build and deployment -&amp;gt; Source ，并选择 Deploy from a branch 。之后，选择 gh-pages Branch 即可完成配置。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我当时应该是怎么试怎么问ai都找不到gh-pages分支hhh(好像是因为我的action实际没有构建成功)，当时还懂的比较少，问ai问了很久，最后还是没能解决这个问题&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;所以最后，我研究出来并采用了另一种方式
+&lt;strong&gt;3. 将public文件夹中的内容上传到这个仓库&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. 关注github上的actions，问ai解决里面的报错&lt;/strong&gt;
+由于当时没有记录，我现在已经不记得自己当时做了什么了，大家可以自行解决（）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5. actions显示成功后，可以输入地址并浏览自己的网页啦！！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;至此，大获成功！！&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;部署过程中有什么疑问可以在评论区留言&lt;/p&gt;
+&lt;h2 id=&#34;初步建站教程&#34;&gt;初步建站教程&lt;/h2&gt;
+&lt;p&gt;回到&lt;a href=&#34;http://localhost:1313/blog/blog_site_with_hugo/#%e9%85%8d%e7%bd%ae&#34;&gt;文初&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下为引用和转载的教程，未作修改&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;hugo-介绍&#34;&gt;hugo 介绍&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; 是一个快速且灵活的静态网站生成器，使用 Go 语言编写，&lt;a href=&#34;https://github.com/gohugoio/hugo&#34;&gt;代码仓库&lt;/a&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;极快的构建速度&lt;/strong&gt;：Hugo 是同类产品中最快的工具，平均每个页面构建时间小于1毫秒，即使是大型网站也能在几秒钟内完成构建。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;强大的模板系统&lt;/strong&gt;：内置预制模板，可快速完成SEO、评论、统计等功能，一行配置即可实现。同时，其基于Go的模板提供了足够的逻辑支持，能够构建从简单到复杂的各种网站。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多语言支持&lt;/strong&gt;：原生支持多语言，为多语言站点提供了完整的i18n支持，与单语言站点具有相同的开发体验。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;丰富的主题库&lt;/strong&gt;：拥有300多个主题，涵盖多种风格和功能，用户可以根据自己的需求选择合适的主题，快速搭建出美观且功能强大的网站。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/f01d6cc66bce423d0fe4d9818bc65d02.png&#34; alt=&#34;image-20250112194857051&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/installation/&#34;&gt;参考文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;查看版本/验证安装成功：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo version
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装 &lt;a href=&#34;https://git-scm.com/book/en/v2/Getting-Started-Installing-Git&#34;&gt;Git&lt;/a&gt;：&lt;/p&gt;
+&lt;p&gt;由于后续下载 hugo 主题，以及部署的过程，均需使用到 Git，这里要求必须完成相关环境的安装。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ladder-主题&#34;&gt;Ladder 主题&lt;/h3&gt;
+&lt;p&gt;hugo-ladder 是一个简约的 hugo 主题，也是这个博客使用的主题，由 &lt;a href=&#34;https://github.com/guangzhengli/hugo-theme-ladder&#34;&gt;Ladder&lt;/a&gt; 这个 Git 仓库的作者维护，如果后续你有任何有趣的想法，可以为仓库贡献代码。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 这个命令用于创建一个新的Hugo站点&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new site my-site
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd my-site
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 这个命令用于将Hugo主题作为一个Git子模块添加到当前的Git仓库中，并克隆代码&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git submodule add https://github.com/guangzhengli/hugo-theme-ladder themes/hugo-theme-ladder
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;theme = &amp;#39;hugo-theme-ladder&amp;#39;&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; hugo.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 本地启动 hugo 服务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/83dd9a74b9943400b3dbb23ffe5e19f7.png&#34; alt=&#34;image-20250112203038502&#34;&gt;&lt;/p&gt;
+&lt;p&gt;接着会在默认的 1313 端口启动 hugo 的站点（我本地的1313被占用了，则随机分配了另一端口），当前站点内没有任何的内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/cc9972b634fccc216bee93263edb9634.png&#34; alt=&#34;image-20250112202827124&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;自定义配置&#34;&gt;自定义配置&lt;/h3&gt;
+&lt;p&gt;首先我们来熟悉一下 hugo 的文件目录，也就是通过命令创建的 &lt;code&gt;my-site&lt;/code&gt; 这个文件夹。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- archetypes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- assets
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- content &lt;span style=&#34;color:#75715e&#34;&gt;# 内容，后续博客文章将放置在这里&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- data
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- hugo.toml &lt;span style=&#34;color:#75715e&#34;&gt;# 配置文件，菜单、评论、网站统计等所有功能，均可以通过直接配置进行开启&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- i18n &lt;span style=&#34;color:#75715e&#34;&gt;# 多语言&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- layouts
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- public
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- resources
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- static &lt;span style=&#34;color:#75715e&#34;&gt;# 静态文件，如头像图片等&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|-- themes &lt;span style=&#34;color:#75715e&#34;&gt;# 所有主题以子文件夹的形式存放&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;文章&#34;&gt;文章&lt;/h4&gt;
+&lt;p&gt;首先我们找到根目录下 &lt;code&gt;archetypes&lt;/code&gt; 文件夹中的 &lt;code&gt;default.md&lt;/code&gt; 文件，用下面的文件替代其中内容，这是用于控制创建新博客时的模板。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---title: 博客标题date: {{ .Date }}tags: []series: []featured: true---这是摘要 &amp;lt;!--more--&amp;gt; 这是内容
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在根目录下通过如下命令，创建一篇博客：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new blog/first.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;则会自动生成 &lt;code&gt;content/blog/first.md&lt;/code&gt; 这篇博客。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/0508398f111236c72080b22938584bc7.png&#34; alt=&#34;image-20250112204512522&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;菜单&#34;&gt;菜单&lt;/h4&gt;
+&lt;p&gt;接下来继续配置根目录下的 &lt;code&gt;hugo.toml&lt;/code&gt;，创建几个菜单管理不同类目的博客。事实上，hugo 支持 toml 和 yaml 格式的配置文件，如果你并不习惯使用 toml，可以删除根目录的 &lt;code&gt;hugo.toml&lt;/code&gt;，并创建 &lt;code&gt;hugo.yml&lt;/code&gt; 进行相同配置的录入，也是可以生效的。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;baseURL&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://example.org/&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;languageCode&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;en-us&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;My New Hugo Site&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;theme&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hugo-theme-ladder&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;文章&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/blog/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;归档&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/archive/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;联系&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/contact/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;网站统计&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/xx/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/e6d66e1cc5ee30cb0f825b4ce4742562.png&#34; alt=&#34;image-20250112204922835&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这时候，你会发现，当点击文章的时候，可以看到博客列表，但是点击其他目录看不到，因为 &lt;code&gt;content/blog&lt;/code&gt; 是第一篇文章的存放路径，所以文章菜单可以看到，所以后续文章的管理，只需要在创建的时候，指定对应生成的目录即可。&lt;/p&gt;
+&lt;p&gt;这时候，你看到 &lt;code&gt;localhost:1313/&lt;/code&gt; 目录下也能看到这篇博客，Featured Posts 表示的是主页的推荐文章，所有标志了 &lt;code&gt;featured: true&lt;/code&gt; 的文章都可以在这里展示，而 &lt;code&gt;featured: false&lt;/code&gt; 的文章，则只会在对应目录展示。&lt;/p&gt;
+&lt;p&gt;所以尝试将 &lt;code&gt;/content/blog/first.md&lt;/code&gt; 这篇文章的 featured 设置为 false，你将无法在首页看到它了，但 &lt;code&gt;localhost:1313/blog&lt;/code&gt; 依旧可以看到。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---title: 博客标题date: 2025-01-12T20:44:21+08:00tags: []series: []featured: false---这是摘要 &amp;lt;!--more--&amp;gt; 这是内容
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;更多定制化&#34;&gt;更多定制化&lt;/h4&gt;
+&lt;p&gt;尝试在 images 中导入一张图片 avatar.png，darkModeTheme 开启夜间模式，尝试修改网页的 logo等。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;baseURL&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://baize.github.io&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# 网站的 URL&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;languageCode&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;zh&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# 网站语言代码&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;白泽&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# 网站标题&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;theme&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hugo-theme-ladder&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# 使用的主题名称&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;defaultContentLanguage&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;zh&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;brand&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;主页&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;author&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;白泽&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;authorDescription&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;阅读｜思考｜产出｜进步&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;info&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;从未停止对未知的探索，尝试分享一些有趣的东西&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;avatarURL&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;images/baize.png&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;darkModeTheme&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;data-dark-mode&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;favicon&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;images/baize.png&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;进行到这一步，你本地的站点应该与我的博客样式近乎相同，恭喜你几乎完成了所有博客本地的搭建工作了，后续更多功能的添加，完全依托于 hugo 强大的配置能力，以及你的聪明头脑（这个阶段，需要阅读 hugo 的配置文档）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/492ddd2a4afbab95a1202796a38e85fd.png&#34; alt=&#34;image-20250112210500340&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;umami-网站数据统计&#34;&gt;Umami 网站数据统计&lt;/h3&gt;
+&lt;p&gt;这是一个有趣的内容， 当你完成接入之后，将获得如下的访客信息统计看板。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/6c4c2f7fcbabdad1382afe3dbd868067.png&#34; alt=&#34;image-20250112211314274&#34;&gt;&lt;/p&gt;
+&lt;p&gt;包括区域和设备分布：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/ef177a0aa2f43270eb7cdec6f9b687d7.png&#34; alt=&#34;image-20250112211404681&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;工作原理&#34;&gt;工作原理&lt;/h4&gt;
+&lt;p&gt;Umami 是一个简单、快速且开源的分析工具，用于跟踪网站的访问数据。它的工作原理主要包括以下几个步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;数据收集&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;当用户访问你的网站时，Umami 通过在网页中嵌入的JavaScript代码来收集数据。这些数据包括页面浏览量、访问时长、用户地理位置、设备信息等。&lt;/li&gt;
+&lt;li&gt;每次页面加载时，嵌入的JavaScript代码会发送一个请求到Umami服务器，携带收集到的数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;数据存储&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Umami 服务器接收到数据后，会将其存储在数据库中。Umami 使用PostgreSQL作为其默认数据库，但也可以配置为使用其他数据库。&lt;/li&gt;
+&lt;li&gt;数据存储在数据库中，以便后续进行查询和分析。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;strong&gt;数据处理&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Umami 服务器会对收集到的数据进行处理，生成各种统计信息，如页面浏览量、独立访客数、访问时长等。&lt;/li&gt;
+&lt;li&gt;这些统计信息会定期更新，以反映最新的访问数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;数据展示&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Umami 提供一个管理界面，用户可以通过这个界面查看和分析网站的访问数据。&lt;/li&gt;
+&lt;li&gt;管理界面展示了各种图表和报告，帮助用户了解网站的访问情况。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;umami-免费部署&#34;&gt;Umami 免费部署&lt;/h4&gt;
+&lt;h5 id=&#34;创建数据库&#34;&gt;创建数据库&lt;/h5&gt;
+&lt;p&gt;数据库用的是 &lt;a href=&#34;https://app.supabase.com/&#34;&gt;supabase&lt;/a&gt; 提供的有限额的 &lt;a href=&#34;https://supabase.com/docs/guides/database&#34;&gt;postgres&lt;/a&gt; 数据库，创建一个 supabase 账号，新建一个项目，输入 Datebase password 即可创建数据库服务。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/d07a30f7db36db1ba1e91cbe4f4171b0.png&#34; alt=&#34;image-20250112213146231&#34;&gt;&lt;/p&gt;
+&lt;p&gt;进入 database 菜单，点击 Connect。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/bf631790ace8318528875e330a4deb8d.png&#34; alt=&#34;image-20250112213258281&#34;&gt;&lt;/p&gt;
+&lt;p&gt;记录下这里通过 Session pooler 接入数据库的方式（DATABASE_URL），下文 Umami 接入 DB 时注意替换密码为你创建的密码。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/ebfce0b8e7de03e5972b48226f7b2750.png&#34; alt=&#34;image-20250112213526312&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;部署-umami&#34;&gt;部署 umami&lt;/h5&gt;
+&lt;p&gt;首先 umami 是开源的，访问它的 &lt;a href=&#34;https://github.com/umami-software/umami&#34;&gt;GitHub 仓库&lt;/a&gt;，将其 fork 为自己的 repo。&lt;/p&gt;
+&lt;p&gt;vercel 是一个现代的云平台，专注于前端开发和无服务器函数（Serverless Functions），提供快速部署、自动缩放和全球 CDN 支持。它特别适合部署静态网站、单页应用（SPA）、以及需要无服务器后端的项目。&lt;/p&gt;
+&lt;p&gt;vercel 提供了免费计划，虽然有一些限制（具体限额大家可以自行参考官网信息），目前支撑我们的网站分析功能是够用的。&lt;/p&gt;
+&lt;p&gt;登录 &lt;a href=&#34;https://vercel.com/&#34;&gt;vercel&lt;/a&gt; ，创建一个的账号，建议使用 GitHub 账号注册登录，在 &lt;code&gt;new project&lt;/code&gt; 中选择 &lt;code&gt;import&lt;/code&gt; 你刚刚 &lt;code&gt;fork&lt;/code&gt; 的 umami 项目。&lt;/p&gt;
+&lt;p&gt;编辑构建命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yarn build &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; yarn update-db
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;添加环境变量：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;DATABASE_URL: 上一步从 supabase 获取
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;TRACKER_SCRIPT_NAME: baize
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;点击部署并等待：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/ec253dbeea6b64b80904db66cab1220c.png&#34; alt=&#34;image-20250112214402104&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在 vercel 部署完成 umami 后会得到一个 &lt;code&gt;&amp;lt;deploy-id&amp;gt;.vercel.app&lt;/code&gt; ，默认登陆的账号密码是 &lt;strong&gt;admin&lt;/strong&gt; 和 &lt;strong&gt;umami&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;完成基础帐号配置后，点击侧边栏网站 Tab，点击添加网站。填写网站基本信息，可以勾选 &lt;code&gt;enable share URL&lt;/code&gt;，这样任何人都可以访问这个数据看板。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/2ee2a0a971baf285038c037e77ec1066.png&#34; alt=&#34;image-20250112214652457&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;umami-接入-hugo&#34;&gt;Umami 接入 Hugo&lt;/h4&gt;
+&lt;p&gt;在 Tracking code 中，我们拿到对应的 &lt;code&gt;data-website-id&lt;/code&gt; 和 &lt;code&gt;src&lt;/code&gt; 。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;script defer src&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://umami-jlwf.vercel.app/hugo-ladder&amp;#34;&lt;/span&gt; data-website-id&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ec55b2da-4f55-45ef-8aed-26e57078fd15&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将其填入主题配置中的 &lt;code&gt;params.analytics.umami.website_id&lt;/code&gt; 和 &lt;code&gt;params.analytics.umami.url&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;analytics&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;umami&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;enable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;website_id&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ec55b2da-4f55-45ef-8aed-26e57078fd15&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://umami-jlwf.vercel.app/hugo-ladder&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不要忘记将你的网站统计查看地址配置给菜单：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[[&lt;span style=&#34;color:#a6e22e&#34;&gt;menu&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;网站统计&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://umami-jlwf.vercel.app/share/ZKhEVgh56RlSfAMa/baize1998.github.io&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;weight&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;至此你的站点在被访问的时候，会向部署的 vercel 的 umami 上报数据，任何人都可以跳转看到统计数据。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/img_convert/a879bad83a05ec2346665b8452a673b6.png&#34; alt=&#34;image-20250112215243834&#34;&gt;&lt;/p&gt;
+&lt;p&gt;以上我们完成了本地博客的搭建以及网站数据统计能力的接入&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

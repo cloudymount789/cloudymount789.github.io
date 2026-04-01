@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="zh"><head>
+<html lang="zh"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SICP_interpreter_笔记</title>
     <meta charset="utf-8">
     <meta name="description" content="Ladder@摘要
 本文为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）用python实现scheme解释器部分课程核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。">
     <meta name="author" content="CloudyMount">
-    <link rel="canonical" href="https://cloudymount789.github.io/blog/sicp_note_interpreter/">
+    <link rel="canonical" href="http://localhost:1313/blog/sicp_note_interpreter/">
 
-    <link rel="alternate" type="application/rss+xml" href="https://cloudymount789.github.io//index.xml" title="CloudyMount">
+    <link rel="alternate" type="application/rss+xml" href="http://localhost:1313//index.xml" title="CloudyMount&#39;s blog">
 
     
 
 
-    <meta property="og:url" content="https://cloudymount789.github.io/blog/sicp_note_interpreter/">
-  <meta property="og:site_name" content="CloudyMount">
+    <meta property="og:url" content="http://localhost:1313/blog/sicp_note_interpreter/">
+  <meta property="og:site_name" content="CloudyMount&#39;s blog">
   <meta property="og:title" content="SICP_interpreter_笔记">
   <meta property="og:description" content="摘要
 本文为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）用python实现scheme解释器部分课程核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。">
@@ -23,6 +23,33 @@
     <meta property="article:section" content="blog">
     <meta property="article:published_time" content="2026-01-03T15:47:49+08:00">
     <meta property="article:modified_time" content="2026-01-03T15:47:49+08:00">
+    <meta property="article:tag" content="SICP">
+    <meta property="article:tag" content="Lecture Notes">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_notes_series/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_sql/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_scheme/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_after_mid/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_before_mid/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_notes_series/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_sql/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_scheme/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_after_mid/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_before_mid/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_notes_series/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_sql/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_scheme/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_after_mid/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_before_mid/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_notes_series/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_sql/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_scheme/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_after_mid/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_before_mid/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_notes_series/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_sql/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_scheme/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_after_mid/">
+      <meta property="og:see_also" content="http://localhost:1313/blog/sicp_note_before_mid/">
 
 
   <meta name="twitter:card" content="summary">
@@ -40,13 +67,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Blogs",
-      "item": "https://cloudymount789.github.io/blog/"
+      "item": "http://localhost:1313/blog/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "SICP_interpreter_笔记",
-      "item": "https://cloudymount789.github.io/blog/sicp_note_interpreter/"
+      "item": "http://localhost:1313/blog/sicp_note_interpreter/"
     }
   ]
 }
@@ -59,7 +86,7 @@
   "name": "SICP_interpreter_笔记",
   "description": "摘要\n本文为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）用python实现scheme解释器部分课程核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。\n",
   "keywords": [
-    
+    "SICP", "lecture notes"
   ],
   "articleBody": "摘要\n本文为《计算机程序的构造和解释》（SICP，CS61A 南大引进版）用python实现scheme解释器部分课程核心笔记，聚焦程序设计的底层逻辑与核心思想，旨在帮助学习者搭建“知其然更知其所以然”的编程认知框架。适合正在学习 CS61A 课程的学习者梳理知识体系，也可作为编程入门者夯实基础、理解程序设计本质的参考资料。\n使用python实现scheme解释器 (Interpreters) Hangout\n翻译与解释器基础 (Translation and Interpreter Basics) 主题概述 计算机只能理解二进制 (Binary) ，而高级编程语言需要被翻译成二进制才能运行。解释器 (Interpreter) 实现了即时 (on-the-fly) 翻译和执行 。\n核心概念 (Core Concepts) 1. 翻译类型 (Types of Translation) 编译 (Compiled): 一次性全部翻译，稍后运行 。\n解释 (Interpreted): 边运行边翻译 。\n2. 解释器语言 (Interpreter Languages) 实现语言 (Implementation Language): 用来编写解释器本身的语言（如 Scheme 解释器可能是用 Python 实现的） 。\n被实现语言 (Implemented Language): 用户输入的语言（即 Scheme） 。\n被实现语言被翻译成实现语言 。 3. 读-求值-打印循环 (Read-Eval-Print Loop, REPL) 解释器核心的三个步骤:\n读 (Read): 读取用户输入（字符串）。\n求值 (Eval): 将输入翻译成计算机可读的形式并求值 。\n打印 (Print): 打印结果给用户 。\n读取阶段 (The Read Phase) 主题概述 读取阶段将原始输入字符串转换为一种在实现语言（Python）中可操作的表达式表示 (Expression Representation) 。\n核心概念 1. 词法分析/提词器(Lexical Analysis / Lexer) 将输入字符串转化为标记 (Tokens) 集合 。 分割+提取+初步处理(按照规则转化为放在python列表里的python语法的东西) 标记 (Token): 输入字符串的单个有意义单元，如字面量(literals)、名称(names)、关键字(keywords)、分隔符(delimiters)等 。\n注：\n分隔符：用于分割不同语法单元，如括号，分号，引号 关键字：即special form和standard procedures,如define,lambda,if,begin,quote 名称：即标识符，如函数名，变量名 字面量：表示直接值的语法元素，如数字，字符串，字符(#\\a)，符号('symbol)，布尔值，列表、向量字面量('(1 2 3)、#(a b c))\n2. 语法分析 (Syntactic Analysis / Parser) 将标记转化为实现语言中表达式的表示形式(Representation)。 基本表达式的表示:\n自求值表达式 (Self-Evaluating Expressions) (#t, 5.2): 使用 Python 对应的布尔值或数字 。\n符号 (Symbols) (cons): 使用 Python 字符串 。\n注： scheme 表达式种类：\n自求值表达式(self-evaluatingexpressions) 符号(symbols) 调用表达式(call expressions) 特殊表达式(special form expressions) 3. 表示组合 (Representing Combinations) Scheme 的组合表达式 ( ...) 在内部被表示为包含操作符和操作数的Scheme 链表 (Linked Lists) 。 scm\u003e (define expr '(+ 2 3)) ; Create the expression (+ 2 3) expr scm\u003e (eval expr) ; Evaluate the expression 5 scm\u003e (car expr) ; Get the operator + scm\u003e (cdr expr) ; Get the operands (2 3) 在 Python 中，Scheme 列表通过自定义的 Pair 类和全局 nil 实例来精确表示: Python Pair 和 nil 类:\nclass Pair: def __init__(self, first, second): self.first = first # 相当于 Scheme 的 car self.second = second # 相当于 Scheme 的 cdr def __repr__(self): return 'Pair({0}, {1})'.format(self.first, self.second) class nil: def __repr__(self): return 'nil' nil = nil() # 让所有的nil都是同一个nil,防止每次都创建一个instance,出现不同的instance不能进行相等的运算 4. 特殊情况：引用 (quote) 特殊语法 ‘ 在读取时会被转换成一个完整的 quote 表达式 。 例题 (+ 2 3) 被表示为: Pair('+', Pair(2, Pair(3, nil))) (define (f) 3)表示为 Pair('define', (Pair(Pair('f', nil), Pair(3, nil)))) 4.67 -\u003e 4.67 #t -\u003e True list -\u003e 'list' (cons 2 3) -\u003e Pair('cons', Pair(2, Pair(3, nil))) (if (\u003c x 0) 1 (+ x 1)) -\u003e Pair('if', Pair(Pair('\u003c', Pair('x', Pair(0, nil))), Pair(1, Pair(Pair('+', Pair('x', Pair(1, nil))), nil)))) 遇到括号套一层pair\n'hello -\u003e Pair('quote', Pair('hello', nil)) 求值阶段 (The Eval Phase) 复习：怎么画环境图来着？ (define (make-adder x) (lambda (y) (+ x y))) (define add-three (make-adder 3)) (add-three 5) (add-three 10) 主题概述 求值阶段 (Eval) 是解释器的核心，它接收表达式的表示形式和一个环境 (Environment) ，并返回求值结果（值）。Eval 和 Apply 是相互递归 (mutually-recursive) 的 。\n核心概念 1. 环境与框架 (Environments and Frames) 环境 (Environment): 由当前框架、其父框架及其所有祖先框架直到全局框架组成 。\n框架 (Frame): 在解释器中由 Frame 类实例表示 。 Frame有两个实例属性： bindings: 字典，将 Scheme 符号 (Python 字符串) 绑定到 Scheme 值 。 parent: 指向父框架（另一个frame实例）\n2. 求值基本表达式 (Evaluating Primitive Expressions) 自求值表达式: 它们求值结果就是自身 。\n符号 (Symbols):\n从当前框架开始查找符号的绑定值 。\n如果未找到，递归地向父框架查找，直到全局框架 。\n如果全局框架仍未找到，抛出错误 (SchemeError) 。\n3. 求值组合 (Evaluating Combinations) 组合表达式分为特殊形式和调用表达式，取决于其运算符 。\n特殊形式 (Special Forms): 运算符是特殊的符号（如 define, if, lambda），有其自身的求值规则 。\n调用表达式 (Call Expressions):\n求值运算符，得到一个过程 (Procedure) 。\n从左到右求值所有操作数，得到参数值 。\n应用 (Apply) 过程到参数值 。\n前两步递归的调用eval喵\n应用阶段 (The Apply Phase) 主题概述 应用阶段 (Apply) 将一个过程 (Procedure) 应用于一组参数 (Arguments)。过程有两种类型：内置过程和用户定义过程 。\n核心概念 1. 内置过程 (Built-In Procedures) 例如 +, list, modulo 。\n在解释器中，它们是 BuiltinProcedure 类的实例 。\n应用规则: 直接调用对应的实现语言（Python）函数，并将参数值传入 。 2. 用户定义过程 (User-Defined Procedures) 通过 lambda 或 define 定义 。\n在解释器中，它们是 LambdaProcedure 类的实例，包含形式参数列表、函数体和父框架 (Parent Frame) 。\n应用规则 (Application Rules):\n打开一个新框架 (New Frame)，其父框架是该过程的父框架（即创建该过程时的环境）。\n将形式参数 (Formal Parameters) 绑定到参数值 (Arguments) 上，存储在新框架中 。\n在新框架中求值过程的函数体 。\n3. Eval/Apply 计数 (Counting Eval/Apply Calls) Eval 和 Apply 是相互调用的： 1. Eval（求值）\nEval 的任务是接收一个表达式（代码）和当前环境，并返回它的值。\n基础情况 (Base Cases): 这是递归的终点。\n自求值表达式 (Self-evaluating expressions): 比如数字（5）或字符串（\"hello\"），它们的值就是它们本身。 符号查找 (Look up values): 比如变量名 x。求值器会去内存（环境）中查找 x 对应的值。 递归情况 (Recursive Cases):\nEval(operator) 和 Eval(o): 当遇到一个函数调用时，它先分别求出“函数名”和“所有参数”的具体数值。 Apply(proc, args): 一旦参数准备好了，它就会把这些参数交给 Apply 去实际执行。 特殊形式 (Special Form): 比如 if 语句或 define。这些不是普通函数，需要特殊的处理逻辑 2. Apply（应用）\nApply 的任务是接收一个“函数”和一组“参数”，并执行这个函数。\n基础情况 (Base Cases):\n内置过程 (Built-in procedures): 比如加法 + 或减法 -。这些是由底层硬件或底层语言（如 C 或 Python）直接实现的，不需要再拆解。\n递归情况 (Recursive Cases):\nEval(body) of user defined procedures: 对于用户自己定义的函数，Apply 会打开函数体（Body），然后在这一组新参数的环境下，**重新调用 Eval** 来处理函数体里的代码。 这种相互递归 (Mutual Recursion) 形成了一个闭环。通过这个循环，解释器可以处理极其复杂的嵌套代码：\nEval 负责“拆解”结构。 Apply 负责“执行”动作。 例题 ",
   "wordCount" : "572",
@@ -72,14 +99,14 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://cloudymount789.github.io/blog/sicp_note_interpreter/"
+    "@id": "http://localhost:1313/blog/sicp_note_interpreter/"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "CloudyMount",
+    "name": "CloudyMount's blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://cloudymount789.github.io/favicon.ico"
+      "url": "http://localhost:1313/favicon.ico"
     }
   }
 }
@@ -125,11 +152,15 @@
             </li>
             
             <li class="navigation-item navigation-menu">
-                <a class="navigation-link" href="/archive/">归档</a>
+                <a class="navigation-link" href="/tags/">标签</a>
             </li>
             
             <li class="navigation-item navigation-menu">
-                <a class="navigation-link" href="/contact/">联系</a>
+                <a class="navigation-link" href="/archives/">归档</a>
+            </li>
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/guestbook/">留言</a>
             </li>
             
             <li class="navigation-item navigation-menu">
@@ -503,8 +534,14 @@ Frame有两个实例属性：
   
   <div class="paginator">
     
+    <a class="prev" href="http://localhost:1313/blog/sicp_notes_series/">
+      <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.77086 21.1546C11.0491 22.698 21.4339 21.7773 21.4339 16.3608V4.63375C21.4339 3.93962 21.3581 3.30535 21.1917 2.76787M3.77086 21.1546C1.9934 20.7777 0.973585 18.7264 1.08749 16.688C1.2668 13.479 1.15721 9.43135 1.00513 6.21507C0.87809 3.52811 3.12891 1.16316 5.51029 1.25008C9.76594 1.40542 15.377 1.20229 18.7912 1.00542C20.0864 0.930734 20.8406 1.63385 21.1917 2.76787M3.77086 21.1546C4.56586 21.4723 5.49168 21.7879 6.5 22.0658M21.1917 2.76787C23.1097 4.18217 23.13 12.4191 22.9004 16.3608C20.8478 24.0194 12.3061 23.6662 6.5 22.0658M21.1917 2.76787C21.7612 4.51192 22.7203 9.67216 22 16.3608C21.2797 23.0494 11.3665 22.9511 6.5 22.0658M9.94496 9C9.28897 9.61644 7.63215 10.997 6.04814 11.7966C5.98257 11.8297 5.98456 11.9753 6.05061 12.0063C7.05496 12.4779 8.92941 13.9264 9.94496 15M6.44444 11.9667C8.86549 12.0608 14 12 16 11" stroke="currentColor" stroke-linecap="round"/>
+      </svg>
+      <span>SICP系列笔记汇总</span></a>
     
-    <a class="next" href="https://cloudymount789.github.io/blog/sicp_note_sql/"><span>SICP_SQL_笔记</span>
+    
+    <a class="next" href="http://localhost:1313/blog/sicp_note_sql/"><span>SICP_SQL_笔记</span>
       <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M3.77086 21.1546C11.0491 22.698 21.4339 21.7773 21.4339 16.3608V4.63375C21.4339 3.93962 21.3581 3.30535 21.1917 2.76787M3.77086 21.1546C1.9934 20.7777 0.973585 18.7264 1.08749 16.688C1.2668 13.479 1.15721 9.43135 1.00513 6.21507C0.87809 3.52811 3.12891 1.16316 5.51029 1.25008C9.76594 1.40542 15.377 1.20229 18.7912 1.00542C20.0864 0.930734 20.8406 1.63385 21.1917 2.76787M3.77086 21.1546C4.56586 21.4723 5.49168 21.7879 6.5 22.0658M21.1917 2.76787C23.1097 4.18217 23.13 12.4191 22.9004 16.3608C20.8478 24.0194 12.3061 23.6662 6.5 22.0658M21.1917 2.76787C21.7612 4.51192 22.7203 9.67216 22 16.3608C21.2797 23.0494 11.3665 22.9511 6.5 22.0658M12.055 9C12.711 9.61644 14.3679 10.997 15.9519 11.7966C16.0174 11.8297 16.0154 11.9753 15.9494 12.0063C14.945 12.4779 13.0706 13.9264 12.055 15M15.5556 11.9667C13.1345 12.0608 8 12 6 11" stroke="currentColor" stroke-linecap="round"/>
       </svg>
@@ -515,14 +552,63 @@ Frame有两个实例属性：
 
   
 
+<div class="related-resources">
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+</div>
+
 
   
   
+<div class="comments">
+  <script>
+      const getTheme = window.localStorage && window.localStorage.getItem("theme");
+      let theme = getTheme === 'dark' ? 'dark' : 'light';
+      let s = document.createElement('script');
+      s.src = 'https://giscus.app/client.js';
+      s.setAttribute('data-repo', 'cloudymount789\/cloudymount789.github.io');
+      s.setAttribute('data-repo-id', 'R_kgDOQni-Ig');
+      s.setAttribute('data-category', 'Announcements');
+      s.setAttribute('data-category-id', 'DIC_kwDOQni-Is4C5v5J');
+      s.setAttribute('data-mapping', 'pathname');
+      s.setAttribute('data-strict', '0');
+      s.setAttribute('data-reactions-enabled', '1');
+      s.setAttribute('data-emit-metadata', '0');
+      s.setAttribute('data-input-position', '');
+      s.setAttribute('data-theme', theme);
+      s.setAttribute('data-lang', 'zh-CN');
+      s.setAttribute('data-loading', 'lazy');
+      s.setAttribute('crossorigin', 'anonymous');
+      s.setAttribute('async', '');
+      document.querySelector('div.comments').innerHTML = '';
+      document.querySelector('div.comments').appendChild(s);
+  </script>
+</div>
+
 </article>
 
 
         </div><footer class="footer">
-  <p>&copy; 2026 <a href="https://cloudymount789.github.io/">CloudyMount</a>
+  <p>&copy; 2026 <a href="http://localhost:1313/">CloudyMount&#39;s blog</a>
     Powered by
     <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>
     <a href="https://github.com/guangzhengli/hugo-theme-ladder" rel="noopener" target="_blank">Ladder</a>
@@ -583,6 +669,20 @@ Frame有两个实例属性：
         codeblock.parentNode.appendChild(copybutton);
     });
 </script></main>
-    </body>
+    </body><script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+      const images = Array.from(document.querySelectorAll(".blog-content img"));
+      images.forEach(img => {
+          mediumZoom(img, {
+              margin: 10,  
+              scrollOffset: 40,  
+              container: null,  
+              template: null,  
+              background: 'rgba(0, 0, 0, 0.5)'
+          });
+      });
+  </script>
+
   
   <script src="/main.min.6bb26b69159420159c74dc9e097b06a578ed2b68c701466a91a44a9632d851bd0af167a1b30012387b4c512b48ad9ad4d3394e04d77ae38d57e1920fe4ed34fe.js" integrity="sha512-a7JraRWUIBWcdNyeCXsGpXjtK2jHAUZqkaRKljLYUb0K8WehswASOHtMUStIrZrU0zlOBNd6441X4ZIP5O00/g==" crossorigin="anonymous" defer></script></html>

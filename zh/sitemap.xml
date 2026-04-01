@@ -2,62 +2,114 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cloudymount789.github.io/blog/</loc>
-    <lastmod>2026-01-03T15:47:49+08:00</lastmod>
+    <loc>http://localhost:1313/archives/</loc>
+    <lastmod>2026-04-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://cloudymount789.github.io/</loc>
-    <lastmod>2026-01-03T15:47:49+08:00</lastmod>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2026-04-01T21:39:26+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-04-01T21:39:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://cloudymount789.github.io/en/"
+                href="http://localhost:1313/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://cloudymount789.github.io/"
+                href="http://localhost:1313/"
                 />
   </url><url>
-    <loc>https://cloudymount789.github.io/blog/sicp_note_interpreter/</loc>
+    <loc>http://localhost:1313/tags/methodology/</loc>
+    <lastmod>2026-04-01T21:39:26+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-04-01T21:39:26+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/tags/worldviews/</loc>
+    <lastmod>2026-04-01T21:39:26+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/how_to_face_gpa/</loc>
+    <lastmod>2026-04-01T21:39:26+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/lecture-notes/</loc>
+    <lastmod>2026-04-01T21:14:48+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/</loc>
+    <lastmod>2026-04-01T21:14:48+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/series/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/tags/sicp/</loc>
+    <lastmod>2026-04-01T21:14:48+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/sicp_interpreter_%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2026-04-01T21:14:48+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/sicp_python_%E6%9C%9F%E4%B8%AD%E5%90%8E%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2026-04-01T21:14:48+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/sicp_python_%E6%9C%9F%E4%B8%AD%E5%89%8D%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2026-04-01T21:14:48+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/sicp_scheme_%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2026-04-01T21:14:48+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/sicp_sql_%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2026-04-01T21:14:48+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/sicp_notes_series/</loc>
+    <lastmod>2026-04-01T21:14:48+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/sicp_note_interpreter/</loc>
     <lastmod>2026-01-03T15:47:49+08:00</lastmod>
   </url><url>
-    <loc>https://cloudymount789.github.io/blog/sicp_note_sql/</loc>
+    <loc>http://localhost:1313/blog/sicp_note_sql/</loc>
     <lastmod>2026-01-03T12:48:01+08:00</lastmod>
   </url><url>
-    <loc>https://cloudymount789.github.io/blog/sicp_note_scheme/</loc>
+    <loc>http://localhost:1313/blog/sicp_note_scheme/</loc>
     <lastmod>2026-01-03T12:47:38+08:00</lastmod>
   </url><url>
-    <loc>https://cloudymount789.github.io/blog/sicp_note_after_mid/</loc>
+    <loc>http://localhost:1313/blog/sicp_note_after_mid/</loc>
     <lastmod>2026-01-03T12:47:27+08:00</lastmod>
   </url><url>
-    <loc>https://cloudymount789.github.io/blog/politics/</loc>
-    <lastmod>2026-01-03T12:44:15+08:00</lastmod>
+    <loc>http://localhost:1313/blog/blog_site_with_hugo/</loc>
+    <lastmod>2025-12-27T21:45:10+08:00</lastmod>
   </url><url>
-    <loc>https://cloudymount789.github.io/blog/sicp_note_before_mid/</loc>
+    <loc>http://localhost:1313/tags/funny_attempts/</loc>
+    <lastmod>2025-12-27T21:45:10+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/skills/</loc>
+    <lastmod>2025-12-27T21:45:10+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/tools/</loc>
+    <lastmod>2025-12-27T21:45:10+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/tutorial/</loc>
+    <lastmod>2025-12-27T21:45:10+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/sicp_note_before_mid/</loc>
     <lastmod>2025-12-11T17:02:23+08:00</lastmod>
   </url><url>
-    <loc>https://cloudymount789.github.io/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://cloudymount789.github.io/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://cloudymount789.github.io/categories/"
-                />
-  </url><url>
-    <loc>https://cloudymount789.github.io/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://cloudymount789.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://cloudymount789.github.io/tags/"
-                />
+    <loc>http://localhost:1313/guestbook/</loc>
   </url>
 </urlset>
