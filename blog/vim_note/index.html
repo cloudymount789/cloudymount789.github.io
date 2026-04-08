@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vim配置分享/快速上手指南</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Ladder@本文将 Vim 视为一种高度可组合的“编程语言”，深度解析了“动词&#43;名词”的核心交互逻辑与多模态操作架构。内容涵盖从基础位移到宏录制、修饰符等进阶技巧，并集成了 CapsLock 改键映射及 .vimrc 生产力配置实战。通过打通从终端到浏览器的全域 Vim 生态，旨在帮助开发者彻底摆脱鼠标依赖，重塑极致的文本编辑效率。">
+    <meta name="author" content="CloudyMount">
+    <link rel="canonical" href="https://cloudymount789.github.io/blog/vim_note/">
+
+    <link rel="alternate" type="application/rss+xml" href="https://cloudymount789.github.io//index.xml" title="CloudyMount&#39;s blog">
+
+    
+
+
+    <meta property="og:url" content="https://cloudymount789.github.io/blog/vim_note/">
+  <meta property="og:site_name" content="CloudyMount&#39;s blog">
+  <meta property="og:title" content="vim配置分享/快速上手指南">
+  <meta property="og:description" content="本文将 Vim 视为一种高度可组合的“编程语言”，深度解析了“动词&#43;名词”的核心交互逻辑与多模态操作架构。内容涵盖从基础位移到宏录制、修饰符等进阶技巧，并集成了 CapsLock 改键映射及 .vimrc 生产力配置实战。通过打通从终端到浏览器的全域 Vim 生态，旨在帮助开发者彻底摆脱鼠标依赖，重塑极致的文本编辑效率。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-04-04T00:44:45+08:00">
+    <meta property="article:modified_time" content="2026-04-04T00:44:45+08:00">
+    <meta property="article:tag" content="Tools">
+    <meta property="article:tag" content="Manual">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="vim配置分享/快速上手指南">
+  <meta name="twitter:description" content="本文将 Vim 视为一种高度可组合的“编程语言”，深度解析了“动词&#43;名词”的核心交互逻辑与多模态操作架构。内容涵盖从基础位移到宏录制、修饰符等进阶技巧，并集成了 CapsLock 改键映射及 .vimrc 生产力配置实战。通过打通从终端到浏览器的全域 Vim 生态，旨在帮助开发者彻底摆脱鼠标依赖，重塑极致的文本编辑效率。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://cloudymount789.github.io/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "vim配置分享/快速上手指南",
+      "item": "https://cloudymount789.github.io/blog/vim_note/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "vim配置分享/快速上手指南",
+  "name": "vim配置分享\/快速上手指南",
+  "description": "本文将 Vim 视为一种高度可组合的“编程语言”，深度解析了“动词+名词”的核心交互逻辑与多模态操作架构。内容涵盖从基础位移到宏录制、修饰符等进阶技巧，并集成了 CapsLock 改键映射及 .vimrc 生产力配置实战。通过打通从终端到浏览器的全域 Vim 生态，旨在帮助开发者彻底摆脱鼠标依赖，重塑极致的文本编辑效率。\n",
+  "keywords": [
+    "tools", "manual"
+  ],
+  "articleBody": "本文将 Vim 视为一种高度可组合的“编程语言”，深度解析了“动词+名词”的核心交互逻辑与多模态操作架构。内容涵盖从基础位移到宏录制、修饰符等进阶技巧，并集成了 CapsLock 改键映射及 .vimrc 生产力配置实战。通过打通从终端到浏览器的全域 Vim 生态，旨在帮助开发者彻底摆脱鼠标依赖，重塑极致的文本编辑效率。\nVim Note 学习目标 避免离开键盘热键，避免使用鼠标，提高开发效率 学习资源 Missing Semester - 3. Vim 编辑器 大佬们的学习笔记 Vim从入门到精通 【Linux】Vim 入门笔记 vim自带的vimtutor 配置 键位映射 插件配置 特色 多模态编辑器： 正常模式：在文件中四处移动光标进行修改 i 插入模式：插入文本 r 替换模式：替换文本 v 可视化模式（一般，V 行，块）：选中文本块 : 命令模式：用于执行命令 Vim的接口是一种编程语言： Vim 的接口本身也是一个程序语言：键入操作（以及其助记名） 是命令，这些命令也是可组合的。 基本操作 一、缓存，标签页，窗口 Vim 会维护一系列打开的文件，称为 “缓存”。一个 Vim 会话包含一系列 标签页，每个标签页包含 一系列 窗口（分隔面板）。每个窗口显示一个缓存 跟网页浏览器等其他你熟悉的程序不一样的是， 缓存和窗口不是一一对应的关系； 窗口只是缓冲区的视图。一个缓存可以在 多个 窗口打开，甚至在同一 个标签页内的多个窗口打开。这个功能其实很好用，比如可以 查看同一个文件的不同部分。 分屏： :sp (水平) | :vsp (垂直)。窗口只是缓存的视图，可同时查看同文件的不同部分。 二、命令行 :q 退出（关闭窗口） :w 保存（写） :wq 保存然后退出 :e {文件名} 打开要编辑的文件 :ls 显示打开的缓存 :help {标题} 打开帮助文档 :help :w 打开 :w 命令的帮助文档 :help w 打开 w 移动的帮助文档 三、指令组成 1. 名词 - Noun 尽量放弃方向键，使用 hjkl 保持手指在主键区。\n基础： h(左) j(下) k(上) l(右) 单词： w (下个词首) | b (词初) | e (词尾) 行内： 0 (绝对行初) | ^ (第一个非空字符) | $ (行尾) 垂直： gg (文件头) | G (文件尾) | {行数}G (跳至指定行) 查找： f{字符} (行内向前找字符) | t{字符} (找字符前一个位置) 搜索： /{正则表达式} (向下搜索) | ? (向上搜索) | n/N (跳至下/上一个匹配) 2. 动词 - Verb i 进入插入模式 | o / O 在下方/上方新开一行并进入插入模式 d{移动} 删除（如 dw 删词, d$ 删至行尾） c{移动} 改变（删除并进入插入模式，如 cw 改写单词） y 复制 (Yank) | p 粘贴 (Paste) u 撤销 | 重做 x 删除单个字符 | s 替换单个字符 在 Visual (可视) 模式下：选中一段文字后按 U，选中的内容会全部变大写。 三、 Vim 编程语言 Vim 的强大源于这个公式：[数字] + [修饰符] + [动词] + [名词]\n1. 计数 (Count) 3w 向后移动 3 个单词。 5j 向下移动 5 行。 10dd 删除 10 行。 2. 修饰符 (Modifiers) 用于定义操作范围：i (inner - 内部) 或 a (around - 周围)。\nci( 改变当前括号 () 内部的内容。 di\" 删除双引号内的字符串。 da{ 删除整个花括号块（含花括号本身）。 3. 宏 (Macro) 宏录制： q{a} 开始录制到寄存器 a。 执行一系列复杂操作。 q 停止录制。 @{a} 重放操作（配合数字如 100@a 批量处理）。 四、 个人配置与扩展 1. 配置文件 .vimrc Vim 的灵魂在于自定义。\n可以说，一个好的配置决定了vim是古老编辑器还是现代实用工具（）\n建议手动维护，不要盲目复制他人配置。\n必改映射： 建议将 (大小写锁定) 映射为 ，极大缓解手指压力。 （后文附修改方法）\n核心插件推荐： ctrlp.vim：模糊搜索文件。 NERDTree：树形文件浏览器。 vim-easymotion：远距离光标“瞬移”。 2. 生态延伸 Shell： set -o vi 让命令行支持 Vim 快捷键。 浏览器： 安装 Vimium (Chrome) 或 Tridactyl (Firefox) 实现纯键盘冲浪。 (但是我还是贴出我的配置hhh大家按需选用)\n首先就是我改了windows系统设置,把大写锁定映射成了esc\n方法如下\n下载并安装 Microsoft PowerToys 如果你还没有安装，可以通过以下几种方式获取：\n官方下载： 前往 GitHub PowerToys 发布页面 下载最新的 .exe 安装包。 应用商店： 在 Windows 11 的 Microsoft Store 中搜索 “PowerToys” 并安装。 命令行安装： 打开终端（PowerShell），输入： winget install Microsoft.PowerToys 安装完成后，按以下步骤操作：\n打开 PowerToys 设置： 在任务栏右下角找到 PowerToys 图标并双击，或从开始菜单搜索打开。 进入键盘管理器： 在左侧菜单栏中找到 键盘管理器 (Keyboard Manager)，确保顶部的开关处于“开启”状态。 重新映射键： 点击中间部分的 重新映射键 (Remap a key)。 添加映射关系： 点击左侧的加号 +。 在左侧的 选择 (Select) 下拉框中找到 Caps Lock（或者直接点击“按下”，然后在键盘上按一下大写锁定键）。 在右侧的 发送 (To send) 下拉框中选择 Esc（同理可以点击“按下”后按一下 Esc 键）。 保存设置： 点击右上角的“确定”。 \" --- 基础设置 --- set nocompatible \" 关闭 Vi 兼容模式，解锁 Vim 更多功能 syntax on \" 开启语法高亮 set shortmess+=I \" 启动时不显示欢迎界面（捐赠提示等） set number \" 显示行号 set relativenumber \" 显示相对行号（方便 5j, 10k 这种跳转） set laststatus=2 \" 总是显示状态栏 set ruler \" 打开状态栏标尺 set backspace=indent,eol,start \" 允许在自动缩进、行尾、插入点前使用退格键 set hidden \" 允许在未保存当前文件的情况下切换缓冲区（Buffer） set mouse+=a \" 开启鼠标支持 set smartindent \" 智能自动缩进 set autoindent \" 新行自动继承上一行的缩进 set shiftwidth=4 \" 设置自动缩进时，每一级缩进4个空格的宽度 set tabstop=4 \" 设定 tab 长度为 4 set hlsearch \" 搜索时高亮匹配项 \" 输入 :noh 可以临时关闭高亮 set autochdir \" 自动切换当前目录为当前文件所在的目录 set showcmd \" 在右下角显示当前输入的命令（比如输入 d 时会显示） set wildmenu \" 命令行模式下的补全增强（以列表形式展示选项） set nobackup \" 不生成备份文件 (~ 文件) set noswapfile \" 不生成交换文件 (.swp 文件) \" --- 搜索优化 --- set ignorecase \" 搜索时忽略大小写 set smartcase \" 如果搜索词包含大写，则自动转为大小写敏感 set incsearch \" 边输入边显示匹配结果 \" --- 快捷键与行为调整 --- \" 禁用 Q 键，防止误入容易卡住的 Ex 模式 nmap Q \u003cNop\u003e let mapleader=\" \" \" 设置空格为 Leader 键 \" 按空格 + w 保存，按空格 + q 退出 nnoremap \u003cleader\u003ew :w\u003cCR\u003e nnoremap \u003cleader\u003eq :q\u003cCR\u003e \" 按空格 + nh 取消搜索高亮 nnoremap \u003cleader\u003enh :nohlsearch\u003cCR\u003e \" 禁用声音提示（报错时不会发出叮叮声） set noerrorbells visualbell t_vb= 将vimrc文件保存到~/.vimrc文件中（~指的是c:/）\n在命令行唤起vim，输入:echo $MYVIMRC可以检查识别出的配置文件的路径 五、 练习建议 初级： 运行终端指令 vimtutor（或 :Tutor），完成 30 分钟互动教学。 中级： 强制在所有编辑任务（笔记、代码、README）中使用 Vim，忍受最初 20 小时的低效期。 高级： 当你觉得某个操作太慢时，去搜“Vim better way for…”，永远有新命令等着你。 ",
+  "wordCount" : "543",
+  "inLanguage": "zh",
+  "datePublished": "2026-04-04T00:44:45+08:00",
+  "dateModified": "2026-04-04T00:44:45+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "CloudyMount"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cloudymount789.github.io/blog/vim_note/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CloudyMount's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cloudymount789.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+    <link rel="icon" href="/images/LittleElysia.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/LittleElysia.png">
+
+<link rel="manifest" href="/images/LittleElysia.png">
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+
+    
+    
+    <link rel="stylesheet" href="/css/main.min.ec28f09e946fc0df77c187fcd0d0ebde58fca6de8efb8e1620f3d45c32d4da88.css" integrity="sha256-7CjwnpRvwN93wYf80NDr3lj8pt6O&#43;44WIPPUXDLU2og=" crossorigin="anonymous" media="screen" />
+
+    
+    <link rel="stylesheet" href="/scss/highlight/github-dark.min.min.66034289ee9a113219a2c4aae0a8bd2095ab255c832a42efcf5863f10814e7a1.css" />
+
+    
+    <script src="/js/highlight.min.min.04ed3315a5c3f66e19fbfc8c933577697fe73787c63333adc024c4fabed580bc.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script>
+    </head>
+<body>
+      <main class="wrapper"><nav class="navigation">
+    <section class="container">
+        <a class="navigation-brand" href="/">
+            主页
+        </a>
+        <input type="checkbox" id="menu-toggle" />
+        <label class="menu-button float-right" for="menu-toggle">
+            <span></span><span></span><span></span>
+        </label>
+        
+        <ul class="navigation-list" id="navigation-list">
+            
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/blog/">文章</a>
+            </li>
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/tags/">标签</a>
+            </li>
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/archives/">归档</a>
+            </li>
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/guestbook/">留言</a>
+            </li>
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/xx/">网站统计</a>
+            </li>
+            
+            
+
+            <li class="navigation-item menu-separator">
+                <span>|</span>
+            </li>
+
+            
+            
+            <li class="navigation-item navigation-social">
+                <a class="navigation-link" href="https://github.com/cloudymount789"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+            </li>
+            
+            <li class="navigation-item navigation-social">
+                <a class="navigation-link" href="https://space.bilibili.com/1369055152?spm_id_from=333.1007.0.0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tv"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg></a>
+            </li>
+            
+            
+
+            <li class="navigation-item navigation-dark">
+                <button id="mode" type="button" aria-label="toggle user light or dark theme">
+                    <span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+                    <span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+                </button>
+            </li>
+
+            
+        </ul>
+        
+    </section>
+</nav>
+<div id="content">
+<article class="blog-single">
+  <header class="blog-title">
+    <h1>vim配置分享/快速上手指南</h1>
+  </header>
+
+  <p>
+  <small>
+    2026年4月4日&nbsp;· 543 字&nbsp;· 3 分钟</small>
+
+  
+<p>
+
+  <div class="blog-toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#学习目标">学习目标</a></li>
+    <li><a href="#学习资源">学习资源</a></li>
+    <li><a href="#配置">配置</a></li>
+    <li><a href="#特色">特色</a></li>
+    <li><a href="#基本操作">基本操作</a>
+      <ul>
+        <li><a href="#一缓存标签页窗口">一、缓存，标签页，窗口</a></li>
+        <li><a href="#二命令行">二、命令行</a></li>
+        <li><a href="#三指令组成">三、指令组成</a></li>
+        <li><a href="#三-vim-编程语言">三、 Vim 编程语言</a></li>
+        <li><a href="#四-个人配置与扩展">四、 个人配置与扩展</a></li>
+      </ul>
+    </li>
+    <li><a href="#在命令行唤起vim输入echo-myvimrc可以检查识别出的配置文件的路径">在命令行唤起vim，输入<code>:echo $MYVIMRC</code>可以检查识别出的配置文件的路径</a>
+      <ul>
+        <li><a href="#五-练习建议">五、 练习建议</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+  <section class="blog-content"><p>本文将 Vim 视为一种高度可组合的“编程语言”，深度解析了“动词+名词”的核心交互逻辑与多模态操作架构。内容涵盖从基础位移到宏录制、修饰符等进阶技巧，并集成了 CapsLock 改键映射及 .vimrc 生产力配置实战。通过打通从终端到浏览器的全域 Vim 生态，旨在帮助开发者彻底摆脱鼠标依赖，重塑极致的文本编辑效率。</p>
+<h1 id="vim-note">Vim Note</h1>
+<h2 id="学习目标">学习目标</h2>
+<ul>
+<li><strong>避免离开键盘热键，避免使用鼠标，提高开发效率</strong></li>
+</ul>
+<h2 id="学习资源">学习资源</h2>
+<ul>
+<li><a href="https://missing-semester-cn.github.io/2020/editors/">Missing Semester - 3. Vim 编辑器</a></li>
+<li>大佬们的学习笔记
+<ul>
+<li><a href="https://wsdjeg.net/vim-galore-zh-cn/">Vim从入门到精通</a></li>
+<li><a href="https://imageslr.com/2021/vim.html">【Linux】Vim 入门笔记</a></li>
+</ul>
+</li>
+<li>vim自带的vimtutor</li>
+</ul>
+<h2 id="配置">配置</h2>
+<ul>
+<li>键位映射</li>
+<li>插件配置</li>
+</ul>
+<h2 id="特色">特色</h2>
+<ul>
+<li><strong>多模态编辑器：</strong>
+<ul>
+<li>&lt;ESC&gt;正常模式：在文件中四处移动光标进行修改</li>
+<li>i 插入模式：插入文本</li>
+<li>r 替换模式：替换文本</li>
+<li>v 可视化模式（一般，V 行，&lt;C-v&gt;块）：选中文本块</li>
+<li>: 命令模式：用于执行命令</li>
+</ul>
+</li>
+<li><strong>Vim的接口是一种编程语言</strong>：
+Vim 的接口本身也是一个程序语言：键入操作（以及其助记名） 是命令，这些命令也是可组合的。</li>
+</ul>
+<h2 id="基本操作">基本操作</h2>
+<h3 id="一缓存标签页窗口">一、缓存，标签页，窗口</h3>
+<ul>
+<li>Vim 会维护一系列打开的文件，称为 <strong>“缓存”</strong>。一个 Vim 会话包含一系列 <strong>标签页</strong>，每个标签页包含 一系列  <strong>窗口</strong>（分隔面板）。每个窗口显示一个缓存</li>
+<li>跟网页浏览器等其他你熟悉的程序不一样的是， 缓存和窗口不是一一对应的关系； <strong>窗口只是缓冲区的视图</strong>。一个缓存可以在 多个 窗口打开，甚至在同一 个标签页内的多个窗口打开。这个功能其实很好用，比如可以 <strong>查看同一个文件的不同部分。</strong></li>
+</ul>
+<ul>
+<li><strong>分屏：</strong> <code>:sp</code> (水平) | <code>:vsp</code> (垂直)。<strong>窗口只是缓存的视图</strong>，可同时查看同文件的不同部分。</li>
+</ul>
+<h3 id="二命令行">二、命令行</h3>
+<ul>
+<li><code>:q</code> 退出（关闭窗口）</li>
+<li><code>:w</code> 保存（写）</li>
+<li><code>:wq</code> 保存然后退出</li>
+<li><code>:e</code> {文件名} 打开要编辑的文件</li>
+<li><code>:ls</code> 显示打开的缓存</li>
+<li><code>:help {标题}</code> 打开帮助文档
+<ul>
+<li><code>:help :w</code> 打开 <code>:w</code> 命令的帮助文档</li>
+<li><code>:help w</code> 打开 <code>w</code> 移动的帮助文档</li>
+</ul>
+</li>
+</ul>
+<h3 id="三指令组成">三、指令组成</h3>
+<h4 id="1-名词---noun">1. 名词 - Noun</h4>
+<blockquote>
+<p>尽量放弃方向键，使用 <code>hjkl</code> 保持手指在主键区。</p></blockquote>
+<ul>
+<li><strong>基础：</strong> <code>h</code>(左) <code>j</code>(下) <code>k</code>(上) <code>l</code>(右)</li>
+<li><strong>单词：</strong> <code>w</code> (下个词首) | <code>b</code> (词初) | <code>e</code> (词尾)</li>
+<li><strong>行内：</strong> <code>0</code> (绝对行初) | <code>^</code> (第一个非空字符) | <code>$</code> (行尾)</li>
+<li><strong>垂直：</strong> <code>gg</code> (文件头) | <code>G</code> (文件尾) | <code>{行数}G</code> (跳至指定行)</li>
+<li><strong>查找：</strong> <code>f{字符}</code> (行内向前找字符) | <code>t{字符}</code> (找字符前一个位置)</li>
+<li><strong>搜索：</strong> <code>/{正则表达式}</code> (向下搜索) | <code>?</code> (向上搜索) | <code>n</code>/<code>N</code> (跳至下/上一个匹配)</li>
+</ul>
+<h4 id="2-动词---verb">2. 动词 - Verb</h4>
+<ul>
+<li><code>i</code> 进入插入模式 | <code>o</code> / <code>O</code> 在下方/上方新开一行并进入插入模式</li>
+<li><code>d{移动}</code> <strong>删除</strong>（如 <code>dw</code> 删词, <code>d$</code> 删至行尾）</li>
+<li><code>c{移动}</code> <strong>改变</strong>（删除并进入插入模式，如 <code>cw</code> 改写单词）</li>
+<li><code>y</code> <strong>复制 (Yank)</strong> | <code>p</code> <strong>粘贴 (Paste)</strong></li>
+<li><code>u</code> 撤销 | <code>&lt;C-r&gt;</code> 重做</li>
+<li><code>x</code> 删除单个字符 | <code>s</code> 替换单个字符</li>
+</ul>
+<ul>
+<li>在 Visual (可视) 模式下：选中一段文字后按 U，选中的内容会全部变大写。</li>
+</ul>
+<hr>
+<h3 id="三-vim-编程语言">三、 Vim 编程语言</h3>
+<p>Vim 的强大源于这个公式：<strong><code>[数字] + [修饰符] + [动词] + [名词]</code></strong></p>
+<h4 id="1-计数-count">1. 计数 (Count)</h4>
+<ul>
+<li><code>3w</code> 向后移动 3 个单词。</li>
+<li><code>5j</code> 向下移动 5 行。</li>
+<li><code>10dd</code> 删除 10 行。</li>
+</ul>
+<h4 id="2-修饰符-modifiers">2. 修饰符 (Modifiers)</h4>
+<p>用于定义操作范围：<code>i</code> (inner - 内部) 或 <code>a</code> (around - 周围)。</p>
+<ul>
+<li><code>ci(</code> 改变当前括号 <code>()</code> 内部的内容。</li>
+<li><code>di&quot;</code> 删除双引号内的字符串。</li>
+<li><code>da{</code> 删除整个花括号块（含花括号本身）。</li>
+</ul>
+<h4 id="3-宏-macro">3. 宏 (Macro)</h4>
+<ul>
+<li><strong>宏录制：</strong>
+<ol>
+<li><code>q{a}</code> 开始录制到寄存器 <code>a</code>。</li>
+<li>执行一系列复杂操作。</li>
+<li><code>q</code> 停止录制。</li>
+<li><code>@{a}</code> 重放操作（配合数字如 <code>100@a</code> 批量处理）。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="四-个人配置与扩展">四、 个人配置与扩展</h3>
+<h4 id="1-配置文件-vimrc">1. 配置文件 <code>.vimrc</code></h4>
+<p>Vim 的灵魂在于自定义。</p>
+<p>可以说，一个好的配置决定了vim是古老编辑器还是现代实用工具（）</p>
+<p>建议手动维护，不要盲目复制他人配置。</p>
+<ul>
+<li><strong>必改映射：</strong> 建议将 <code>&lt;CapsLock&gt;</code> (大小写锁定) 映射为 <code>&lt;ESC&gt;</code>，极大缓解手指压力。</li>
+</ul>
+<p>（后文附修改方法）</p>
+<ul>
+<li><strong>核心插件推荐：</strong>
+<ul>
+<li><code>ctrlp.vim</code>：模糊搜索文件。</li>
+<li><code>NERDTree</code>：树形文件浏览器。</li>
+<li><code>vim-easymotion</code>：远距离光标“瞬移”。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-生态延伸">2. 生态延伸</h4>
+<ul>
+<li><strong>Shell：</strong> <code>set -o vi</code> 让命令行支持 Vim 快捷键。</li>
+<li><strong>浏览器：</strong> 安装 <code>Vimium</code> (Chrome) 或 <code>Tridactyl</code> (Firefox) 实现纯键盘冲浪。</li>
+</ul>
+<p><del>(但是我还是贴出我的配置hhh大家按需选用)</del></p>
+<p>首先就是我改了windows系统设置,把大写锁定映射成了esc</p>
+<p>方法如下</p>
+<p>下载并安装 Microsoft PowerToys
+如果你还没有安装，可以通过以下几种方式获取：</p>
+<ul>
+<li><strong>官方下载：</strong> 前往 <a href="https://github.com/microsoft/PowerToys/releases">GitHub PowerToys 发布页面</a> 下载最新的 <code>.exe</code> 安装包。</li>
+<li><strong>应用商店：</strong> 在 Windows 11 的 <strong>Microsoft Store</strong> 中搜索 &ldquo;PowerToys&rdquo; 并安装。</li>
+<li><strong>命令行安装：</strong> 打开终端（PowerShell），输入：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>winget install Microsoft.PowerToys
+</span></span></code></pre></div></li>
+</ul>
+<p>安装完成后，按以下步骤操作：</p>
+<ol>
+<li><strong>打开 PowerToys 设置：</strong> 在任务栏右下角找到 PowerToys 图标并双击，或从开始菜单搜索打开。</li>
+<li><strong>进入键盘管理器：</strong> 在左侧菜单栏中找到 <strong>键盘管理器 (Keyboard Manager)</strong>，确保顶部的开关处于“开启”状态。</li>
+<li><strong>重新映射键：</strong> 点击中间部分的 <strong>重新映射键 (Remap a key)</strong>。</li>
+<li><strong>添加映射关系：</strong>
+<ul>
+<li>点击左侧的加号 <code>+</code>。</li>
+<li>在左侧的 <strong>选择 (Select)</strong> 下拉框中找到 <code>Caps Lock</code>（或者直接点击“按下”，然后在键盘上按一下大写锁定键）。</li>
+<li>在右侧的 <strong>发送 (To send)</strong> 下拉框中选择 <code>Esc</code>（同理可以点击“按下”后按一下 Esc 键）。</li>
+</ul>
+</li>
+<li><strong>保存设置：</strong> 点击右上角的“确定”。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vimrc" data-lang="vimrc"><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; --- 基础设置 ---</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">nocompatible</span>      <span style="color:#75715e">&#34; 关闭 Vi 兼容模式，解锁 Vim 更多功能</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">syntax</span> <span style="color:#a6e22e">on</span>             <span style="color:#75715e">&#34; 开启语法高亮</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">shortmess</span>+=<span style="color:#a6e22e">I</span>      <span style="color:#75715e">&#34; 启动时不显示欢迎界面（捐赠提示等）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">number</span>            <span style="color:#75715e">&#34; 显示行号</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">relativenumber</span>    <span style="color:#75715e">&#34; 显示相对行号（方便 5j, 10k 这种跳转）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">laststatus</span>=<span style="color:#ae81ff">2</span>      <span style="color:#75715e">&#34; 总是显示状态栏</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">ruler</span>                                 <span style="color:#75715e">&#34; 打开状态栏标尺</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">backspace</span>=<span style="color:#a6e22e">indent</span>,<span style="color:#a6e22e">eol</span>,<span style="color:#a6e22e">start</span>  <span style="color:#75715e">&#34; 允许在自动缩进、行尾、插入点前使用退格键</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">hidden</span>            <span style="color:#75715e">&#34; 允许在未保存当前文件的情况下切换缓冲区（Buffer）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">mouse</span>+=<span style="color:#a6e22e">a</span>          <span style="color:#75715e">&#34; 开启鼠标支持</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">smartindent</span>                           <span style="color:#75715e">&#34; 智能自动缩进</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">autoindent</span>                            <span style="color:#75715e">&#34; 新行自动继承上一行的缩进</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">shiftwidth</span>=<span style="color:#ae81ff">4</span>                          <span style="color:#75715e">&#34; 设置自动缩进时，每一级缩进4个空格的宽度</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">tabstop</span>=<span style="color:#ae81ff">4</span>                             <span style="color:#75715e">&#34; 设定 tab 长度为 4 </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">hlsearch</span>                              <span style="color:#75715e">&#34; 搜索时高亮匹配项</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 输入 :noh 可以临时关闭高亮</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">autochdir</span>                             <span style="color:#75715e">&#34; 自动切换当前目录为当前文件所在的目录</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">showcmd</span>         <span style="color:#75715e">&#34; 在右下角显示当前输入的命令（比如输入 d 时会显示）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">wildmenu</span>        <span style="color:#75715e">&#34; 命令行模式下的补全增强（以列表形式展示选项）</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">nobackup</span>           <span style="color:#75715e">&#34; 不生成备份文件 (~ 文件)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">noswapfile</span>         <span style="color:#75715e">&#34; 不生成交换文件 (.swp 文件)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; --- 搜索优化 ---</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">ignorecase</span>        <span style="color:#75715e">&#34; 搜索时忽略大小写</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">smartcase</span>         <span style="color:#75715e">&#34; 如果搜索词包含大写，则自动转为大小写敏感</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">incsearch</span>         <span style="color:#75715e">&#34; 边输入边显示匹配结果</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; --- 快捷键与行为调整 ---</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 禁用 Q 键，防止误入容易卡住的 Ex 模式</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nmap</span> <span style="color:#a6e22e">Q</span> &lt;<span style="color:#a6e22e">Nop</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">mapleader</span>=<span style="color:#e6db74">&#34; &#34;</span>      <span style="color:#75715e">&#34; 设置空格为 Leader 键</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 按空格 + w 保存，按空格 + q 退出</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">w</span> :<span style="color:#a6e22e">w</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">q</span> :<span style="color:#a6e22e">q</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 按空格 + nh 取消搜索高亮</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">leader</span>&gt;<span style="color:#a6e22e">nh</span> :<span style="color:#a6e22e">nohlsearch</span>&lt;<span style="color:#a6e22e">CR</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">&#34; 禁用声音提示（报错时不会发出叮叮声）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">set</span> <span style="color:#a6e22e">noerrorbells</span> <span style="color:#a6e22e">visualbell</span> <span style="color:#a6e22e">t_vb</span>=
+</span></span></code></pre></div><p>将vimrc文件保存到~/.vimrc文件中（~指的是c:/<user>）</p>
+<h2 id="在命令行唤起vim输入echo-myvimrc可以检查识别出的配置文件的路径">在命令行唤起vim，输入<code>:echo $MYVIMRC</code>可以检查识别出的配置文件的路径</h2>
+<h3 id="五-练习建议">五、 练习建议</h3>
+<ol>
+<li><strong>初级：</strong> 运行终端指令 <code>vimtutor</code>（或 <code>:Tutor</code>），完成 30 分钟互动教学。</li>
+<li><strong>中级：</strong> 强制在所有编辑任务（笔记、代码、README）中使用 Vim，忍受最初 20 小时的低效期。</li>
+<li><strong>高级：</strong> 当你觉得某个操作太慢时，去搜“Vim better way for&hellip;”，永远有新命令等着你。</li>
+</ol>
+<hr></section>
+
+  
+  
+  <div class="paginator">
+    
+    <a class="prev" href="https://cloudymount789.github.io/blog/claude_deploy/">
+      <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.77086 21.1546C11.0491 22.698 21.4339 21.7773 21.4339 16.3608V4.63375C21.4339 3.93962 21.3581 3.30535 21.1917 2.76787M3.77086 21.1546C1.9934 20.7777 0.973585 18.7264 1.08749 16.688C1.2668 13.479 1.15721 9.43135 1.00513 6.21507C0.87809 3.52811 3.12891 1.16316 5.51029 1.25008C9.76594 1.40542 15.377 1.20229 18.7912 1.00542C20.0864 0.930734 20.8406 1.63385 21.1917 2.76787M3.77086 21.1546C4.56586 21.4723 5.49168 21.7879 6.5 22.0658M21.1917 2.76787C23.1097 4.18217 23.13 12.4191 22.9004 16.3608C20.8478 24.0194 12.3061 23.6662 6.5 22.0658M21.1917 2.76787C21.7612 4.51192 22.7203 9.67216 22 16.3608C21.2797 23.0494 11.3665 22.9511 6.5 22.0658M9.94496 9C9.28897 9.61644 7.63215 10.997 6.04814 11.7966C5.98257 11.8297 5.98456 11.9753 6.05061 12.0063C7.05496 12.4779 8.92941 13.9264 9.94496 15M6.44444 11.9667C8.86549 12.0608 14 12 16 11" stroke="currentColor" stroke-linecap="round"/>
+      </svg>
+      <span>Claude Code 终端集成与 API 中转避坑</span></a>
+    
+    
+    <a class="next" href="https://cloudymount789.github.io/blog/how_to_face_gpa/"><span>如何面对绩点和“过时的”科班教育</span>
+      <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.77086 21.1546C11.0491 22.698 21.4339 21.7773 21.4339 16.3608V4.63375C21.4339 3.93962 21.3581 3.30535 21.1917 2.76787M3.77086 21.1546C1.9934 20.7777 0.973585 18.7264 1.08749 16.688C1.2668 13.479 1.15721 9.43135 1.00513 6.21507C0.87809 3.52811 3.12891 1.16316 5.51029 1.25008C9.76594 1.40542 15.377 1.20229 18.7912 1.00542C20.0864 0.930734 20.8406 1.63385 21.1917 2.76787M3.77086 21.1546C4.56586 21.4723 5.49168 21.7879 6.5 22.0658M21.1917 2.76787C23.1097 4.18217 23.13 12.4191 22.9004 16.3608C20.8478 24.0194 12.3061 23.6662 6.5 22.0658M21.1917 2.76787C21.7612 4.51192 22.7203 9.67216 22 16.3608C21.2797 23.0494 11.3665 22.9511 6.5 22.0658M12.055 9C12.711 9.61644 14.3679 10.997 15.9519 11.7966C16.0174 11.8297 16.0154 11.9753 15.9494 12.0063C14.945 12.4779 13.0706 13.9264 12.055 15M15.5556 11.9667C13.1345 12.0608 8 12 6 11" stroke="currentColor" stroke-linecap="round"/>
+      </svg>
+    </a>
+    
+  </div>
+  
+
+  
+
+
+  
+  
+<div class="comments">
+  <script>
+      const getTheme = window.localStorage && window.localStorage.getItem("theme");
+      let theme = getTheme === 'dark' ? 'dark' : 'light';
+      let s = document.createElement('script');
+      s.src = 'https://giscus.app/client.js';
+      s.setAttribute('data-repo', 'cloudymount789\/cloudymount789.github.io');
+      s.setAttribute('data-repo-id', 'R_kgDOQni-Ig');
+      s.setAttribute('data-category', 'Announcements');
+      s.setAttribute('data-category-id', 'DIC_kwDOQni-Is4C5v5J');
+      s.setAttribute('data-mapping', 'pathname');
+      s.setAttribute('data-strict', '0');
+      s.setAttribute('data-reactions-enabled', '1');
+      s.setAttribute('data-emit-metadata', '0');
+      s.setAttribute('data-input-position', '');
+      s.setAttribute('data-theme', theme);
+      s.setAttribute('data-lang', 'zh-CN');
+      s.setAttribute('data-loading', 'lazy');
+      s.setAttribute('crossorigin', 'anonymous');
+      s.setAttribute('async', '');
+      document.querySelector('div.comments').innerHTML = '';
+      document.querySelector('div.comments').appendChild(s);
+  </script>
+</div>
+
+</article>
+
+
+        </div><footer class="footer">
+  <p>&copy; 2026 <a href="https://cloudymount789.github.io/">CloudyMount&#39;s blog</a>
+    Powered by
+    <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>
+    <a href="https://github.com/guangzhengli/hugo-theme-ladder" rel="noopener" target="_blank">Ladder</a>
+️  </p>
+</footer>
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.5376 22.7916C11.0152 22.7207 22.5795 21.1781 22.0978 10.4211C22.0536 9.43274 21.9303 8.53367 21.7387 7.71865M10.5376 22.7916C16.876 22.3728 20.0969 19.8899 21.5383 16.9142M10.5376 22.7916C9.7707 22.9055 8.97982 22.8964 8.19743 22.7725M21.7387 7.71865C21.4988 6.69828 21.1518 5.80967 20.7188 5.04257M21.7387 7.71865C22.6022 10.1105 23.0542 13.7848 21.5383 16.9142M20.7188 5.04257C17.1684 -1.24629 7.83127 0.632493 4.27577 5.04257C2.88063 6.77451 -0.0433281 11.1668 1.38159 16.6571C2.27481 20.0988 5.17269 22.2936 8.19743 22.7725M20.7188 5.04257C22.0697 6.9404 24.0299 11.3848 22.3541 15.4153M21.5383 16.9142C21.8737 16.4251 22.1428 15.9235 22.3541 15.4153M8.19743 22.7725C12.1971 23.4683 20.6281 22.971 22.3541 15.4153M14 10.945C13.3836 10.289 12.003 8.63215 11.2034 7.04814C11.1703 6.98257 11.0247 6.98456 10.9937 7.05061C10.5221 8.05496 9.07362 9.92941 8 10.945M11.0333 7.44444C10.9392 9.86549 11 15 12 17" stroke="currentColor" stroke-linecap="round"/>
+    </svg>
+</a>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'Copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'Copied';
+            setTimeout(() => {
+                copybutton.innerHTML = 'Copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+        codeblock.parentNode.appendChild(copybutton);
+    });
+</script></main>
+    </body><script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+      const images = Array.from(document.querySelectorAll(".blog-content img"));
+      images.forEach(img => {
+          mediumZoom(img, {
+              margin: 10,  
+              scrollOffset: 40,  
+              container: null,  
+              template: null,  
+              background: 'rgba(0, 0, 0, 0.5)'
+          });
+      });
+  </script>
+
+  
+  <script src="/main.min.6bb26b69159420159c74dc9e097b06a578ed2b68c701466a91a44a9632d851bd0af167a1b30012387b4c512b48ad9ad4d3394e04d77ae38d57e1920fe4ed34fe.js" integrity="sha512-a7JraRWUIBWcdNyeCXsGpXjtK2jHAUZqkaRKljLYUb0K8WehswASOHtMUStIrZrU0zlOBNd6441X4ZIP5O00/g==" crossorigin="anonymous" defer></script></html>

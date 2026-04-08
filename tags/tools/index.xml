@@ -6,7 +6,410 @@
     <description>Recent content in Tools on CloudyMount&#39;s blog created by </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 27 Dec 2025 21:45:10 +0800</lastBuildDate><atom:link href="https://cloudymount789.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Apr 2026 19:39:42 +0800</lastBuildDate><atom:link href="https://cloudymount789.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux入门/快速上手命令行</title>
+      <link>https://cloudymount789.github.io/blog/bash_note/</link>
+      <pubDate>Wed, 08 Apr 2026 19:39:42 +0800</pubDate>
+      
+      <guid>https://cloudymount789.github.io/blog/bash_note/</guid>
+      <description>&lt;p&gt;本文是我自用总结的常用的 Bash 命令行技巧，旨在帮助新手快速上手终端的使用，离一名帅气的极客更进一步。内容涵盖基础路径跳转与增删改查,系统与网络监控, 高效进阶技巧, 开发工具联动等，适合linux新手入门，大部分同时也可用于windows系统的windows powershell。&lt;/p&gt;
+&lt;h1 id=&#34;bash命令行编程&#34;&gt;Bash命令行编程&lt;/h1&gt;
+&lt;h2 id=&#34;文件夹跳转&#34;&gt;文件夹跳转&lt;/h2&gt;
+&lt;h3 id=&#34;1-看当前所在位置&#34;&gt;1. 看当前所在位置&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pwd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;（Windows是cd，Linux是pwd看路径）&lt;/p&gt;
+&lt;h3 id=&#34;2-进入文件夹&#34;&gt;2. 进入文件夹&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd 文件夹名
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 举例&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd Desktop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd /home/用户名   &lt;span style=&#34;color:#75715e&#34;&gt;# 绝对路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-返回上一级&#34;&gt;3. 返回上一级&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd ..
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-直接回自己家目录主页&#34;&gt;4. 直接回自己家目录（主页）&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd ~
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-回到上一次所在文件夹&#34;&gt;5. 回到上一次所在文件夹&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd -
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;二查看文件列表&#34;&gt;二、查看文件/列表&lt;/h2&gt;
+&lt;h3 id=&#34;1-列出当前所有文件文件夹&#34;&gt;1. 列出当前所有文件、文件夹&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls          &lt;span style=&#34;color:#75715e&#34;&gt;# 简单列表&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls -l       &lt;span style=&#34;color:#75715e&#34;&gt;# 详细信息（权限、大小、时间）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls -a       &lt;span style=&#34;color:#75715e&#34;&gt;# 显示隐藏文件（带 . 的文件）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls -la      &lt;span style=&#34;color:#75715e&#34;&gt;# 详细+隐藏，最常用&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;三新建--删除--复制谨慎删&#34;&gt;三、新建 &amp;amp; 删除 &amp;amp; 复制（谨慎删！）&lt;/h2&gt;
+&lt;h3 id=&#34;1-建文件夹&#34;&gt;1. 建文件夹&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir 文件夹名
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir test
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-建空文件&#34;&gt;2. 建空文件&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;touch 文件名.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;touch note.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vim 文件名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-复制&#34;&gt;3. 复制&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp 源文件 目标
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp note.txt /home/备份/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cp -r 文件夹A 文件夹B   &lt;span style=&#34;color:#75715e&#34;&gt;# 复制整个文件夹&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-移动重命名&#34;&gt;4. 移动/重命名&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mv 旧名字 新名字       &lt;span style=&#34;color:#75715e&#34;&gt;# 重命名&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mv 文件 /目标路径/     &lt;span style=&#34;color:#75715e&#34;&gt;# 移动&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-删除--linux删了很难找回&#34;&gt;5. 删除（⚠️  Linux删了很难找回！）&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm 文件名.txt          &lt;span style=&#34;color:#75715e&#34;&gt;# 删文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -r 文件夹名         &lt;span style=&#34;color:#75715e&#34;&gt;# 删文件夹+里面所有&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -rf 文件夹名        &lt;span style=&#34;color:#75715e&#34;&gt;# 强制彻底删除（慎用！）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;四查看文件内容&#34;&gt;四、查看文件内容&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat 文件名.txt        &lt;span style=&#34;color:#75715e&#34;&gt;# 直接全打印&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;less 文件名.txt       &lt;span style=&#34;color:#75715e&#34;&gt;# 分页看（上下翻）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;head 文件名.txt       &lt;span style=&#34;color:#75715e&#34;&gt;# 看开头几行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tail 文件名.txt       &lt;span style=&#34;color:#75715e&#34;&gt;# 看结尾几行（看日志神器）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tail -f 日志.log      &lt;span style=&#34;color:#75715e&#34;&gt;# 实时刷新日志&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;五系统--网络常用&#34;&gt;五、系统 &amp;amp; 网络常用&lt;/h2&gt;
+&lt;h3 id=&#34;1-看ip&#34;&gt;1. 看IP&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ifconfig
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 新版也用&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ip a
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-测试网络通不通&#34;&gt;2. 测试网络通不通&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ping www.baidu.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-看当前正在运行的程序&#34;&gt;3. 看当前正在运行的程序&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps aux
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;top        &lt;span style=&#34;color:#75715e&#34;&gt;# 实时看进程、占用&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-清屏&#34;&gt;4. 清屏&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;clear
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;六解压压缩&#34;&gt;六、解压/压缩&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 解压 zip&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;unzip 压缩包.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 解压 tar.gz（Linux标配）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar -zxvf 压缩包.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 压缩成 tar.gz&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tar -zcvf 打包名.tar.gz 要打包的文件夹
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;七实用快捷键&#34;&gt;七、实用快捷键&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Tab&lt;/code&gt;：自动补全文件名/命令，救命神器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;↑ ↓&lt;/code&gt;：调出之前输过的命令&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ctrl + L&lt;/code&gt;：快速清屏（等于clear）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ctrl + C&lt;/code&gt;：强制停止当前运行的程序&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;vim ...&lt;/code&gt; 启动vim编辑器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;code .&lt;/code&gt;在当前工作区打开vscode&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;·&lt;code&gt;Ctrl + Shift + E&lt;/code&gt;：聚焦到左侧文件资源管理器（用上下键选文件）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ctrl + P&lt;/code&gt;：快速搜索文件（输入文件名直接跳转，不需要去文件夹里翻）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任意位置&lt;code&gt;win + x + i&lt;/code&gt; -&amp;gt; 唤起终端(我已配置默认目录为D盘)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这份 Bash 命令行笔记已经非常扎实，涵盖了最常用的基础操作。为了让它更完整、更符合“从入门到进阶”的逻辑，我为你补充了&lt;strong&gt;文件搜索&lt;/strong&gt;、&lt;strong&gt;权限管理&lt;/strong&gt;、&lt;strong&gt;管道与重定向&lt;/strong&gt;这三个核心板块，并提供了一个适合博客首页的 &lt;strong&gt;Summary&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;八查找与搜索&#34;&gt;八、查找与搜索&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 1. 在当前目录及子目录下查找文件名&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;find . -name &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;test.txt&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 2. 在文件中搜索特定文本内容&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;grep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;error&amp;#34;&lt;/span&gt; server.log        &lt;span style=&#34;color:#75715e&#34;&gt;# 在 log 中找包含 error 的行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;grep -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;error&amp;#34;&lt;/span&gt; server.log     &lt;span style=&#34;color:#75715e&#34;&gt;# 忽略大小写&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;grep -r &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;function&amp;#34;&lt;/span&gt; ./src       &lt;span style=&#34;color:#75715e&#34;&gt;# 在文件夹内递归搜索&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 3. 查找命令的可执行文件路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;which python
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;九权限管理遇到-permission-denied-时看这里&#34;&gt;九、权限管理（遇到 Permission Denied 时看这里）&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 1. 修改文件权限&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chmod &lt;span style=&#34;color:#ae81ff&#34;&gt;755&lt;/span&gt; script.sh      &lt;span style=&#34;color:#75715e&#34;&gt;# 赋予执行权限&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chmod +x script.sh       &lt;span style=&#34;color:#75715e&#34;&gt;# 简单直接地赋予执行权限&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 2. 临时提升为管理员权限执行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update          &lt;span style=&#34;color:#75715e&#34;&gt;# 以 root 权限运行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 3. 修改文件所属用户&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chown user:group file.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;十管道与重定向将命令组合起来&#34;&gt;十、管道与重定向（将命令组合起来）&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 1. 重定向：将结果保存到文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls &amp;gt; files.txt           &lt;span style=&#34;color:#75715e&#34;&gt;# 覆盖写入&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls &amp;gt;&amp;gt; files.txt          &lt;span style=&#34;color:#75715e&#34;&gt;# 追加写入&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 2. 管道符 | ：把前一个命令的结果交给下一个&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps aux | grep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;python&amp;#34;&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;# 在所有进程中过滤出包含 python 的行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat log.txt | wc -l      &lt;span style=&#34;color:#75715e&#34;&gt;# 统计 log 文件有多少行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>powertoys快速上手/windoews开发人员手册/辅助讲解工具zoomlt</title>
+      <link>https://cloudymount789.github.io/blog/powertoys_note/</link>
+      <pubDate>Mon, 06 Apr 2026 11:17:15 +0800</pubDate>
+      
+      <guid>https://cloudymount789.github.io/blog/powertoys_note/</guid>
+      <description>&lt;p&gt;本文精炼了 PowerToys 与 ZoomIt 两大极客工具的好用指令集，涵盖窗口常驻、全局 OCR 提取、像素级取色以及演示级的屏幕缩放与动态标注技巧。通过映射核心快捷键位，实现对系统底层交互逻辑的深度重塑，旨在打造一套极简、高效的 Windows 开发者工作流。&lt;/p&gt;
+&lt;h2 id=&#34;windows开发人员工具手册&#34;&gt;windows开发人员工具手册&lt;/h2&gt;
+&lt;p&gt;&lt;del&gt;用来装逼&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/microsoft/PowerToys/releases&#34;&gt;安装powertools&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://learn.microsoft.com/zh-cn/windows/powertoys/&#34;&gt;windows开发人员工具手册&lt;/a&gt;：&lt;/p&gt;
+&lt;p&gt;我整理出的实用工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrl + win + t&lt;/code&gt;可以固定或取消固定所选窗口，使其始终位于所有其他窗口的顶部，哪怕焦点丢失&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl + win + c&lt;/code&gt;可以打开颜色选择器，在任何应用程序中选取颜色并复制可配置文件到剪贴板&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;win + shift + t&lt;/code&gt;可以打开文本提取器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;win + shift + /&lt;/code&gt;可以打开快捷键指南&lt;/li&gt;
+&lt;li&gt;两次&lt;code&gt;ctrl&lt;/code&gt;寻找鼠标&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;win + shift + h&lt;/code&gt;鼠标荧光笔&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;zoomlt&#34;&gt;zoomlt&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ctrl + 1&lt;/code&gt; 激活缩放：按鼠标滚轮或向上/向下箭头键放大或缩小。 按 Esc 或鼠标右键退出缩放模式。 按 Ctrl + C 捕获缩放视图，按 Ctrl + S 保存它。 按 Ctrl + Shift 在复制或保存之前裁剪。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ctrl + 4&lt;/code&gt; 激活实时缩放:按 Ctrl + Shift + 4 激活实时绘图，按 Esc 清除批注或退出。
+按Ctrl + 向上/向下调整缩放级别。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ctrl +２&lt;/code&gt;屏幕绘制：
+放大时，按鼠标左键切换绘图模式，按鼠标右键退出。 按 Ctrl + Z 撤消，按 E 清除绘图，按空格键使光标居中。
+笔控制 按 Ctrl + 鼠标滚轮 或 Ctrl + 向上/向下调整笔宽度。
+颜色 按 R(红色)、G(绿色)、B(蓝色)、O(橙色)、Y(黄色)或 P(粉色)切换颜色。
+高亮和模糊 按 Shift + 颜色键表示半透明高亮，按 X 表示模糊，按 Shift + X 表示更强的模糊。
+形状 按 Shift 表示线，按 Ctrl 表示矩形，按 Tab 表示椭圆形，按 Shift + Ctrl 表示箭头。
+屏幕 按 W 或 K 表示白色或黑色素描本。 按 Ctrl + C 复制，按 Ctrl + S 保存，按 Ctrl + Shift 裁剪。
+按t进入文本编辑&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>vim配置分享/快速上手指南</title>
+      <link>https://cloudymount789.github.io/blog/vim_note/</link>
+      <pubDate>Sat, 04 Apr 2026 00:44:45 +0800</pubDate>
+      
+      <guid>https://cloudymount789.github.io/blog/vim_note/</guid>
+      <description>&lt;p&gt;本文将 Vim 视为一种高度可组合的“编程语言”，深度解析了“动词+名词”的核心交互逻辑与多模态操作架构。内容涵盖从基础位移到宏录制、修饰符等进阶技巧，并集成了 CapsLock 改键映射及 .vimrc 生产力配置实战。通过打通从终端到浏览器的全域 Vim 生态，旨在帮助开发者彻底摆脱鼠标依赖，重塑极致的文本编辑效率。&lt;/p&gt;
+&lt;h1 id=&#34;vim-note&#34;&gt;Vim Note&lt;/h1&gt;
+&lt;h2 id=&#34;学习目标&#34;&gt;学习目标&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;避免离开键盘热键，避免使用鼠标，提高开发效率&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;学习资源&#34;&gt;学习资源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://missing-semester-cn.github.io/2020/editors/&#34;&gt;Missing Semester - 3. Vim 编辑器&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;大佬们的学习笔记
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wsdjeg.net/vim-galore-zh-cn/&#34;&gt;Vim从入门到精通&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://imageslr.com/2021/vim.html&#34;&gt;【Linux】Vim 入门笔记&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;vim自带的vimtutor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;配置&#34;&gt;配置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;键位映射&lt;/li&gt;
+&lt;li&gt;插件配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;特色&#34;&gt;特色&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;多模态编辑器：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;lt;ESC&amp;gt;正常模式：在文件中四处移动光标进行修改&lt;/li&gt;
+&lt;li&gt;i 插入模式：插入文本&lt;/li&gt;
+&lt;li&gt;r 替换模式：替换文本&lt;/li&gt;
+&lt;li&gt;v 可视化模式（一般，V 行，&amp;lt;C-v&amp;gt;块）：选中文本块&lt;/li&gt;
+&lt;li&gt;: 命令模式：用于执行命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vim的接口是一种编程语言&lt;/strong&gt;：
+Vim 的接口本身也是一个程序语言：键入操作（以及其助记名） 是命令，这些命令也是可组合的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;基本操作&#34;&gt;基本操作&lt;/h2&gt;
+&lt;h3 id=&#34;一缓存标签页窗口&#34;&gt;一、缓存，标签页，窗口&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Vim 会维护一系列打开的文件，称为 &lt;strong&gt;“缓存”&lt;/strong&gt;。一个 Vim 会话包含一系列 &lt;strong&gt;标签页&lt;/strong&gt;，每个标签页包含 一系列  &lt;strong&gt;窗口&lt;/strong&gt;（分隔面板）。每个窗口显示一个缓存&lt;/li&gt;
+&lt;li&gt;跟网页浏览器等其他你熟悉的程序不一样的是， 缓存和窗口不是一一对应的关系； &lt;strong&gt;窗口只是缓冲区的视图&lt;/strong&gt;。一个缓存可以在 多个 窗口打开，甚至在同一 个标签页内的多个窗口打开。这个功能其实很好用，比如可以 &lt;strong&gt;查看同一个文件的不同部分。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;分屏：&lt;/strong&gt; &lt;code&gt;:sp&lt;/code&gt; (水平) | &lt;code&gt;:vsp&lt;/code&gt; (垂直)。&lt;strong&gt;窗口只是缓存的视图&lt;/strong&gt;，可同时查看同文件的不同部分。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;二命令行&#34;&gt;二、命令行&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;:q&lt;/code&gt; 退出（关闭窗口）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:w&lt;/code&gt; 保存（写）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:wq&lt;/code&gt; 保存然后退出&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:e&lt;/code&gt; {文件名} 打开要编辑的文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:ls&lt;/code&gt; 显示打开的缓存&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:help {标题}&lt;/code&gt; 打开帮助文档
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;:help :w&lt;/code&gt; 打开 &lt;code&gt;:w&lt;/code&gt; 命令的帮助文档&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:help w&lt;/code&gt; 打开 &lt;code&gt;w&lt;/code&gt; 移动的帮助文档&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;三指令组成&#34;&gt;三、指令组成&lt;/h3&gt;
+&lt;h4 id=&#34;1-名词---noun&#34;&gt;1. 名词 - Noun&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;尽量放弃方向键，使用 &lt;code&gt;hjkl&lt;/code&gt; 保持手指在主键区。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;基础：&lt;/strong&gt; &lt;code&gt;h&lt;/code&gt;(左) &lt;code&gt;j&lt;/code&gt;(下) &lt;code&gt;k&lt;/code&gt;(上) &lt;code&gt;l&lt;/code&gt;(右)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;单词：&lt;/strong&gt; &lt;code&gt;w&lt;/code&gt; (下个词首) | &lt;code&gt;b&lt;/code&gt; (词初) | &lt;code&gt;e&lt;/code&gt; (词尾)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;行内：&lt;/strong&gt; &lt;code&gt;0&lt;/code&gt; (绝对行初) | &lt;code&gt;^&lt;/code&gt; (第一个非空字符) | &lt;code&gt;$&lt;/code&gt; (行尾)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;垂直：&lt;/strong&gt; &lt;code&gt;gg&lt;/code&gt; (文件头) | &lt;code&gt;G&lt;/code&gt; (文件尾) | &lt;code&gt;{行数}G&lt;/code&gt; (跳至指定行)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;查找：&lt;/strong&gt; &lt;code&gt;f{字符}&lt;/code&gt; (行内向前找字符) | &lt;code&gt;t{字符}&lt;/code&gt; (找字符前一个位置)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;搜索：&lt;/strong&gt; &lt;code&gt;/{正则表达式}&lt;/code&gt; (向下搜索) | &lt;code&gt;?&lt;/code&gt; (向上搜索) | &lt;code&gt;n&lt;/code&gt;/&lt;code&gt;N&lt;/code&gt; (跳至下/上一个匹配)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-动词---verb&#34;&gt;2. 动词 - Verb&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;i&lt;/code&gt; 进入插入模式 | &lt;code&gt;o&lt;/code&gt; / &lt;code&gt;O&lt;/code&gt; 在下方/上方新开一行并进入插入模式&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;d{移动}&lt;/code&gt; &lt;strong&gt;删除&lt;/strong&gt;（如 &lt;code&gt;dw&lt;/code&gt; 删词, &lt;code&gt;d$&lt;/code&gt; 删至行尾）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;c{移动}&lt;/code&gt; &lt;strong&gt;改变&lt;/strong&gt;（删除并进入插入模式，如 &lt;code&gt;cw&lt;/code&gt; 改写单词）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;y&lt;/code&gt; &lt;strong&gt;复制 (Yank)&lt;/strong&gt; | &lt;code&gt;p&lt;/code&gt; &lt;strong&gt;粘贴 (Paste)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;u&lt;/code&gt; 撤销 | &lt;code&gt;&amp;lt;C-r&amp;gt;&lt;/code&gt; 重做&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;x&lt;/code&gt; 删除单个字符 | &lt;code&gt;s&lt;/code&gt; 替换单个字符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;在 Visual (可视) 模式下：选中一段文字后按 U，选中的内容会全部变大写。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;三-vim-编程语言&#34;&gt;三、 Vim 编程语言&lt;/h3&gt;
+&lt;p&gt;Vim 的强大源于这个公式：&lt;strong&gt;&lt;code&gt;[数字] + [修饰符] + [动词] + [名词]&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1-计数-count&#34;&gt;1. 计数 (Count)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;3w&lt;/code&gt; 向后移动 3 个单词。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;5j&lt;/code&gt; 向下移动 5 行。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;10dd&lt;/code&gt; 删除 10 行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-修饰符-modifiers&#34;&gt;2. 修饰符 (Modifiers)&lt;/h4&gt;
+&lt;p&gt;用于定义操作范围：&lt;code&gt;i&lt;/code&gt; (inner - 内部) 或 &lt;code&gt;a&lt;/code&gt; (around - 周围)。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ci(&lt;/code&gt; 改变当前括号 &lt;code&gt;()&lt;/code&gt; 内部的内容。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;di&amp;quot;&lt;/code&gt; 删除双引号内的字符串。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;da{&lt;/code&gt; 删除整个花括号块（含花括号本身）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-宏-macro&#34;&gt;3. 宏 (Macro)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;宏录制：&lt;/strong&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;q{a}&lt;/code&gt; 开始录制到寄存器 &lt;code&gt;a&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;执行一系列复杂操作。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;q&lt;/code&gt; 停止录制。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@{a}&lt;/code&gt; 重放操作（配合数字如 &lt;code&gt;100@a&lt;/code&gt; 批量处理）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;四-个人配置与扩展&#34;&gt;四、 个人配置与扩展&lt;/h3&gt;
+&lt;h4 id=&#34;1-配置文件-vimrc&#34;&gt;1. 配置文件 &lt;code&gt;.vimrc&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;Vim 的灵魂在于自定义。&lt;/p&gt;
+&lt;p&gt;可以说，一个好的配置决定了vim是古老编辑器还是现代实用工具（）&lt;/p&gt;
+&lt;p&gt;建议手动维护，不要盲目复制他人配置。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;必改映射：&lt;/strong&gt; 建议将 &lt;code&gt;&amp;lt;CapsLock&amp;gt;&lt;/code&gt; (大小写锁定) 映射为 &lt;code&gt;&amp;lt;ESC&amp;gt;&lt;/code&gt;，极大缓解手指压力。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（后文附修改方法）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心插件推荐：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ctrlp.vim&lt;/code&gt;：模糊搜索文件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;NERDTree&lt;/code&gt;：树形文件浏览器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vim-easymotion&lt;/code&gt;：远距离光标“瞬移”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-生态延伸&#34;&gt;2. 生态延伸&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Shell：&lt;/strong&gt; &lt;code&gt;set -o vi&lt;/code&gt; 让命令行支持 Vim 快捷键。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;浏览器：&lt;/strong&gt; 安装 &lt;code&gt;Vimium&lt;/code&gt; (Chrome) 或 &lt;code&gt;Tridactyl&lt;/code&gt; (Firefox) 实现纯键盘冲浪。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;del&gt;(但是我还是贴出我的配置hhh大家按需选用)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;首先就是我改了windows系统设置,把大写锁定映射成了esc&lt;/p&gt;
+&lt;p&gt;方法如下&lt;/p&gt;
+&lt;p&gt;下载并安装 Microsoft PowerToys
+如果你还没有安装，可以通过以下几种方式获取：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;官方下载：&lt;/strong&gt; 前往 &lt;a href=&#34;https://github.com/microsoft/PowerToys/releases&#34;&gt;GitHub PowerToys 发布页面&lt;/a&gt; 下载最新的 &lt;code&gt;.exe&lt;/code&gt; 安装包。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应用商店：&lt;/strong&gt; 在 Windows 11 的 &lt;strong&gt;Microsoft Store&lt;/strong&gt; 中搜索 &amp;ldquo;PowerToys&amp;rdquo; 并安装。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;命令行安装：&lt;/strong&gt; 打开终端（PowerShell），输入：
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;winget install Microsoft.PowerToys
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装完成后，按以下步骤操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;打开 PowerToys 设置：&lt;/strong&gt; 在任务栏右下角找到 PowerToys 图标并双击，或从开始菜单搜索打开。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;进入键盘管理器：&lt;/strong&gt; 在左侧菜单栏中找到 &lt;strong&gt;键盘管理器 (Keyboard Manager)&lt;/strong&gt;，确保顶部的开关处于“开启”状态。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重新映射键：&lt;/strong&gt; 点击中间部分的 &lt;strong&gt;重新映射键 (Remap a key)&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;添加映射关系：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;点击左侧的加号 &lt;code&gt;+&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在左侧的 &lt;strong&gt;选择 (Select)&lt;/strong&gt; 下拉框中找到 &lt;code&gt;Caps Lock&lt;/code&gt;（或者直接点击“按下”，然后在键盘上按一下大写锁定键）。&lt;/li&gt;
+&lt;li&gt;在右侧的 &lt;strong&gt;发送 (To send)&lt;/strong&gt; 下拉框中选择 &lt;code&gt;Esc&lt;/code&gt;（同理可以点击“按下”后按一下 Esc 键）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;保存设置：&lt;/strong&gt; 点击右上角的“确定”。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vimrc&#34; data-lang=&#34;vimrc&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; --- 基础设置 ---&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nocompatible&lt;/span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 关闭 Vi 兼容模式，解锁 Vim 更多功能&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;syntax&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;on&lt;/span&gt;             &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 开启语法高亮&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;shortmess&lt;/span&gt;+=&lt;span style=&#34;color:#a6e22e&#34;&gt;I&lt;/span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 启动时不显示欢迎界面（捐赠提示等）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;number&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 显示行号&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;relativenumber&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 显示相对行号（方便 5j, 10k 这种跳转）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;laststatus&lt;/span&gt;=&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 总是显示状态栏&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ruler&lt;/span&gt;                                 &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 打开状态栏标尺&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;backspace&lt;/span&gt;=&lt;span style=&#34;color:#a6e22e&#34;&gt;indent&lt;/span&gt;,&lt;span style=&#34;color:#a6e22e&#34;&gt;eol&lt;/span&gt;,&lt;span style=&#34;color:#a6e22e&#34;&gt;start&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 允许在自动缩进、行尾、插入点前使用退格键&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;hidden&lt;/span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 允许在未保存当前文件的情况下切换缓冲区（Buffer）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mouse&lt;/span&gt;+=&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;          &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 开启鼠标支持&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;smartindent&lt;/span&gt;                           &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 智能自动缩进&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;autoindent&lt;/span&gt;                            &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 新行自动继承上一行的缩进&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;shiftwidth&lt;/span&gt;=&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;                          &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 设置自动缩进时，每一级缩进4个空格的宽度&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tabstop&lt;/span&gt;=&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;                             &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 设定 tab 长度为 4 &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;hlsearch&lt;/span&gt;                              &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 搜索时高亮匹配项&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 输入 :noh 可以临时关闭高亮&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;autochdir&lt;/span&gt;                             &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 自动切换当前目录为当前文件所在的目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;showcmd&lt;/span&gt;         &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 在右下角显示当前输入的命令（比如输入 d 时会显示）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;wildmenu&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 命令行模式下的补全增强（以列表形式展示选项）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;nobackup&lt;/span&gt;           &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 不生成备份文件 (~ 文件)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;noswapfile&lt;/span&gt;         &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 不生成交换文件 (.swp 文件)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; --- 搜索优化 ---&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ignorecase&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 搜索时忽略大小写&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;smartcase&lt;/span&gt;         &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 如果搜索词包含大写，则自动转为大小写敏感&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;incsearch&lt;/span&gt;         &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 边输入边显示匹配结果&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; --- 快捷键与行为调整 ---&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 禁用 Q 键，防止误入容易卡住的 Ex 模式&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;nmap&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Q&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Nop&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mapleader&lt;/span&gt;=&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 设置空格为 Leader 键&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 按空格 + w 保存，按空格 + q 退出&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;nnoremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;w&lt;/span&gt; :&lt;span style=&#34;color:#a6e22e&#34;&gt;w&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;nnoremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;q&lt;/span&gt; :&lt;span style=&#34;color:#a6e22e&#34;&gt;q&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 按空格 + nh 取消搜索高亮&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;nnoremap&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;leader&lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;nh&lt;/span&gt; :&lt;span style=&#34;color:#a6e22e&#34;&gt;nohlsearch&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#a6e22e&#34;&gt;CR&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;#34; 禁用声音提示（报错时不会发出叮叮声）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;noerrorbells&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;visualbell&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;t_vb&lt;/span&gt;=
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将vimrc文件保存到~/.vimrc文件中（~指的是c:/&lt;user&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;在命令行唤起vim输入echo-myvimrc可以检查识别出的配置文件的路径&#34;&gt;在命令行唤起vim，输入&lt;code&gt;:echo $MYVIMRC&lt;/code&gt;可以检查识别出的配置文件的路径&lt;/h2&gt;
+&lt;h3 id=&#34;五-练习建议&#34;&gt;五、 练习建议&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;初级：&lt;/strong&gt; 运行终端指令 &lt;code&gt;vimtutor&lt;/code&gt;（或 &lt;code&gt;:Tutor&lt;/code&gt;），完成 30 分钟互动教学。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;中级：&lt;/strong&gt; 强制在所有编辑任务（笔记、代码、README）中使用 Vim，忍受最初 20 小时的低效期。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高级：&lt;/strong&gt; 当你觉得某个操作太慢时，去搜“Vim better way for&amp;hellip;”，永远有新命令等着你。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;</description>
+    </item>
+    
     <item>
       <title>30min用Hugo创建个人博客网站</title>
       <link>https://cloudymount789.github.io/blog/blog_site_with_hugo/</link>

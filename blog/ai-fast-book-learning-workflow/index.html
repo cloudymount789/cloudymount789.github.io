@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 驱动的技术书“脱水”学习流分享</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Ladder@别再死磕技术书全文了。这套流派的核心是 “先搭骨架，后填血肉”：利用 AI 将原书强行拆解为知识切片、讲义正文和动态验收题，构建一个结构化的 e-book 知识库。引入 “零基础可读性自检” ，通过规约强制 AI 有计划的输出带有直觉解释、边界说明和逻辑自洽的干货讲义。这不仅是一套 Prompt 技巧，更是一次对传统阅读习惯的底层重构，让 AI 真正承担起知识压缩与逻辑重组的任务。">
+    <meta name="author" content="CloudyMount">
+    <link rel="canonical" href="https://cloudymount789.github.io/blog/ai-fast-book-learning-workflow/">
+
+    <link rel="alternate" type="application/rss+xml" href="https://cloudymount789.github.io//index.xml" title="CloudyMount&#39;s blog">
+
+    
+
+
+    <meta property="og:url" content="https://cloudymount789.github.io/blog/ai-fast-book-learning-workflow/">
+  <meta property="og:site_name" content="CloudyMount&#39;s blog">
+  <meta property="og:title" content="AI 驱动的技术书“脱水”学习流分享">
+  <meta property="og:description" content="别再死磕技术书全文了。这套流派的核心是 “先搭骨架，后填血肉”：利用 AI 将原书强行拆解为知识切片、讲义正文和动态验收题，构建一个结构化的 e-book 知识库。引入 “零基础可读性自检” ，通过规约强制 AI 有计划的输出带有直觉解释、边界说明和逻辑自洽的干货讲义。这不仅是一套 Prompt 技巧，更是一次对传统阅读习惯的底层重构，让 AI 真正承担起知识压缩与逻辑重组的任务。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-04-07T23:04:24+08:00">
+    <meta property="article:modified_time" content="2026-04-07T23:04:24+08:00">
+    <meta property="article:tag" content="Workflow">
+    <meta property="article:tag" content="Funny_attempts">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI 驱动的技术书“脱水”学习流分享">
+  <meta name="twitter:description" content="别再死磕技术书全文了。这套流派的核心是 “先搭骨架，后填血肉”：利用 AI 将原书强行拆解为知识切片、讲义正文和动态验收题，构建一个结构化的 e-book 知识库。引入 “零基础可读性自检” ，通过规约强制 AI 有计划的输出带有直觉解释、边界说明和逻辑自洽的干货讲义。这不仅是一套 Prompt 技巧，更是一次对传统阅读习惯的底层重构，让 AI 真正承担起知识压缩与逻辑重组的任务。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blogs",
+      "item": "https://cloudymount789.github.io/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI 驱动的技术书“脱水”学习流分享",
+      "item": "https://cloudymount789.github.io/blog/ai-fast-book-learning-workflow/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI 驱动的技术书“脱水”学习流分享",
+  "name": "AI 驱动的技术书“脱水”学习流分享",
+  "description": "别再死磕技术书全文了。这套流派的核心是 “先搭骨架，后填血肉”：利用 AI 将原书强行拆解为知识切片、讲义正文和动态验收题，构建一个结构化的 e-book 知识库。引入 “零基础可读性自检” ，通过规约强制 AI 有计划的输出带有直觉解释、边界说明和逻辑自洽的干货讲义。这不仅是一套 Prompt 技巧，更是一次对传统阅读习惯的底层重构，让 AI 真正承担起知识压缩与逻辑重组的任务。\n",
+  "keywords": [
+    "workflow", "funny_attempts"
+  ],
+  "articleBody": "别再死磕技术书全文了。这套流派的核心是 “先搭骨架，后填血肉”：利用 AI 将原书强行拆解为知识切片、讲义正文和动态验收题，构建一个结构化的 e-book 知识库。引入 “零基础可读性自检” ，通过规约强制 AI 有计划的输出带有直觉解释、边界说明和逻辑自洽的干货讲义。这不仅是一套 Prompt 技巧，更是一次对传统阅读习惯的底层重构，让 AI 真正承担起知识压缩与逻辑重组的任务。\n如何用AI做技术书籍速读学习 你会得到什么 一套快速落地的技术书学习流程，再也不用“硬啃全文”。 一套“讲义优先”的产出结构：读完就能复习、能自测、能复用。 一套质量控制机制：防止 AI 只会“总结漂亮话”。 适用对象：要快速掌握一本技术书主线、但不想陷入低效摘抄的人。\n一、核心原则：先搭框架，再填细节 我的思路是: 先规范好ai需要做什么，将需要做的事情拆分为很多个子任务，每一步做好规定好的事： 下面的思路可供参考：\n想清楚整体学习工作流 (做一个大致的plan，和ai制定规约) 抽取全书结构（目录级、章节级、小节级） 再做知识切片（按小标题拆成可讲单元） 再写讲义正文（不是模板笔记） 最后做验收题（按当天学到的内容动态生成） 先有地图，再走路。\n二、目录结构 建议用下面这套结构：\n/ ├─ lectures/ │ ├─ 00-overall-5day-plan.md │ └─ day?-???.md ├─ hangouts/ │ ├─ 00-overview.md │ └─ day?-???.md └─ knowledge-slices/ ├─ ch01-...-slices.md ├─ ch02-...-slices.md └─ ... 职责分工：\nknowledge-slices/：知识切片底稿（按原书小节） hangouts/：讲义正文（真正学习材料） lectures/：学习安排 + 验收题 + 参考答案 三、质量闸门：零基础可读性检查 这是整套流程中最值钱的一步。\n每次讲义生成后，强制跑一遍检查：\n这份根据原文提取出的脱水讲义是否逻辑自洽？\n即作为一名什么都不知道的小白，我能不能通过这篇讲义弄懂这个知识点？\n可以检查以下几点:\n这一段是否先解释术语，再讲结论？ 是否默认读者已经懂前置概念（但文中没解释）？ 不查外部资料，能否理解这段主旨？ 示例（错误写法）：\n“词袋模型优点是简单，缺点是忽略上下文。” 示例（可读写法）：\n“词袋模型是把文本当作‘词频统计表’，只看词出现次数，不看顺序。\n因此它快、好实现，但像‘我喜欢你/你喜欢我’这类句子会被误判为很像，语义区分能力有限。” 四、建议学习步骤 可以固定学习步骤和节奏，便于更加科学的学习\n但是不要精确到分钟，保持灵活的时间安排\n以下是我的学习步骤：\n复习昨天的学习内容 只需要大概看一遍 阅读slice 形成一个大概的印象 明确要掌握那些概念 便于后续脑中建模知识点的联系 阅读lecture 了解学习重点，防止阅读时死扣没那么重要的细节 有的内容读到后面和后面的东西联系起来自然就懂了 阅读hangout 期间有不懂的直接新建对话问ai 并对hangout(现在是你的note)进行补充 复盘（很重要） 并在脑中建模知识点间的联系 为什么要引入这个概念？我学到了什么？有哪些思想可以复用？ 完成课后习题，进行查漏补缺 不懂的继续实时做笔记 五、参考规约 下面贴出我的参考规约\n# 《图解大模型》学习总体规约 ## 规约定位 这是后续生成高质量讲义的总控文档。核心目标是： - 严格对齐原书知识范围（第1-12章 + DeepSeek-R1附录）； - 先把知识点切分清楚，再生成易懂讲义； - 每天的验收提问完全根据当天实际学习内容动态调整，文末给参考答案。 - 不要死板于制定优美的计划，应该更专注于知识点本身的提取和学习的质量，深耕hangout文档的生成 ## 学习目标 - 所有内容以 `e-book.pdf` 为唯一知识源，禁止编造书外关键结论。 - 讲义按原书章节和小标题组织，尽可能覆盖原书知识点。 - 讲义正文必须可直接学习，不使用同质化空模板。 - 每天验收题只围绕当天学过的小节，文末提供可核对的参考答案。 - 目标是快速概览与建立框架，不追求一次性吃透全部推导细节。 - 便于用户少做重复整理工作，ai负责把内容压缩成可读、可学、可复习的讲义正文。 - 讲义质量优先于流程形式：强调概念清晰、边界清晰、应用场景清晰。 ## 全书主线（与原书一致） - 第一部分：理解语言模型（第1-3章） - 第二部分：使用预训练语言模型（第4-9章） - 第三部分：训练和微调语言模型（第10-12章） - 附录：图解 DeepSeek-R1 ## 5天学习主线（保持高密度但不僵化） - Day 1：第1-3章（基础概念、分词嵌入、Transformer内部机制） - Day 2：第4-6章（文本分类、聚类主题、提示工程） - Day 3：第7-9章（链路与记忆、Agent、RAG、多模态） - Day 4：第10-11章（嵌入模型构建、表示模型微调） - Day 5：第12章 + 附录（生成模型微调、偏好优化、DeepSeek-R1） ## 文件职责 - `knowledge-slices/`：按章节沉淀知识点切片，作为讲义生成底稿。 - `notes/`：每日讲义正文（学习材料本体）。 - `lectures/`：每日安排、验收题、参考答案、复盘。 ## 讲义撰写标准 - 结构：按知识点切片展开。 - 允许结构化重写与通俗化解释，但必须保留原书知识逻辑。 - 风格：优先用直觉解释复杂概念，必要时再补技术术语。 - 目标：读完即可复述主线，遇到任务能做初步方法选型。 ## 零基础可读性检查 - 每次生成讲义后，都要用“完全零基础学习者”视角自检一次。 - 自检问题可以包括： - 这一段是否先解释了术语本身，再讲优缺点或结论？ - 有没有默认读者已知前置概念（如 BoW、token、embedding）却未解释？ - 读者是否能在不查外部资料的情况下理解本段主旨？ - 若答案是否定，则立即补充相关解释，如： - 一句话定义（这是什么） - 一个直觉例子（像什么） - 一句边界说明（它不能做什么） - 允许 AI 在不偏离原书事实的前提下补充通俗化解释，优先保证“读得懂”。 ## 执行顺序 1. 先维护 `knowledge-slices/` 的章节切片。 2. 基于切片生成当日讲义正文到 `notes/`。 3. 基于当日讲义生成验收题到 `lectures/`，文末附答案。 4. 生成当日复盘（高频误区 + 第二天预热）。 ## 完成标准 - 全书已有章节级知识切片。 - 每天有可直接学习的讲义正文。 - 每天有与内容强绑定的验收题与答案。 ",
+  "wordCount" : "235",
+  "inLanguage": "zh",
+  "datePublished": "2026-04-07T23:04:24+08:00",
+  "dateModified": "2026-04-07T23:04:24+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "CloudyMount"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cloudymount789.github.io/blog/ai-fast-book-learning-workflow/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CloudyMount's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cloudymount789.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+    <link rel="icon" href="/images/LittleElysia.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/LittleElysia.png">
+
+<link rel="manifest" href="/images/LittleElysia.png">
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+
+    
+    
+    <link rel="stylesheet" href="/css/main.min.ec28f09e946fc0df77c187fcd0d0ebde58fca6de8efb8e1620f3d45c32d4da88.css" integrity="sha256-7CjwnpRvwN93wYf80NDr3lj8pt6O&#43;44WIPPUXDLU2og=" crossorigin="anonymous" media="screen" />
+
+    
+    <link rel="stylesheet" href="/scss/highlight/github-dark.min.min.66034289ee9a113219a2c4aae0a8bd2095ab255c832a42efcf5863f10814e7a1.css" />
+
+    
+    <script src="/js/highlight.min.min.04ed3315a5c3f66e19fbfc8c933577697fe73787c63333adc024c4fabed580bc.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script>
+    </head>
+<body>
+      <main class="wrapper"><nav class="navigation">
+    <section class="container">
+        <a class="navigation-brand" href="/">
+            主页
+        </a>
+        <input type="checkbox" id="menu-toggle" />
+        <label class="menu-button float-right" for="menu-toggle">
+            <span></span><span></span><span></span>
+        </label>
+        
+        <ul class="navigation-list" id="navigation-list">
+            
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/blog/">文章</a>
+            </li>
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/tags/">标签</a>
+            </li>
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/archives/">归档</a>
+            </li>
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/guestbook/">留言</a>
+            </li>
+            
+            <li class="navigation-item navigation-menu">
+                <a class="navigation-link" href="/xx/">网站统计</a>
+            </li>
+            
+            
+
+            <li class="navigation-item menu-separator">
+                <span>|</span>
+            </li>
+
+            
+            
+            <li class="navigation-item navigation-social">
+                <a class="navigation-link" href="https://github.com/cloudymount789"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+            </li>
+            
+            <li class="navigation-item navigation-social">
+                <a class="navigation-link" href="https://space.bilibili.com/1369055152?spm_id_from=333.1007.0.0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tv"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg></a>
+            </li>
+            
+            
+
+            <li class="navigation-item navigation-dark">
+                <button id="mode" type="button" aria-label="toggle user light or dark theme">
+                    <span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+                    <span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+                </button>
+            </li>
+
+            
+        </ul>
+        
+    </section>
+</nav>
+<div id="content">
+<article class="blog-single">
+  <header class="blog-title">
+    <h1>AI 驱动的技术书“脱水”学习流分享</h1>
+  </header>
+
+  <p>
+  <small>
+    2026年4月7日&nbsp;· 235 字&nbsp;· 2 分钟</small>
+
+  
+<p>
+
+  <div class="blog-toc">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#你会得到什么">你会得到什么</a></li>
+    <li><a href="#一核心原则先搭框架再填细节">一、核心原则：先搭框架，再填细节</a></li>
+    <li><a href="#二目录结构">二、目录结构</a></li>
+    <li><a href="#三质量闸门零基础可读性检查">三、质量闸门：零基础可读性检查</a></li>
+    <li><a href="#四建议学习步骤">四、建议学习步骤</a></li>
+    <li><a href="#五参考规约">五、参考规约</a></li>
+  </ul>
+</nav>
+  </div>
+
+  <section class="blog-content"><p>别再死磕技术书全文了。这套流派的核心是 <strong>“先搭骨架，后填血肉”</strong>：利用 AI 将原书强行拆解为知识切片、讲义正文和动态验收题，构建一个结构化的 e-book 知识库。引入 <strong>“零基础可读性自检”</strong> ，通过规约强制 AI 有计划的输出带有直觉解释、边界说明和逻辑自洽的干货讲义。这不仅是一套 Prompt 技巧，更是一次对传统阅读习惯的底层重构，让 AI 真正承担起知识压缩与逻辑重组的任务。</p>
+<h1 id="如何用ai做技术书籍速读学习">如何用AI做技术书籍速读学习</h1>
+<h2 id="你会得到什么">你会得到什么</h2>
+<ul>
+<li>一套快速落地的技术书学习流程，再也不用“硬啃全文”。</li>
+<li>一套“讲义优先”的产出结构：读完就能复习、能自测、能复用。</li>
+<li>一套质量控制机制：防止 AI 只会“总结漂亮话”。</li>
+</ul>
+<p>适用对象：要快速掌握一本技术书主线、但不想陷入低效摘抄的人。</p>
+<hr>
+<h2 id="一核心原则先搭框架再填细节">一、核心原则：先搭框架，再填细节</h2>
+<blockquote>
+<p>我的思路是: 先规范好ai需要做什么，将需要做的事情拆分为很多个子任务，每一步做好规定好的事：
+下面的思路可供参考：</p></blockquote>
+<ol start="0">
+<li><strong>想清楚整体学习工作流</strong>  (做一个大致的plan，和ai制定<a href="/blog/ai-fast-book-learning-workflow/#%e4%ba%94%e5%8f%82%e8%80%83%e8%a7%84%e7%ba%a6">规约</a>)</li>
+<li><strong>抽取全书结构</strong>（目录级、章节级、小节级）</li>
+<li><strong>再做知识切片</strong>（按小标题拆成可讲单元）</li>
+<li><strong>再写讲义正文</strong>（不是模板笔记）</li>
+<li><strong>最后做验收题</strong>（按当天学到的内容动态生成）</li>
+</ol>
+<p><strong>先有地图，再走路</strong>。</p>
+<hr>
+<h2 id="二目录结构">二、目录结构</h2>
+<p>建议用下面这套结构：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/
+</span></span><span style="display:flex;"><span>├─ lectures/
+</span></span><span style="display:flex;"><span>│  ├─ 00-overall-5day-plan.md
+</span></span><span style="display:flex;"><span>│  └─ day?-???.md
+</span></span><span style="display:flex;"><span>├─ hangouts/
+</span></span><span style="display:flex;"><span>│  ├─ 00-overview.md
+</span></span><span style="display:flex;"><span>│  └─ day?-???.md
+</span></span><span style="display:flex;"><span>└─ knowledge-slices/
+</span></span><span style="display:flex;"><span>   ├─ ch01-...-slices.md
+</span></span><span style="display:flex;"><span>   ├─ ch02-...-slices.md
+</span></span><span style="display:flex;"><span>   └─ ...
+</span></span></code></pre></div><p>职责分工：</p>
+<ul>
+<li><code>knowledge-slices/</code>：知识切片底稿（按原书小节）</li>
+<li><code>hangouts/</code>：讲义正文（真正学习材料）</li>
+<li><code>lectures/</code>：学习安排 + 验收题 + 参考答案</li>
+</ul>
+<hr>
+<h2 id="三质量闸门零基础可读性检查">三、质量闸门：零基础可读性检查</h2>
+<p>这是整套流程中最值钱的一步。</p>
+<p>每次讲义生成后，强制跑一遍检查：</p>
+<p>这份根据原文提取出的脱水讲义是否逻辑自洽？</p>
+<p>即作为一名什么都不知道的小白，我能不能通过这篇讲义弄懂这个知识点？</p>
+<p>可以检查以下几点:</p>
+<ul>
+<li>这一段是否先解释术语，再讲结论？</li>
+<li>是否默认读者已经懂前置概念（但文中没解释）？</li>
+<li>不查外部资料，能否理解这段主旨？</li>
+</ul>
+<p>示例（错误写法）：</p>
+<ul>
+<li>“词袋模型优点是简单，缺点是忽略上下文。”</li>
+</ul>
+<p>示例（可读写法）：</p>
+<ul>
+<li>“词袋模型是把文本当作‘词频统计表’，只看词出现次数，不看顺序。<br>
+因此它快、好实现，但像‘我喜欢你/你喜欢我’这类句子会被误判为很像，语义区分能力有限。”</li>
+</ul>
+<hr>
+<h2 id="四建议学习步骤">四、建议学习步骤</h2>
+<p>可以固定学习步骤和节奏，便于更加科学的学习</p>
+<p>但是不要精确到分钟，保持灵活的时间安排</p>
+<p>以下是我的学习步骤：</p>
+<ol start="0">
+<li>复习昨天的学习内容
+<ul>
+<li>只需要大概看一遍</li>
+</ul>
+</li>
+<li>阅读slice
+<ul>
+<li>形成一个大概的印象</li>
+<li>明确要掌握那些概念</li>
+<li>便于后续脑中建模知识点的联系</li>
+</ul>
+</li>
+<li>阅读lecture
+<ul>
+<li>了解学习重点，防止阅读时死扣没那么重要的细节</li>
+<li>有的内容读到后面和后面的东西联系起来自然就懂了</li>
+</ul>
+</li>
+<li>阅读hangout
+<ul>
+<li>期间有不懂的直接新建对话问ai</li>
+<li>并对hangout(现在是你的note)进行补充</li>
+</ul>
+</li>
+<li>复盘（很重要）
+<ul>
+<li>并在脑中建模知识点间的联系</li>
+<li>为什么要引入这个概念？我学到了什么？有哪些思想可以复用？</li>
+</ul>
+</li>
+<li>完成课后习题，进行查漏补缺
+<ul>
+<li>不懂的继续实时做笔记</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="五参考规约">五、参考规约</h2>
+<p>下面贴出我的参考规约</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># 《图解大模型》学习总体规约
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 规约定位
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>这是后续生成高质量讲义的总控文档。核心目标是：
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 严格对齐原书知识范围（第1-12章 + DeepSeek-R1附录）；
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 先把知识点切分清楚，再生成易懂讲义；
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 每天的验收提问完全根据当天实际学习内容动态调整，文末给参考答案。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 不要死板于制定优美的计划，应该更专注于知识点本身的提取和学习的质量，深耕hangout文档的生成
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 学习目标
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">-</span> 所有内容以 <span style="color:#e6db74">`e-book.pdf`</span> 为唯一知识源，禁止编造书外关键结论。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 讲义按原书章节和小标题组织，尽可能覆盖原书知识点。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 讲义正文必须可直接学习，不使用同质化空模板。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 每天验收题只围绕当天学过的小节，文末提供可核对的参考答案。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 目标是快速概览与建立框架，不追求一次性吃透全部推导细节。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 便于用户少做重复整理工作，ai负责把内容压缩成可读、可学、可复习的讲义正文。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 讲义质量优先于流程形式：强调概念清晰、边界清晰、应用场景清晰。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 全书主线（与原书一致）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">-</span> 第一部分：理解语言模型（第1-3章）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 第二部分：使用预训练语言模型（第4-9章）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 第三部分：训练和微调语言模型（第10-12章）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 附录：图解 DeepSeek-R1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 5天学习主线（保持高密度但不僵化）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">-</span> Day 1：第1-3章（基础概念、分词嵌入、Transformer内部机制）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Day 2：第4-6章（文本分类、聚类主题、提示工程）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Day 3：第7-9章（链路与记忆、Agent、RAG、多模态）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Day 4：第10-11章（嵌入模型构建、表示模型微调）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Day 5：第12章 + 附录（生成模型微调、偏好优化、DeepSeek-R1）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 文件职责
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">-</span> <span style="color:#e6db74">`knowledge-slices/`</span>：按章节沉淀知识点切片，作为讲义生成底稿。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> <span style="color:#e6db74">`notes/`</span>：每日讲义正文（学习材料本体）。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> <span style="color:#e6db74">`lectures/`</span>：每日安排、验收题、参考答案、复盘。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 讲义撰写标准
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">-</span> 结构：按知识点切片展开。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 允许结构化重写与通俗化解释，但必须保留原书知识逻辑。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 风格：优先用直觉解释复杂概念，必要时再补技术术语。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 目标：读完即可复述主线，遇到任务能做初步方法选型。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 零基础可读性检查
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">-</span> 每次生成讲义后，都要用“完全零基础学习者”视角自检一次。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 自检问题可以包括：
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 这一段是否先解释了术语本身，再讲优缺点或结论？
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 有没有默认读者已知前置概念（如 BoW、token、embedding）却未解释？
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 读者是否能在不查外部资料的情况下理解本段主旨？
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 若答案是否定，则立即补充相关解释，如：
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 一句话定义（这是什么）
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 一个直觉例子（像什么）
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">-</span> 一句边界说明（它不能做什么）
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 允许 AI 在不偏离原书事实的前提下补充通俗化解释，优先保证“读得懂”。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 执行顺序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">1.</span> 先维护 <span style="color:#e6db74">`knowledge-slices/`</span> 的章节切片。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 基于切片生成当日讲义正文到 <span style="color:#e6db74">`notes/`</span>。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 基于当日讲义生成验收题到 <span style="color:#e6db74">`lectures/`</span>，文末附答案。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> 生成当日复盘（高频误区 + 第二天预热）。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 完成标准
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">-</span> 全书已有章节级知识切片。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 每天有可直接学习的讲义正文。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 每天有与内容强绑定的验收题与答案。
+</span></span></code></pre></div></section>
+
+  
+  
+  <div class="paginator">
+    
+    <a class="prev" href="https://cloudymount789.github.io/blog/bash_note/">
+      <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.77086 21.1546C11.0491 22.698 21.4339 21.7773 21.4339 16.3608V4.63375C21.4339 3.93962 21.3581 3.30535 21.1917 2.76787M3.77086 21.1546C1.9934 20.7777 0.973585 18.7264 1.08749 16.688C1.2668 13.479 1.15721 9.43135 1.00513 6.21507C0.87809 3.52811 3.12891 1.16316 5.51029 1.25008C9.76594 1.40542 15.377 1.20229 18.7912 1.00542C20.0864 0.930734 20.8406 1.63385 21.1917 2.76787M3.77086 21.1546C4.56586 21.4723 5.49168 21.7879 6.5 22.0658M21.1917 2.76787C23.1097 4.18217 23.13 12.4191 22.9004 16.3608C20.8478 24.0194 12.3061 23.6662 6.5 22.0658M21.1917 2.76787C21.7612 4.51192 22.7203 9.67216 22 16.3608C21.2797 23.0494 11.3665 22.9511 6.5 22.0658M9.94496 9C9.28897 9.61644 7.63215 10.997 6.04814 11.7966C5.98257 11.8297 5.98456 11.9753 6.05061 12.0063C7.05496 12.4779 8.92941 13.9264 9.94496 15M6.44444 11.9667C8.86549 12.0608 14 12 16 11" stroke="currentColor" stroke-linecap="round"/>
+      </svg>
+      <span>linux入门/快速上手命令行</span></a>
+    
+    
+    <a class="next" href="https://cloudymount789.github.io/blog/powertoys_note/"><span>powertoys快速上手/windoews开发人员手册/辅助讲解工具zoomlt</span>
+      <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.77086 21.1546C11.0491 22.698 21.4339 21.7773 21.4339 16.3608V4.63375C21.4339 3.93962 21.3581 3.30535 21.1917 2.76787M3.77086 21.1546C1.9934 20.7777 0.973585 18.7264 1.08749 16.688C1.2668 13.479 1.15721 9.43135 1.00513 6.21507C0.87809 3.52811 3.12891 1.16316 5.51029 1.25008C9.76594 1.40542 15.377 1.20229 18.7912 1.00542C20.0864 0.930734 20.8406 1.63385 21.1917 2.76787M3.77086 21.1546C4.56586 21.4723 5.49168 21.7879 6.5 22.0658M21.1917 2.76787C23.1097 4.18217 23.13 12.4191 22.9004 16.3608C20.8478 24.0194 12.3061 23.6662 6.5 22.0658M21.1917 2.76787C21.7612 4.51192 22.7203 9.67216 22 16.3608C21.2797 23.0494 11.3665 22.9511 6.5 22.0658M12.055 9C12.711 9.61644 14.3679 10.997 15.9519 11.7966C16.0174 11.8297 16.0154 11.9753 15.9494 12.0063C14.945 12.4779 13.0706 13.9264 12.055 15M15.5556 11.9667C13.1345 12.0608 8 12 6 11" stroke="currentColor" stroke-linecap="round"/>
+      </svg>
+    </a>
+    
+  </div>
+  
+
+  
+
+
+  
+  
+<div class="comments">
+  <script>
+      const getTheme = window.localStorage && window.localStorage.getItem("theme");
+      let theme = getTheme === 'dark' ? 'dark' : 'light';
+      let s = document.createElement('script');
+      s.src = 'https://giscus.app/client.js';
+      s.setAttribute('data-repo', 'cloudymount789\/cloudymount789.github.io');
+      s.setAttribute('data-repo-id', 'R_kgDOQni-Ig');
+      s.setAttribute('data-category', 'Announcements');
+      s.setAttribute('data-category-id', 'DIC_kwDOQni-Is4C5v5J');
+      s.setAttribute('data-mapping', 'pathname');
+      s.setAttribute('data-strict', '0');
+      s.setAttribute('data-reactions-enabled', '1');
+      s.setAttribute('data-emit-metadata', '0');
+      s.setAttribute('data-input-position', '');
+      s.setAttribute('data-theme', theme);
+      s.setAttribute('data-lang', 'zh-CN');
+      s.setAttribute('data-loading', 'lazy');
+      s.setAttribute('crossorigin', 'anonymous');
+      s.setAttribute('async', '');
+      document.querySelector('div.comments').innerHTML = '';
+      document.querySelector('div.comments').appendChild(s);
+  </script>
+</div>
+
+</article>
+
+
+        </div><footer class="footer">
+  <p>&copy; 2026 <a href="https://cloudymount789.github.io/">CloudyMount&#39;s blog</a>
+    Powered by
+    <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>
+    <a href="https://github.com/guangzhengli/hugo-theme-ladder" rel="noopener" target="_blank">Ladder</a>
+️  </p>
+</footer>
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.5376 22.7916C11.0152 22.7207 22.5795 21.1781 22.0978 10.4211C22.0536 9.43274 21.9303 8.53367 21.7387 7.71865M10.5376 22.7916C16.876 22.3728 20.0969 19.8899 21.5383 16.9142M10.5376 22.7916C9.7707 22.9055 8.97982 22.8964 8.19743 22.7725M21.7387 7.71865C21.4988 6.69828 21.1518 5.80967 20.7188 5.04257M21.7387 7.71865C22.6022 10.1105 23.0542 13.7848 21.5383 16.9142M20.7188 5.04257C17.1684 -1.24629 7.83127 0.632493 4.27577 5.04257C2.88063 6.77451 -0.0433281 11.1668 1.38159 16.6571C2.27481 20.0988 5.17269 22.2936 8.19743 22.7725M20.7188 5.04257C22.0697 6.9404 24.0299 11.3848 22.3541 15.4153M21.5383 16.9142C21.8737 16.4251 22.1428 15.9235 22.3541 15.4153M8.19743 22.7725C12.1971 23.4683 20.6281 22.971 22.3541 15.4153M14 10.945C13.3836 10.289 12.003 8.63215 11.2034 7.04814C11.1703 6.98257 11.0247 6.98456 10.9937 7.05061C10.5221 8.05496 9.07362 9.92941 8 10.945M11.0333 7.44444C10.9392 9.86549 11 15 12 17" stroke="currentColor" stroke-linecap="round"/>
+    </svg>
+</a>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'Copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'Copied';
+            setTimeout(() => {
+                copybutton.innerHTML = 'Copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+        codeblock.parentNode.appendChild(copybutton);
+    });
+</script></main>
+    </body><script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+      const images = Array.from(document.querySelectorAll(".blog-content img"));
+      images.forEach(img => {
+          mediumZoom(img, {
+              margin: 10,  
+              scrollOffset: 40,  
+              container: null,  
+              template: null,  
+              background: 'rgba(0, 0, 0, 0.5)'
+          });
+      });
+  </script>
+
+  
+  <script src="/main.min.6bb26b69159420159c74dc9e097b06a578ed2b68c701466a91a44a9632d851bd0af167a1b30012387b4c512b48ad9ad4d3394e04d77ae38d57e1920fe4ed34fe.js" integrity="sha512-a7JraRWUIBWcdNyeCXsGpXjtK2jHAUZqkaRKljLYUb0K8WehswASOHtMUStIrZrU0zlOBNd6441X4ZIP5O00/g==" crossorigin="anonymous" defer></script></html>

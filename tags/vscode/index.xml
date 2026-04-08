@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vscode on CloudyMount&#39;s blog</title>
+    <link>http://localhost:1313/tags/vscode/</link>
+    <description>Recent content in Vscode on CloudyMount&#39;s blog created by </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 08 Apr 2026 19:49:56 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VScode设置图片粘贴路径</title>
+      <link>http://localhost:1313/blog/vscode_paste_image_setting/</link>
+      <pubDate>Wed, 08 Apr 2026 19:49:56 +0800</pubDate>
+      
+      <guid>http://localhost:1313/blog/vscode_paste_image_setting/</guid>
+      <description>&lt;p&gt;本文针对 Markdown 写作中静态资源管理的碎片化痛点，提供了 VS Code 自动化图床化配置方案，有效解决了默认路径混乱与同名覆盖风险，是构建结构化博客文档流的硬核提效手段。&lt;/p&gt;
+&lt;h2 id=&#34;vscode中如何配置粘贴入的图像的默认位置&#34;&gt;VScode中如何配置粘贴入的图像的默认位置&lt;/h2&gt;
+&lt;h3 id=&#34;需求由来&#34;&gt;需求由来&lt;/h3&gt;
+&lt;p&gt;因为在写博客的时候需要大量插入图片&lt;/p&gt;
+&lt;p&gt;默认的图片插在同目录下，直接命名为image-?，它会在md文件中命名为&lt;code&gt;[!alt](image-?.png)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;但是因为我的博客的文件目录管理是统一将图片放在images里的，所以需要加一个前缀./images/&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;方法&#34;&gt;方法&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;ctrl + ,&lt;/code&gt;打开设置&lt;/li&gt;
+&lt;li&gt;搜索&lt;code&gt;markdown.copyFiles.destination&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;添加键值对：键&lt;code&gt;**/*.md&lt;/code&gt;（匹配所有.md文件，对所有markdown生效），值&lt;code&gt;${documentDirName}/images/image-${unixTime}.${fileExtName}&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注：unixtime:毫秒级时间戳，防止重名&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VScode多文件编译方法</title>
+      <link>http://localhost:1313/blog/vscode_multiple_files_compile/</link>
+      <pubDate>Wed, 08 Apr 2026 19:49:33 +0800</pubDate>
+      
+      <guid>http://localhost:1313/blog/vscode_multiple_files_compile/</guid>
+      <description>&lt;p&gt;本文针对 VS Code 环境下 C++ 多文件编译报错的痛点，提供了两种维度的硬核解决方案：一是通过魔改 &lt;code&gt;tasks.json&lt;/code&gt; 中的 &lt;code&gt;args&lt;/code&gt; 参数，将单一文件编译重定向为路径通配符编译；二是引入 &lt;code&gt;CMake Tools&lt;/code&gt; 扩展，利用 &lt;code&gt;CMakeLists.txt&lt;/code&gt; 构建工程化的声明式编译流，旨在帮助开发者实现多模块代码的顺畅协同。&lt;/p&gt;
+&lt;h2 id=&#34;vscode-多文件编译解决方法&#34;&gt;VScode 多文件编译解决方法&lt;/h2&gt;
+&lt;h3 id=&#34;way-1-修改config文件&#34;&gt;way 1 修改config文件&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;按下 &lt;code&gt;Ctrl + Shift + P&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;输入 &lt;code&gt;Tasks: Configure Task&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;选择 &lt;code&gt;g++.exe build active file&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这会自动生成或打开 &lt;code&gt;.vscode/tasks.json&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;找到 &lt;code&gt;args&lt;/code&gt;（参数）数组&lt;/li&gt;
+&lt;li&gt;把 &lt;code&gt;&amp;quot;${file}&amp;quot;&lt;/code&gt; 修改为 &lt;code&gt;&amp;quot;${fileDirname}\\*.cpp&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原理：改为多文件编译&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;way-2-使用cmake扩展&#34;&gt;way 2 使用cmake扩展&lt;/h3&gt;
+&lt;p&gt;对于大型项目或需要跨平台的开发需求，使用 &lt;strong&gt;CMake&lt;/strong&gt; 是更硬核且通用的选择。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;安装插件&lt;/strong&gt;：在 VS Code 扩展市场搜索并安装 &lt;code&gt;CMake Tools&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;创建 CMakeLists.txt&lt;/strong&gt;：在项目根目录下新建该文件，写入基础配置：
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cmake&#34; data-lang=&#34;cmake&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cmake_minimum_required(&lt;span style=&#34;color:#e6db74&#34;&gt;VERSION&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;3.10&lt;/span&gt;)&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;project(&lt;span style=&#34;color:#e6db74&#34;&gt;MyProject&lt;/span&gt;)&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 自动搜集目录下所有源文件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;aux_source_directory(&lt;span style=&#34;color:#e6db74&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;DIR_SRCS&lt;/span&gt;)&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;add_executable(&lt;span style=&#34;color:#e6db74&#34;&gt;main&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;${&lt;/span&gt;DIR_SRCS&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;)&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;构建与运行&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;点击底部状态栏的 &lt;strong&gt;Build&lt;/strong&gt; 进行编译。&lt;/li&gt;
+&lt;li&gt;点击 &lt;strong&gt;三角形图标 (Run)&lt;/strong&gt; 或 &lt;strong&gt;小虫子图标 (Debug)&lt;/strong&gt; 即可运行或调试。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：无需手动修改 JSON 配置文件，支持复杂的库依赖管理。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

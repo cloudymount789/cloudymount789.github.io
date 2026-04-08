@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ai on CloudyMount&#39;s blog</title>
+    <link>http://localhost:1313/tags/ai/</link>
+    <description>Recent content in Ai on CloudyMount&#39;s blog created by </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 07 Apr 2026 23:04:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI 驱动的技术书“脱水”学习流分享</title>
+      <link>http://localhost:1313/blog/ai-fast-book-learning-workflow/</link>
+      <pubDate>Tue, 07 Apr 2026 23:04:24 +0800</pubDate>
+      
+      <guid>http://localhost:1313/blog/ai-fast-book-learning-workflow/</guid>
+      <description>&lt;p&gt;别再死磕技术书全文了。这套流派的核心是 &lt;strong&gt;“先搭骨架，后填血肉”&lt;/strong&gt;：利用 AI 将原书强行拆解为知识切片、讲义正文和动态验收题，构建一个结构化的 e-book 知识库。引入 &lt;strong&gt;“零基础可读性自检”&lt;/strong&gt; ，通过规约强制 AI 有计划的输出带有直觉解释、边界说明和逻辑自洽的干货讲义。这不仅是一套 Prompt 技巧，更是一次对传统阅读习惯的底层重构，让 AI 真正承担起知识压缩与逻辑重组的任务。&lt;/p&gt;
+&lt;h1 id=&#34;如何用ai做技术书籍速读学习&#34;&gt;如何用AI做技术书籍速读学习&lt;/h1&gt;
+&lt;h2 id=&#34;你会得到什么&#34;&gt;你会得到什么&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;一套快速落地的技术书学习流程，再也不用“硬啃全文”。&lt;/li&gt;
+&lt;li&gt;一套“讲义优先”的产出结构：读完就能复习、能自测、能复用。&lt;/li&gt;
+&lt;li&gt;一套质量控制机制：防止 AI 只会“总结漂亮话”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;适用对象：要快速掌握一本技术书主线、但不想陷入低效摘抄的人。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;一核心原则先搭框架再填细节&#34;&gt;一、核心原则：先搭框架，再填细节&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的思路是: 先规范好ai需要做什么，将需要做的事情拆分为很多个子任务，每一步做好规定好的事：
+下面的思路可供参考：&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ol start=&#34;0&#34;&gt;
+&lt;li&gt;&lt;strong&gt;想清楚整体学习工作流&lt;/strong&gt;  (做一个大致的plan，和ai制定&lt;a href=&#34;http://localhost:1313/blog/ai-fast-book-learning-workflow/#%e4%ba%94%e5%8f%82%e8%80%83%e8%a7%84%e7%ba%a6&#34;&gt;规约&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;抽取全书结构&lt;/strong&gt;（目录级、章节级、小节级）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;再做知识切片&lt;/strong&gt;（按小标题拆成可讲单元）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;再写讲义正文&lt;/strong&gt;（不是模板笔记）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最后做验收题&lt;/strong&gt;（按当天学到的内容动态生成）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;先有地图，再走路&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;二目录结构&#34;&gt;二、目录结构&lt;/h2&gt;
+&lt;p&gt;建议用下面这套结构：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─ lectures/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│  ├─ 00-overall-5day-plan.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│  └─ day?-???.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─ hangouts/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│  ├─ 00-overview.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│  └─ day?-???.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└─ knowledge-slices/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   ├─ ch01-...-slices.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   ├─ ch02-...-slices.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   └─ ...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;职责分工：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;knowledge-slices/&lt;/code&gt;：知识切片底稿（按原书小节）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hangouts/&lt;/code&gt;：讲义正文（真正学习材料）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lectures/&lt;/code&gt;：学习安排 + 验收题 + 参考答案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;三质量闸门零基础可读性检查&#34;&gt;三、质量闸门：零基础可读性检查&lt;/h2&gt;
+&lt;p&gt;这是整套流程中最值钱的一步。&lt;/p&gt;
+&lt;p&gt;每次讲义生成后，强制跑一遍检查：&lt;/p&gt;
+&lt;p&gt;这份根据原文提取出的脱水讲义是否逻辑自洽？&lt;/p&gt;
+&lt;p&gt;即作为一名什么都不知道的小白，我能不能通过这篇讲义弄懂这个知识点？&lt;/p&gt;
+&lt;p&gt;可以检查以下几点:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这一段是否先解释术语，再讲结论？&lt;/li&gt;
+&lt;li&gt;是否默认读者已经懂前置概念（但文中没解释）？&lt;/li&gt;
+&lt;li&gt;不查外部资料，能否理解这段主旨？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例（错误写法）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“词袋模型优点是简单，缺点是忽略上下文。”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例（可读写法）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“词袋模型是把文本当作‘词频统计表’，只看词出现次数，不看顺序。&lt;br&gt;
+因此它快、好实现，但像‘我喜欢你/你喜欢我’这类句子会被误判为很像，语义区分能力有限。”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;四建议学习步骤&#34;&gt;四、建议学习步骤&lt;/h2&gt;
+&lt;p&gt;可以固定学习步骤和节奏，便于更加科学的学习&lt;/p&gt;
+&lt;p&gt;但是不要精确到分钟，保持灵活的时间安排&lt;/p&gt;
+&lt;p&gt;以下是我的学习步骤：&lt;/p&gt;
+&lt;ol start=&#34;0&#34;&gt;
+&lt;li&gt;复习昨天的学习内容
+&lt;ul&gt;
+&lt;li&gt;只需要大概看一遍&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;阅读slice
+&lt;ul&gt;
+&lt;li&gt;形成一个大概的印象&lt;/li&gt;
+&lt;li&gt;明确要掌握那些概念&lt;/li&gt;
+&lt;li&gt;便于后续脑中建模知识点的联系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;阅读lecture
+&lt;ul&gt;
+&lt;li&gt;了解学习重点，防止阅读时死扣没那么重要的细节&lt;/li&gt;
+&lt;li&gt;有的内容读到后面和后面的东西联系起来自然就懂了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;阅读hangout
+&lt;ul&gt;
+&lt;li&gt;期间有不懂的直接新建对话问ai&lt;/li&gt;
+&lt;li&gt;并对hangout(现在是你的note)进行补充&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;复盘（很重要）
+&lt;ul&gt;
+&lt;li&gt;并在脑中建模知识点间的联系&lt;/li&gt;
+&lt;li&gt;为什么要引入这个概念？我学到了什么？有哪些思想可以复用？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;完成课后习题，进行查漏补缺
+&lt;ul&gt;
+&lt;li&gt;不懂的继续实时做笔记&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;五参考规约&#34;&gt;五、参考规约&lt;/h2&gt;
+&lt;p&gt;下面贴出我的参考规约&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# 《图解大模型》学习总体规约
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 规约定位
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;这是后续生成高质量讲义的总控文档。核心目标是：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 严格对齐原书知识范围（第1-12章 + DeepSeek-R1附录）；
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 先把知识点切分清楚，再生成易懂讲义；
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 每天的验收提问完全根据当天实际学习内容动态调整，文末给参考答案。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 不要死板于制定优美的计划，应该更专注于知识点本身的提取和学习的质量，深耕hangout文档的生成
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 学习目标
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 所有内容以 &lt;span style=&#34;color:#e6db74&#34;&gt;`e-book.pdf`&lt;/span&gt; 为唯一知识源，禁止编造书外关键结论。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 讲义按原书章节和小标题组织，尽可能覆盖原书知识点。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 讲义正文必须可直接学习，不使用同质化空模板。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 每天验收题只围绕当天学过的小节，文末提供可核对的参考答案。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 目标是快速概览与建立框架，不追求一次性吃透全部推导细节。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 便于用户少做重复整理工作，ai负责把内容压缩成可读、可学、可复习的讲义正文。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 讲义质量优先于流程形式：强调概念清晰、边界清晰、应用场景清晰。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 全书主线（与原书一致）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 第一部分：理解语言模型（第1-3章）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 第二部分：使用预训练语言模型（第4-9章）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 第三部分：训练和微调语言模型（第10-12章）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 附录：图解 DeepSeek-R1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 5天学习主线（保持高密度但不僵化）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Day 1：第1-3章（基础概念、分词嵌入、Transformer内部机制）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Day 2：第4-6章（文本分类、聚类主题、提示工程）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Day 3：第7-9章（链路与记忆、Agent、RAG、多模态）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Day 4：第10-11章（嵌入模型构建、表示模型微调）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; Day 5：第12章 + 附录（生成模型微调、偏好优化、DeepSeek-R1）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 文件职责
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`knowledge-slices/`&lt;/span&gt;：按章节沉淀知识点切片，作为讲义生成底稿。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`notes/`&lt;/span&gt;：每日讲义正文（学习材料本体）。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`lectures/`&lt;/span&gt;：每日安排、验收题、参考答案、复盘。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 讲义撰写标准
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 结构：按知识点切片展开。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 允许结构化重写与通俗化解释，但必须保留原书知识逻辑。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 风格：优先用直觉解释复杂概念，必要时再补技术术语。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 目标：读完即可复述主线，遇到任务能做初步方法选型。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 零基础可读性检查
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 每次生成讲义后，都要用“完全零基础学习者”视角自检一次。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 自检问题可以包括：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 这一段是否先解释了术语本身，再讲优缺点或结论？
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 有没有默认读者已知前置概念（如 BoW、token、embedding）却未解释？
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 读者是否能在不查外部资料的情况下理解本段主旨？
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 若答案是否定，则立即补充相关解释，如：
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 一句话定义（这是什么）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 一个直觉例子（像什么）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 一句边界说明（它不能做什么）
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 允许 AI 在不偏离原书事实的前提下补充通俗化解释，优先保证“读得懂”。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 执行顺序
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;1.&lt;/span&gt; 先维护 &lt;span style=&#34;color:#e6db74&#34;&gt;`knowledge-slices/`&lt;/span&gt; 的章节切片。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;2.&lt;/span&gt; 基于切片生成当日讲义正文到 &lt;span style=&#34;color:#e6db74&#34;&gt;`notes/`&lt;/span&gt;。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;3.&lt;/span&gt; 基于当日讲义生成验收题到 &lt;span style=&#34;color:#e6db74&#34;&gt;`lectures/`&lt;/span&gt;，文末附答案。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;4.&lt;/span&gt; 生成当日复盘（高频误区 + 第二天预热）。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;## 完成标准
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 全书已有章节级知识切片。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 每天有可直接学习的讲义正文。
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;-&lt;/span&gt; 每天有与内容强绑定的验收题与答案。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Claude Code 终端集成与 API 中转避坑</title>
+      <link>http://localhost:1313/blog/claude_deploy/</link>
+      <pubDate>Sat, 04 Apr 2026 17:00:04 +0800</pubDate>
+      
+      <guid>http://localhost:1313/blog/claude_deploy/</guid>
+      <description>&lt;p&gt;本文深度还原了在 Windows 环境下部署 Claude Code 终端工具的实战历程，针对初次配置中常见的环境变量冲突、网络受限及 API 连通性等痛点提供了硬核解决方案。文章总结了通过第三方中转站绕过地理限制、优化模型路由分组以及利用脚本跳过冗长初始化流程的进阶调优经验，旨在帮助开发者快速打通 Claude 与本地终端的交互链路，构建高效的命令行 AI 开发环境。&lt;/p&gt;
+&lt;h1 id=&#34;claude-code-安装与配置&#34;&gt;Claude Code 安装与配置&lt;/h1&gt;
+&lt;p&gt;找了好几个教程，历经艰难险阻终于装上了，，，
+但是发现费用不菲啊，，，&lt;/p&gt;
+&lt;h3 id=&#34;教程&#34;&gt;教程&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/weixin_46211269/article/details/157613957&#34;&gt;好不容易找到的可以用的教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;跟着几个不同的教程做都失败了，，一直在解决各式各样的报错
+我有统计工作时长的习惯，花了我5个小时wc（泪）&lt;/p&gt;
+&lt;p&gt;###　更换不同api中转站配置&lt;/p&gt;
+&lt;p&gt;最后总结出来的配置三件套(因为我一直换各个不同的api中转站hhh)&lt;/p&gt;
+&lt;p&gt;（适用于windows powershell）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;修改环境变量（这个好像是单进程生效）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$env:ANTHROPIC_API_KEY = &amp;#34;your_api_key&amp;#34;
+$env:ANTHROPIC_BASE_URL = &amp;#34;中转站网址，大部分情况是网址，一般中转站有文档会写出&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;检查是否成功输入（不要多括号和引号什么的）&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;echo $env:ANTHROPIC_API_KEY
+
+echo $env:ANTHROPIC_BASE_URL
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;notice: don&amp;rsquo;t use both api_key and token，他们本质上作用是一样的，因为我看了不同的教程用了不同的东西导致我两个都设置了，然后就报错了，，&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;改长期配置（其实我不知道这个必不必要，但是在解决报错的过程中ai叫我这么做hhh）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;notepad $PROFILE
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;创建新的文件是正常现象，然后把上一步的两行环境变量粘进去&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;改~/.claude/setting.json&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有的教程又叫我用config,,,乱七八糟的&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;粘贴一些基础配置（同样我也不知道必不必要hhh，ai说的）&lt;/p&gt;
+&lt;p&gt;可以参考我的&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+&amp;#34;primaryModel&amp;#34;: &amp;#34;claude-sonnet-4-5-20250929&amp;#34;,
+&amp;#34;apiBaseUrl&amp;#34;: &amp;#34;https://api.cphone.vip/&amp;#34;,
+&amp;#34;env&amp;#34;: {
+	&amp;#34;ANTHROPIC_BASE_URL&amp;#34;: &amp;#34;同上&amp;#34;,
+	&amp;#34;ANTHROPIC_DEFAULT_HAIKU_MODEL&amp;#34;: &amp;#34;claude-sonnet-4-5-20250929&amp;#34;,
+	&amp;#34;ANTHROPIC_DEFAULT_OPUS_MODEL&amp;#34;: &amp;#34;claude-sonnet-4-5-20250929&amp;#34;,
+	&amp;#34;ANTHROPIC_DEFAULT_SONNET_MODEL&amp;#34;: &amp;#34;claude-sonnet-4-5-20250929&amp;#34;,
+	&amp;#34;ANTHROPIC_MODEL&amp;#34;: &amp;#34;claude-sonnet-4-5-20250929&amp;#34;
+	},
+&amp;#34;preferences&amp;#34;: {
+	&amp;#34;language&amp;#34;: &amp;#34;zh-CN&amp;#34;,
+	&amp;#34;showCost&amp;#34;: true,
+	&amp;#34;showTokenCount&amp;#34;: true,
+	&amp;#34;autoComplete&amp;#34;: true
+		},
+	&amp;#34;hasCompletedOnboarding&amp;#34;: true
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在历经艰难险阻之后我的claude终于能在终端说话了/泪目&lt;/p&gt;
+&lt;p&gt;###　修复错误的简单历程&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;似乎是没有成功设置url，claude一直走官网拉取，报网络问题：您所在国家不能使用，开代理也不行
+就是这一步诞生了上面一堆修复的尝试hhh，但是其实都没奏效，
+卡了很久之后选择换教程，换了两三个教程看找到了上面贴的那个教程，通过一个windows power shell脚本绕开了初始的新手教程，拉取和配置，终于成功连上了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;连上了之后开始报503错误：account not exist,问ai半天后选择去找客服，客服不理我&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;尝试换api中转站，找到这篇&lt;a href=&#34;https://blog.csdn.net/Xulijun079/article/details/159020920&#34;&gt;博客&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;换了api易之后，进去是进去了，但是开始报model not support，换了几个分组都不行&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;上一个中转站客服终于理我了，说是那个分组的号最近被封的厉害让我换个分组，我照做终于好了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;补充：现在用的&lt;a href=&#34;https://api.cphone.vip/&#34;&gt;中转站&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;省钱tips&#34;&gt;省钱tips&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多用 claude ignore：把不需要扫描的文件夹（如 node_modules, dist）排除掉，减少 Context 消耗。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;控制对话深度：定时输入 /clear 或者重新开启对话，防止上下文堆叠导致单次请求 Token 爆炸。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;别跟风加一堆rules，那些也烧token&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
